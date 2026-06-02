@@ -49,7 +49,7 @@ ul { list-style: none; }
 }
 .logo.small { font-size: 1.2rem; }
 .logo.long { font-size: 1.1rem; letter-spacing: 0; }
-.logo img { display: block; }
+.logo img { display: block; height: 55px; width: auto; max-width: 260px; }
 .logo span { color: var(--primary); }
 .logo .green { color: var(--gold); }
 .nav { display: flex; align-items: center; gap: 32px; }
@@ -672,6 +672,7 @@ ul { list-style: none; }
   .hamburger { display: block; }
   .header-inner { flex-wrap: wrap; gap: 8px; position: relative; }
   .logo { font-size: 1.2rem; }
+  .logo img { height: 40px; max-width: 180px; }
   .nav {
     display: none; order: 3; width: 100%; flex-direction: column;
     background: white; border-radius: 0 0 16px 16px;
