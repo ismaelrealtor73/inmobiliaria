@@ -1,7 +1,7 @@
 ﻿const TRANSLATIONS = {
   es: {
     nav_home: 'Inicio', nav_properties: 'Propiedades', nav_services: 'Servicios',
-    nav_contact: 'Contacto', nav_crm: 'CRM',
+    nav_contact: 'Contacto', nav_crm: 'CRM', nav_blog: 'Blog',
     hero_title: 'CENTRAL DE TRASPASOS | Expertos en traspasos, venta y alquiler de locales en Málaga y Costa del Sol',
     hero_subtitle: 'Especialistas en compraventa, alquiler y traspaso de locales y negocios en Málaga y la Costa del Sol',
     search_title: 'Busca tu próximo local o negocio',
@@ -132,7 +132,7 @@
   },
   en: {
     nav_home: 'Home', nav_properties: 'Properties', nav_services: 'Services',
-    nav_contact: 'Contact', nav_crm: 'CRM',
+    nav_contact: 'Contact', nav_crm: 'CRM', nav_blog: 'Blog',
     hero_title: 'Your business, our commitment',
     hero_subtitle: 'Specialists in buying, selling, renting and transferring commercial properties in Málaga and the Costa del Sol',
     search_title: 'Find your next property or business',

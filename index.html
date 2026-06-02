@@ -74,6 +74,7 @@
       <a href="index.html" data-i18n="nav_home">Inicio</a>
       <a href="propiedades.html" data-i18n="nav_properties">Propiedades</a>
       <a href="captacion.html" data-i18n="nav_capture">Vende tu propiedad</a>
+      <a href="blog.html" data-i18n="nav_blog">Blog</a>
       <a href="#services" data-i18n="nav_services">Servicios</a>
       <a href="#contact" data-i18n="nav_contact">Contacto</a>
       <a href="crm/login.html" data-i18n="nav_crm">CRM</a>
@@ -278,6 +279,71 @@
   </div>
 </section>
 
+<section class="section" id="invCalculator">
+  <div class="container">
+    <h2 class="section-title">📈 <span data-i18n="inv_title">Calculadora de Rentabilidad</span></h2>
+    <p style="text-align:center;color:var(--text-light);margin-bottom:32px;max-width:600px;margin-left:auto;margin-right:auto;" data-i18n="inv_desc">Descubre la rentabilidad anual de un local comercial antes de invertir</p>
+    <div class="calc-container" style="max-width:600px;margin:0 auto;">
+      <div class="calc-row">
+        <div class="form-group">
+          <label data-i18n="inv_price">Precio del local (€)</label>
+          <input type="range" id="invPrice" class="calc-slider" min="30000" max="500000" value="150000" step="5000" oninput="updateInvCalc()">
+          <span id="invPriceLabel" style="font-weight:700;color:var(--primary)">150.000 €</span>
+        </div>
+        <div class="form-group">
+          <label data-i18n="inv_rent">Alquiler mensual esperado (€)</label>
+          <input type="range" id="invRent" class="calc-slider" min="300" max="5000" value="1200" step="50" oninput="updateInvCalc()">
+          <span id="invRentLabel" style="font-weight:700;color:var(--primary)">1.200 €</span>
+        </div>
+      </div>
+      <div class="calc-row">
+        <div class="form-group">
+          <label data-i18n="inv_expenses">Gastos anuales (comunidad, IBI, %)</label>
+          <input type="range" id="invExpenses" class="calc-slider" min="5" max="30" value="15" step="1" oninput="updateInvCalc()">
+          <span id="invExpensesLabel" style="font-weight:700;color:var(--primary)">15%</span>
+        </div>
+      </div>
+      <div class="calc-result" id="invResult" style="text-align:center;">
+        <div class="label" data-i18n="inv_yield">Rentabilidad neta anual</div>
+        <div class="payment" id="invYield" style="font-size:2.2rem;">0%</div>
+        <div class="detail" id="invDetail" style="margin-top:8px;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="quickCapture" style="background:var(--light);text-align:center;">
+  <div class="container" style="max-width:600px;">
+    <h2 class="section-title">⚡ <span>Tasación gratuita en 24h</span></h2>
+    <p style="color:var(--text-light);margin-bottom:24px;">¿Tienes un local o negocio? Te lo tasamos gratis y sin compromiso. Respondemos en menos de 24 horas.</p>
+    <form id="quickCaptureForm" onsubmit="submitQuickCapture(event)" style="background:white;padding:28px;border-radius:12px;box-shadow:0 2px 12px rgba(15,43,61,0.08);text-align:left;">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" id="qcName" required>
+        </div>
+        <div class="form-group">
+          <label>Teléfono</label>
+          <input type="tel" id="qcPhone" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Tipo de propiedad</label>
+        <select id="qcType"><option value="local">Local comercial</option><option value="restaurante">Restaurante/Pub</option><option value="oficina">Oficina</option><option value="nave">Nave industrial</option><option value="otro">Otro</option></select>
+      </div>
+      <div class="form-group">
+        <label>Municipio</label>
+        <select id="qcTown"></select>
+      </div>
+      <div class="form-group">
+        <label>Breve descripción</label>
+        <textarea id="qcDesc" rows="2" placeholder="Metros aproximados, estado, zona..." style="width:100%;padding:10px 14px;border:1px solid #dde3e8;border-radius:6px;font-family:inherit;font-size:0.95rem;resize:vertical;"></textarea>
+      </div>
+      <button type="submit" class="btn btn-secondary" style="width:100%;">Solicitar tasación gratuita</button>
+    </form>
+  </div>
+</section>
+
 <footer class="footer" id="footer">
   <div class="container">
     <div class="footer-grid">
@@ -291,7 +357,8 @@
         <a href="propiedades.html" data-i18n="nav_properties">Propiedades</a><br>
         <a href="captacion.html" data-i18n="nav_capture">Vende tu propiedad</a><br>
         <a href="#services" data-i18n="nav_services">Servicios</a><br>
-        <a href="#contact" data-i18n="nav_contact">Contacto</a>
+        <a href="#contact" data-i18n="nav_contact">Contacto</a><br>
+        <a href="blog.html" data-i18n="nav_blog">Blog</a>
       </div>
       <div>
         <h4 data-i18n="footer_contact_title">Contacto</h4>
@@ -364,7 +431,19 @@ async function filterProperties() {
 
 function populateSearchTowns() {
   const sel = document.getElementById('searchTown');
+  if (!sel) return;
   sel.innerHTML = '<option value="" data-i18n="search_town">' + t('search_town') + '</option>';
+  TOWNS.forEach(town => {
+    const opt = document.createElement('option');
+    opt.value = town; opt.textContent = town;
+    sel.appendChild(opt);
+  });
+}
+
+function populateQCTowns() {
+  const sel = document.getElementById('qcTown');
+  if (!sel) return;
+  sel.innerHTML = '<option value="">Selecciona municipio</option>';
   TOWNS.forEach(town => {
     const opt = document.createElement('option');
     opt.value = town; opt.textContent = town;
@@ -439,6 +518,40 @@ function updateCalc() {
   }
 }
 
+function updateInvCalc() {
+  const price = parseFloat(document.getElementById('invPrice').value);
+  const rent = parseFloat(document.getElementById('invRent').value);
+  const expPct = parseFloat(document.getElementById('invExpenses').value);
+  document.getElementById('invPriceLabel').textContent = formatPrice(price);
+  document.getElementById('invRentLabel').textContent = formatPrice(rent);
+  document.getElementById('invExpensesLabel').textContent = expPct + '%';
+  const annualIncome = rent * 12;
+  const annualExpenses = annualIncome * expPct / 100;
+  const netIncome = annualIncome - annualExpenses;
+  const yieldPct = price > 0 ? (netIncome / price * 100) : 0;
+  const paybackYears = netIncome > 0 ? (price / netIncome) : 0;
+  document.getElementById('invYield').textContent = yieldPct.toFixed(1) + '%';
+  const detail = document.getElementById('invDetail');
+  if (netIncome > 0) {
+    detail.innerHTML = 'Ingreso neto anual: ' + formatPrice(Math.round(netIncome)) + ' · Recuperas la inversión en <strong>' + paybackYears.toFixed(1) + ' años</strong>';
+  } else {
+    detail.textContent = 'Los gastos superan los ingresos. Revisa los valores.';
+  }
+}
+
+async function submitQuickCapture(e) {
+  e.preventDefault();
+  const name = document.getElementById('qcName').value.trim();
+  const phone = document.getElementById('qcPhone').value.trim();
+  const type = document.getElementById('qcType').value;
+  const town = document.getElementById('qcTown').value;
+  const desc = document.getElementById('qcDesc').value.trim();
+  if (!name || !phone) return;
+  await addLead({ name, email: '', phone, propertyId: '', propertyTitle: 'Tasación rápida: ' + type + ' en ' + town, message: desc || 'Solicitud de tasación' });
+  showToast('Solicitud enviada. Te contactaremos en 24h.');
+  e.target.reset();
+}
+
 async function applySiteContent() {
   const sc = await getSiteContent();
   if (sc.hero_title_es) {
@@ -475,10 +588,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   try {
     await applySiteContent();
     populateSearchTowns();
+    populateQCTowns();
     await populateContactProperties();
     const featured = await getPublishedProperties();
     renderProperties(featured.filter(p => p.featured));
     updateCalc();
+    updateInvCalc();
   } catch(e) { console.error(e); }
 });
 
@@ -486,9 +601,11 @@ document.addEventListener('langchange', async () => {
   await loadHeaderLogo();
   await applySiteContent();
   populateSearchTowns();
+  populateQCTowns();
   await populateContactProperties();
   await filterProperties();
   updateCalc();
+  updateInvCalc();
 });
 </script>
 <a href="https://wa.me/34645412519" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
