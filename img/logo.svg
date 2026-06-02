@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 70">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f2b3d"/>
+      <stop offset="100%" stop-color="#1a4a6a"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c9a84c"/>
+      <stop offset="100%" stop-color="#a8882e"/>
+    </linearGradient>
+  </defs>
+
+  <!-- C shape (thick arc) -->
+  <path d="M20 12 Q20 8 28 8 L44 8 Q48 8 48 12 L48 16 Q48 20 44 20 L34 20" 
+        fill="none" stroke="url(#g1)" stroke-width="7" stroke-linecap="round"/>
+  <path d="M20 12 Q20 8 28 8 L44 8 Q48 8 48 12 L48 16 Q48 20 44 20 L34 20"
+        fill="none" stroke="url(#g2)" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+
+  <!-- T vertical stem through C -->
+  <line x1="40" y1="6" x2="40" y2="62" stroke="url(#g1)" stroke-width="7" stroke-linecap="round"/>
+  <line x1="40" y1="6" x2="40" y2="62" stroke="url(#g2)" stroke-width="3" stroke-linecap="round" opacity="0.3"/>
+
+  <!-- T horizontal top (arrow cross) -->
+  <line x1="28" y1="6" x2="72" y2="6" stroke="url(#g1)" stroke-width="7" stroke-linecap="round"/>
+  <line x1="28" y1="6" x2="72" y2="6" stroke="url(#g2)" stroke-width="3" stroke-linecap="round" opacity="0.3"/>
+
+  <!-- Arrowhead right side -->
+  <polygon points="68,0 80,6 68,12" fill="url(#g1)"/>
+  <polygon points="68,1 78,6 68,11" fill="url(#g2)" opacity="0.3"/>
+
+  <!-- Text -->
+  <text x="88" y="30" font-family="'Playfair Display', 'Georgia', serif" font-size="16" font-weight="700" fill="#0f2b3d" letter-spacing="-0.3">
+    Central de<tspan x="88" dy="20" font-size="13" font-weight="600" fill="#c9a84c" letter-spacing="2">TRASPASOS</tspan>
+  </text>
+</svg>

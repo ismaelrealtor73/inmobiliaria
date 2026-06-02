@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="crm_login_title">CRM CENTRAL DE TRASPASOS</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="login-page">
+
+<div class="login-box">
+  <h1 class="logo" style="text-align:center;font-size:1.8rem;margin-bottom:4px;justify-content:center">CENTRAL DE TRASPASOS</h1>
+  <p data-i18n="crm_login_sub">Accede al panel de administración</p>
+  <form onsubmit="handleLogin(event)">
+    <div class="form-group">
+      <label data-i18n="crm_login_user">Usuario</label>
+      <input type="text" id="user" value="admin" required>
+    </div>
+    <div class="form-group">
+      <label data-i18n="crm_login_pass">Contraseña</label>
+      <input type="password" id="pass" value="admin123" required>
+    </div>
+    <button type="submit" class="btn" style="width:100%" data-i18n="crm_login_btn">Entrar</button>
+    <p id="loginError" style="color:#e74c3c;margin-top:12px;display:none;text-align:center;font-size:0.9rem"></p>
+    <p style="text-align:center;margin-top:12px;font-size:0.8rem;color:var(--text-light)" data-i18n="crm_login_hint">admin / admin123 | agente1 / agente123</p>
+  </form>
+  <div style="text-align:center;margin-top:12px">
+    <button class="lang-btn" data-lang="es" onclick="setLang('es')"><img src="../img/flag-es.svg" class="flag-icon" alt=""> ES</button>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en')"><img src="../img/flag-gb.svg" class="flag-icon" alt=""> EN</button>
+  </div>
+</div>
+
+<script src="../js/translations.js"></script>
+<script src="../js/data.js"></script>
+<script>
+function handleLogin(e) {
+  e.preventDefault();
+  const user = document.getElementById('user').value;
+  const pass = document.getElementById('pass').value;
+  if (login(user, pass)) {
+    window.location.href = 'dashboard.html';
+  } else {
+    const err = document.getElementById('loginError');
+    err.textContent = t('crm_login_error');
+    err.style.display = 'block';
+  }
+}
+
+if (getCurrentUser()) { window.location.href = 'dashboard.html'; }
+</script>
+</body>
+</html>
+

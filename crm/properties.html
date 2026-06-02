@@ -1,0 +1,383 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRM - Propiedades</title>
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="crm-body">
+
+<header class="crm-header">
+  <div class="crm-header-inner">
+    <div class="logo">CENTRAL DE TRASPASOS <span style="font-size:0.75rem;color:rgba(255,255,255,0.5)">CRM</span></div>
+    <nav class="crm-nav">
+      <a href="dashboard.html" data-i18n="crm_dashboard">Dashboard</a>
+      <a href="properties.html" class="active" data-i18n="crm_properties">Propiedades</a>
+      <a href="leads.html" data-i18n="crm_leads">Leads</a>
+      <a href="settings.html" data-i18n="crm_settings">Ajustes</a>
+      <div class="lang-switch">
+        <button class="lang-btn" data-lang="es" onclick="setLang('es')"><img src="../img/flag-es.svg" class="flag-icon" alt=""> ES</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')"><img src="../img/flag-gb.svg" class="flag-icon" alt=""> EN</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="crm-layout">
+  <nav class="crm-sidebar">
+    <div class="crm-sidebar-logo" id="sidebarLogo"><img src="../img/logo.svg" alt="Logo" id="sidebarLogoImg"></div>
+    <a href="dashboard.html">ðŸ“Š <span data-i18n="crm_dashboard">Dashboard</span></a>
+    <a href="properties.html" class="active">ðŸª <span data-i18n="crm_properties">Propiedades</span></a>
+    <a href="leads.html">ðŸ“© <span data-i18n="crm_leads">Leads</span></a>
+    <a href="settings.html">âš™ï¸ <span data-i18n="crm_settings">Ajustes</span></a>
+    <a href="#" onclick="handleLogout()" style="margin-top:auto;border-top:1px solid #e0e8e8;padding-top:16px">ðŸšª <span data-i18n="crm_logout">Cerrar sesiÃ³n</span></a>
+    <div style="padding:12px 24px;font-size:0.8rem;color:var(--text-light)" id="userInfo"></div>
+  </nav>
+
+  <main class="crm-content">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:12px">
+      <h2 data-i18n="crm_props_title">GestiÃ³n de Propiedades</h2>
+      <button class="btn" onclick="openModal()" data-i18n="crm_props_add">AÃ±adir Propiedad</button>
+    </div>
+
+    <div class="tabs" id="statusTabs">
+      <button class="tab active" data-filter="all" onclick="setTab('all')" data-i18n="crm_leads_all">Todas</button>
+      <button class="tab" data-filter="published" onclick="setTab('published')" data-i18n="crm_props_published">Publicadas</button>
+      <button class="tab" data-filter="draft" onclick="setTab('draft')" data-i18n="crm_props_draft">Borradores</button>
+    </div>
+
+    <div style="overflow-x:auto">
+      <table class="crm-table" id="propsTable">
+        <thead>
+          <tr>
+            <th data-i18n="crm_table_images">Img</th>
+            <th data-i18n="crm_table_title">TÃ­tulo</th>
+            <th data-i18n="crm_table_town">Municipio</th>
+            <th data-i18n="crm_table_type">Tipo</th>
+            <th data-i18n="crm_table_price">Precio</th>
+            <th data-i18n="crm_table_status">Estado</th>
+            <th data-i18n="crm_table_agent">Agente</th>
+            <th data-i18n="crm_table_actions">Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="propsBody"></tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" style="max-width:800px">
+    <button class="close" onclick="closeModal()">&times;</button>
+    <h2 id="modalTitle" data-i18n="crm_props_add">AÃ±adir Propiedad</h2>
+    <form class="crm-form" id="propForm" onsubmit="saveProp(event)" style="max-width:none;box-shadow:none;padding:0">
+      <input type="hidden" id="propId">
+      <div class="form-row">
+        <div class="form-group">
+          <label data-i18n="crm_form_title_es">TÃ­tulo (ES)</label>
+          <input type="text" id="propTitleEs" required>
+        </div>
+        <div class="form-group">
+          <label data-i18n="crm_form_title_en">TÃ­tulo (EN)</label>
+          <input type="text" id="propTitleEn" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label data-i18n="crm_form_town">Municipio</label>
+          <select id="propTown" required></select>
+        </div>
+        <div class="form-group">
+          <label data-i18n="crm_form_type">Tipo de operaciÃ³n</label>
+          <select id="propType">
+            <option value="sale" data-i18n="search_type_sale">Compra</option>
+            <option value="rent" data-i18n="search_type_rent">Alquiler</option>
+            <option value="transfer" data-i18n="search_type_transfer">Traspaso</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label data-i18n="crm_form_price">Precio (â‚¬)</label>
+          <input type="number" id="propPrice" min="0" required>
+        </div>
+        <div class="form-group">
+          <label data-i18n="crm_form_status">Estado</label>
+          <select id="propStatus">
+            <option value="published" data-i18n="crm_props_published">Publicado</option>
+            <option value="draft" data-i18n="crm_props_draft">Borrador</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label data-i18n="crm_form_desc_es">DescripciÃ³n (ES)</label>
+        <textarea id="propDescEs" required></textarea>
+      </div>
+      <div class="form-group">
+        <label data-i18n="crm_form_desc_en">DescripciÃ³n (EN)</label>
+        <textarea id="propDescEn" required></textarea>
+      </div>
+      <div class="form-group">
+        <label>
+          <input type="checkbox" id="propFeatured">
+          <span data-i18n="crm_form_featured">Destacado en portada</span>
+        </label>
+      </div>
+      <div class="form-group">
+        <label data-i18n="crm_form_images">ImÃ¡genes</label>
+        <div class="image-upload-area" onclick="document.getElementById('imageInput').click()">
+          <span style="font-size:2rem">ðŸ“·</span>
+          <p data-i18n="crm_form_image_add">Haz clic para aÃ±adir imÃ¡genes</p>
+          <input type="file" id="imageInput" accept="image/*" multiple onchange="handleImageUpload(event)">
+        </div>
+        <div class="image-preview-grid" id="imagePreviewGrid"></div>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn" data-i18n="crm_form_save">Guardar</button>
+        <button type="button" class="btn btn-cancel" onclick="closeModal()" data-i18n="crm_form_cancel">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="../js/translations.js"></script>
+<script src="../js/data.js"></script>
+<script>
+const user = requireAuth();
+if (!user) throw new Error('redirect');
+const isAgent = user.role === 'agent';
+let currentFilter = 'all';
+let pendingImages = [];
+
+function handleLogout() { logout(); window.location.href = 'login.html'; }
+
+function populateTownSelect() {
+  const sel = document.getElementById('propTown');
+  sel.innerHTML = '';
+  TOWNS.forEach(t => { const o = document.createElement('option'); o.value = t; o.textContent = t; sel.appendChild(o); });
+}
+
+function getFilteredProps() {
+  let props = getProperties();
+  if (isAgent) props = props.filter(p => p.createdBy === user.username);
+  if (currentFilter === 'published') props = props.filter(p => p.status === 'published');
+  if (currentFilter === 'draft') props = props.filter(p => p.status === 'draft');
+  return props;
+}
+
+function setTab(filter) {
+  currentFilter = filter;
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.filter === filter));
+  renderTable();
+}
+
+function renderTable() {
+  const props = getFilteredProps();
+  const tbody = document.getElementById('propsBody');
+  document.getElementById('userInfo').innerHTML = `<strong>${user.name}</strong><br><span class="role-badge ${user.role}">${user.role}</span>`;
+
+  if (!props.length) {
+    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;color:var(--text-light);padding:32px" data-i18n="crm_no_props">No hay propiedades aÃºn</td></tr>';
+    applyTranslation(); return;
+  }
+
+  tbody.innerHTML = props.map(p => {
+    const title = p['title_' + currentLang] || p['title_es'];
+    const typeLabel = getTypeLabel(p.type, currentLang);
+    const statusLabel = t('crm_props_' + p.status);
+    const agentName = USERS.find(u => u.username === p.createdBy);
+    const agentLabel = agentName ? agentName.name : p.createdBy;
+    const thumb = p.images && p.images.length
+      ? '<img class="table-img-thumb" src="' + (p.images.find(i=>i.featured)||p.images[0]).data + '" alt="">'
+      : 'â€”';
+    const canEdit = user.role === 'admin' || p.createdBy === user.username;
+    return '<tr>' +
+      '<td>' + thumb + '</td>' +
+      '<td>' + title + '</td>' +
+      '<td>' + p.town + '</td>' +
+      '<td>' + typeLabel + '</td>' +
+      '<td>' + formatPrice(p.price) + '</td>' +
+      '<td>' + statusLabel + '</td>' +
+      '<td>' + agentLabel + '</td>' +
+      '<td class="actions">' +
+      (canEdit ? '<button class="btn-sm btn-edit" onclick="editProp(' + p.id + ')">âœï¸ ' + t('edit') + '</button>' : '') +
+      (canEdit ? '<button class="btn-sm btn-delete" onclick="deleteProp(' + p.id + ')">ðŸ—‘ï¸ ' + t('delete') + '</button>' : '') +
+      '</td></tr>';
+  }).join('');
+  applyTranslation();
+}
+
+function compressImage(dataUrl, maxW, maxH, quality) {
+  return new Promise(resolve => {
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      let w = img.width, h = img.height;
+      if (w > maxW) { h = h * maxW / w; w = maxW; }
+      if (h > maxH) { w = w * maxH / h; h = maxH; }
+      canvas.width = w; canvas.height = h;
+      const ctx = canvas.getContext('2d');
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+      ctx.drawImage(img, 0, 0, w, h);
+      resolve(canvas.toBlob ? new Promise(r => canvas.toBlob(blob => {
+        const reader = new FileReader();
+        reader.onload = () => r(reader.result);
+        reader.readAsDataURL(blob);
+      }, 'image/jpeg', quality)) : dataUrl);
+    };
+    img.onerror = () => resolve(dataUrl);
+    img.src = dataUrl;
+  });
+}
+
+async function handleImageUpload(e) {
+  const files = e.target.files;
+  for (const file of files) {
+    const raw = await readFileAsDataURL(file);
+    const data = await compressImage(raw, 1200, 900, 0.82);
+    pendingImages.push({ data, featured: pendingImages.length === 0 });
+  }
+  e.target.value = '';
+  renderImagePreviews();
+}
+
+function renderImagePreviews() {
+  const grid = document.getElementById('imagePreviewGrid');
+  if (!pendingImages.length) { grid.innerHTML = ''; return; }
+  grid.innerHTML = pendingImages.map((img, i) =>
+    '<div class="image-preview-item' + (img.featured ? ' featured' : '') + '">' +
+    (img.featured ? '<div class="featured-tag">â­ ' + t('crm_form_image_featured') + '</div>' : '') +
+    '<img src="' + img.data + '" alt="" onerror="this.alt=\'Imagen no disponible\'">' +
+    '<div class="img-actions">' +
+    (!img.featured ? '<button class="btn-feat" type="button" onclick="setFeatured(' + i + ')">â­ ' + t('crm_form_image_featured') + '</button>' : '') +
+    '<button class="btn-del" type="button" onclick="removeImage(' + i + ')">ðŸ—‘ï¸</button>' +
+    '</div></div>'
+  ).join('');
+}
+
+function setFeatured(i) {
+  pendingImages.forEach((img, idx) => img.featured = idx === i);
+  renderImagePreviews();
+}
+
+function removeImage(i) {
+  pendingImages.splice(i, 1);
+  if (pendingImages.length > 0 && !pendingImages.some(img => img.featured)) pendingImages[0].featured = true;
+  renderImagePreviews();
+}
+
+function openModal(prop) {
+  document.getElementById('modalOverlay').classList.add('open');
+  pendingImages = [];
+  const title = document.getElementById('modalTitle');
+  const form = document.getElementById('propForm');
+  form.reset();
+  document.getElementById('propFeatured').checked = false;
+  document.getElementById('propId').value = '';
+
+  if (prop) {
+    title.textContent = t('crm_props_edit');
+    document.getElementById('propId').value = prop.id;
+    document.getElementById('propTitleEs').value = prop.title_es;
+    document.getElementById('propTitleEn').value = prop.title_en || '';
+    document.getElementById('propTown').value = prop.town;
+    document.getElementById('propType').value = prop.type;
+    document.getElementById('propPrice').value = prop.price;
+    document.getElementById('propStatus').value = prop.status;
+    document.getElementById('propDescEs').value = prop.desc_es;
+    document.getElementById('propDescEn').value = prop.desc_en || '';
+    document.getElementById('propFeatured').checked = prop.featured || false;
+    pendingImages = (prop.images || []).map(img => ({ ...img }));
+    renderImagePreviews();
+  } else {
+    title.textContent = t('crm_props_add');
+    document.getElementById('propStatus').value = 'published';
+  }
+  applyTranslation();
+}
+
+function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); pendingImages = []; }
+
+function saveProp(e) {
+  e.preventDefault();
+  const id = document.getElementById('propId').value;
+  const obj = {
+    title_es: document.getElementById('propTitleEs').value,
+    title_en: document.getElementById('propTitleEn').value,
+    town: document.getElementById('propTown').value,
+    type: document.getElementById('propType').value,
+    price: parseFloat(document.getElementById('propPrice').value),
+    status: document.getElementById('propStatus').value,
+    desc_es: document.getElementById('propDescEs').value,
+    desc_en: document.getElementById('propDescEn').value,
+    featured: document.getElementById('propFeatured').checked,
+    images: pendingImages.map(img => ({ data: img.data, featured: img.featured })),
+  };
+  const props = getProperties();
+  if (id) {
+    const idx = props.findIndex(p => p.id == id);
+    if (idx >= 0) { Object.assign(props[idx], obj); }
+  } else {
+    obj.id = Date.now();
+    obj.createdAt = new Date().toISOString().split('T')[0];
+    obj.createdBy = user.username;
+    props.push(obj);
+  }
+  const saved = saveProperties(props);
+  if (!saved) {
+    showToast('Error: las imágenes son demasiado grandes. Reduce el peso de las fotos o usa menos imágenes.', true);
+    return;
+  }
+  closeModal();
+  renderTable();
+  showToast(t('crm_props_saved'));
+}
+
+function editProp(id) {
+  const props = getProperties();
+  const p = props.find(x => x.id === id);
+  if (p && (user.role === 'admin' || p.createdBy === user.username)) openModal(p);
+}
+
+function deleteProp(id) {
+  if (!confirm(t('crm_props_confirm_delete'))) return;
+  let props = getProperties();
+  const p = props.find(x => x.id === id);
+  if (p && (user.role !== 'admin' && p.createdBy !== user.username)) return;
+  props = props.filter(p => p.id !== id);
+  saveProperties(props);
+  renderTable();
+  showToast(t('crm_props_deleted'));
+}
+
+function showToast(msg, isError) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'toast show' + (isError ? ' error' : '');
+  setTimeout(() => { el.className = 'toast'; }, 3000);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadSidebarLogo();
+  populateTownSelect();
+  renderTable();
+});
+
+document.addEventListener('langchange', () => {
+  const editing = document.getElementById('propId').value;
+  document.getElementById('modalTitle').textContent = t(editing ? 'crm_props_edit' : 'crm_props_add');
+  renderTable();
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+

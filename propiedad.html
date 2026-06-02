@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">CENTRAL DE TRASPASOS - Propiedad</title>
+<meta name="description" content="" id="pageDesc">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="logo" id="logoHeader">CENTRAL DE TRASPASOS</div>
+    <button class="hamburger" id="menuToggle" aria-label="Menu">☰</button>
+    <nav class="nav" id="mainNav">
+      <a href="index.html" data-i18n="nav_home">Inicio</a>
+      <a href="propiedades.html" data-i18n="nav_properties">Propiedades</a>
+      <a href="captacion.html" data-i18n="nav_capture">Vende tu propiedad</a>
+      <a href="index.html#services" data-i18n="nav_services">Servicios</a>
+      <a href="index.html#contact" data-i18n="nav_contact">Contacto</a>
+      <a href="crm/login.html" data-i18n="nav_crm">CRM</a>
+      <div class="lang-switch">
+        <button class="lang-btn" data-lang="es" onclick="setLang('es')"><img src="img/flag-es.svg" class="flag-icon" alt=""> ES</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')"><img src="img/flag-gb.svg" class="flag-icon" alt=""> EN</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="detail-hero" id="detailHero">
+  <span class="detail-type-badge" id="detailTypeBadge"></span>
+  <h1 id="detailTitle"></h1>
+  <div class="detail-price" id="detailPrice"></div>
+  <div class="detail-location" id="detailLocation">📍 <span id="detailTown"></span></div>
+</section>
+
+<section class="detail-content">
+  <div class="container">
+    <div style="margin-bottom:24px">
+      <a href="propiedades.html" class="back-link" data-i18n="detail_back">← Volver a propiedades</a>
+    </div>
+
+    <div class="detail-gallery" id="detailGallery"></div>
+
+    <div class="detail-layout">
+      <div class="detail-description">
+        <h2 data-i18n="detail_description">Descripción</h2>
+        <p id="detailDesc"></p>
+
+        <div class="detail-location-box" style="margin-top:32px" id="detailLocationBox">
+          <h3 data-i18n="detail_location">Ubicación</h3>
+          <p id="detailLocationDesc"></p>
+        </div>
+      </div>
+
+      <div class="detail-sidebar">
+        <div class="detail-contact-card">
+          <h3 data-i18n="detail_contact">Contacta con nosotros</h3>
+          <p>📞 +34 645 412 519</p>
+          <p>✉️ info@centraldetraspasos.com</p>
+          <hr style="border:none;border-top:1px solid #eef1f4;margin:16px 0">
+          <form id="detailContactForm" onsubmit="submitDetailContact(event)">
+            <div class="form-group">
+              <input type="text" id="detailContactName" placeholder=" " required data-i18n-placeholder="detail_contact_name">
+            </div>
+            <div class="form-group">
+              <input type="email" id="detailContactEmail" placeholder=" " required data-i18n-placeholder="detail_contact_email">
+            </div>
+            <div class="form-group">
+              <input type="tel" id="detailContactPhone" placeholder=" " data-i18n-placeholder="detail_contact_phone">
+            </div>
+            <button type="submit" class="btn btn-secondary" data-i18n="detail_contact_btn">Solicitar información</button>
+          </form>
+          <p id="detailContactSuccess" style="display:none;color:var(--secondary);font-weight:600;margin-top:12px" data-i18n="detail_contact_success">Mensaje enviado correctamente.</p>
+        </div>
+
+        <a href="https://wa.me/34645412519?text=" class="btn" style="text-align:center;background:#25d366;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="similarProperties" style="background:var(--light)">
+  <div class="container">
+    <h2 class="section-title"><span data-i18n="detail_similar">Propiedades similares</span></h2>
+    <div class="properties-grid" id="similarGrid"></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4 class="logo">CENTRAL DE TRASPASOS</h4>
+        <p data-i18n="footer_about">Inmobiliaria líder en la Costa del Sol especializada en locales y negocios comerciales.</p>
+      </div>
+      <div>
+        <h4 data-i18n="footer_quick">Enlaces rápidos</h4>
+        <a href="index.html" data-i18n="nav_home">Inicio</a><br>
+        <a href="propiedades.html" data-i18n="nav_properties">Propiedades</a><br>
+        <a href="captacion.html" data-i18n="nav_capture">Vende tu propiedad</a><br>
+        <a href="index.html#services" data-i18n="nav_services">Servicios</a><br>
+        <a href="index.html#contact" data-i18n="nav_contact">Contacto</a>
+      </div>
+      <div>
+        <h4 data-i18n="footer_contact_title">Contacto</h4>
+        <p id="footerAddress" data-i18n="footer_contact_addr">📍 Málaga, Costa del Sol</p>
+        <p id="footerPhone" data-i18n="footer_contact_phone">📞 +34 645 412 519</p>
+        <p id="footerEmail" data-i18n="footer_contact_email">✉️ info@centraldetraspasos.com</p>
+      </div>
+      <div>
+        <h4 data-i18n="footer_follow">Síguenos</h4>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 <span>CENTRAL DE TRASPASOS</span><span data-i18n="footer_copy">. Todos los derechos reservados.</span> &nbsp;|&nbsp; <span>📞 +34 645 412 519</span> &nbsp;|&nbsp; <span>✉️ info@centraldetraspasos.com</span></div>
+  </div>
+</footer>
+
+<script src="js/translations.js"></script>
+<script src="js/data.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+function getTownInfoKey(town) {
+  const map = {
+    'Málaga': 'town_info_malaga', 'Marbella': 'town_info_marbella',
+    'Fuengirola': 'town_info_fuengirola', 'Torremolinos': 'town_info_torremolinos',
+    'Benalmádena': 'town_info_benalmadena', 'Antequera': 'town_info_antequera',
+    'Nerja': 'town_info_nerja'
+  };
+  return map[town] || 'town_info_este';
+}
+
+function getTownInfo(town, lang) {
+  const key = getTownInfoKey(town);
+  const esInfo = TRANSLATIONS.es[key] || '';
+  const enInfo = TRANSLATIONS.en[key] || '';
+  return lang === 'en' ? enInfo : esInfo;
+}
+
+function renderGallery(images) {
+  const gallery = document.getElementById('detailGallery');
+  if (!images || !images.length) {
+    gallery.innerHTML = '<p style="color:var(--text-light);text-align:center;padding:40px" data-i18n="detail_no_images">No hay imágenes disponibles</p>';
+    return;
+  }
+  gallery.innerHTML = images.map(img =>
+    '<img src="' + img.data + '" alt="" onclick="window.open(\'' + img.data + '\',\'_blank\')">'
+  ).join('');
+}
+
+function renderSimilar(currentId, town, type) {
+  const grid = document.getElementById('similarGrid');
+  const props = getPublishedProperties().filter(p => p.id !== currentId && (p.town === town || p.type === type)).slice(0, 3);
+  const lang = currentLang;
+  if (!props.length) {
+    document.getElementById('similarProperties').style.display = 'none';
+    return;
+  }
+  grid.innerHTML = props.map(p => {
+    const title = p['title_' + lang] || p['title_es'];
+    const coverImg = p.images && p.images.length ? p.images.find(i=>i.featured) || p.images[0] : null;
+    const imgStyle = coverImg && coverImg.data ? 'background:none' : 'background:linear-gradient(135deg,' + (p.type==='sale'?'#2E86AB':p.type==='rent'?'#36B37E':'#e67e22') + ',#1a2a3a)';
+    const imgContent = coverImg && coverImg.data ? '<img src="' + coverImg.data + '" style="width:100%;height:100%;object-fit:cover" alt="" onerror="this.style.display=\'none\';this.parentNode.style.background=\'linear-gradient(135deg,' + (p.type==='sale'?'#2E86AB':p.type==='rent'?'#36B37E':'#e67e22') + ',#1a2a3a)\';this.parentNode.innerHTML=\'🏪\'">' : '🏪';
+    return '<a href="propiedad.html?id=' + p.id + '" class="property-card-link">' +
+      '<div class="property-card">' +
+      '<div class="property-img" style="' + imgStyle + '">' + imgContent +
+      '<span class="tag ' + getTypeTag(p.type) + '">' + getTypeLabel(p.type, lang) + '</span>' +
+      '</div>' +
+      '<div class="property-body">' +
+      '<div class="property-town">📍 ' + p.town + '</div>' +
+      '<div class="property-title">' + title + '</div>' +
+      '<div class="property-price">' + formatPrice(p.price) + '</div>' +
+      '</div></div></a>';
+  }).join('');
+}
+
+function loadProperty() {
+  const params = new URLSearchParams(window.location.search);
+  const id = parseInt(params.get('id'));
+  if (!id) { window.location.href = 'propiedades.html'; return; }
+
+  const props = getPublishedProperties();
+  const p = props.find(x => x.id === id);
+  if (!p) { window.location.href = 'propiedades.html'; return; }
+
+  const lang = currentLang;
+  const title = p['title_' + lang] || p['title_es'];
+  const desc = p['desc_' + lang] || p['desc_es'];
+  const typeLabel = getTypeLabel(p.type, lang);
+
+  document.title = title + ' - CENTRAL DE TRASPASOS';
+  document.getElementById('pageDesc').content = desc;
+  document.getElementById('detailTypeBadge').textContent = typeLabel;
+  document.getElementById('detailTitle').textContent = title;
+  document.getElementById('detailPrice').textContent = formatPrice(p.price) + (p.type==='rent' ? '/' + t('prop_month') : '');
+  document.getElementById('detailTown').textContent = p.town;
+  document.getElementById('detailDesc').textContent = desc;
+  document.getElementById('detailLocationDesc').textContent = getTownInfo(p.town, lang);
+
+  renderGallery(p.images);
+  renderSimilar(p.id, p.town, p.type);
+}
+
+function submitDetailContact(e) {
+  e.preventDefault();
+  const name = document.getElementById('detailContactName').value.trim();
+  const email = document.getElementById('detailContactEmail').value.trim();
+  const phone = document.getElementById('detailContactPhone').value.trim();
+  if (!name || !email) return;
+
+  const params = new URLSearchParams(window.location.search);
+  const id = parseInt(params.get('id'));
+  const props = getPublishedProperties();
+  const p = props.find(x => x.id === id);
+  const propTitle = p ? (p['title_' + currentLang] || p['title_es']) : '';
+
+  addLead({ name, email, phone, propertyId: id, propertyTitle: propTitle, message: 'Solicitud de información desde ficha de propiedad: ' + propTitle });
+  emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+    to_email: 'info@centraldetraspasos.com',
+    from_name: name,
+    from_email: email,
+    phone: phone || 'No especificado',
+    property: propTitle,
+    message: 'Solicitud de información desde ficha de propiedad'
+  }).catch(() => {});
+  document.getElementById('detailContactSuccess').style.display = 'block';
+  e.target.reset();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  emailjs.init('YOUR_PUBLIC_KEY');
+  loadProperty();
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    document.getElementById('mainNav').classList.toggle('open');
+  });
+});
+
+document.addEventListener('langchange', () => {
+  loadProperty();
+});
+</script>
+<a href="https://wa.me/34645412519" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+</body>
+</html>
