@@ -41,7 +41,14 @@
       <a href="propiedades.html" class="back-link" data-i18n="detail_back">← Volver a propiedades</a>
     </div>
 
-    <div class="detail-gallery" id="detailGallery"></div>
+    <div class="carousel" id="detailGallery">
+      <div class="carousel-viewport">
+        <div class="carousel-slides" id="carouselSlides"></div>
+        <button class="carousel-btn carousel-prev" id="carouselPrev" aria-label="Anterior">‹</button>
+        <button class="carousel-btn carousel-next" id="carouselNext" aria-label="Siguiente">›</button>
+      </div>
+      <div class="carousel-dots" id="carouselDots"></div>
+    </div>
 
     <div class="detail-layout">
       <div class="detail-description">
@@ -147,14 +154,55 @@ function getTownInfo(town, lang) {
 }
 
 function renderGallery(images) {
-  const gallery = document.getElementById('detailGallery');
+  const slides = document.getElementById('carouselSlides');
+  const dots = document.getElementById('carouselDots');
+  const prevBtn = document.getElementById('carouselPrev');
+  const nextBtn = document.getElementById('carouselNext');
+  const viewport = document.querySelector('.carousel-viewport');
+
   if (!images || !images.length) {
-    gallery.innerHTML = '<p style="color:var(--text-light);text-align:center;padding:40px" data-i18n="detail_no_images">No hay imágenes disponibles</p>';
+    document.getElementById('detailGallery').innerHTML = '<p style="color:var(--text-light);text-align:center;padding:40px" data-i18n="detail_no_images">No hay imágenes disponibles</p>';
     return;
   }
-  gallery.innerHTML = images.map(img =>
-    '<img src="' + img.data + '" alt="" onclick="window.open(\'' + img.data + '\',\'_blank\')">'
+
+  let current = 0;
+
+  slides.innerHTML = images.map((img, i) =>
+    '<div class="carousel-slide' + (i === 0 ? ' active' : '') + '">' +
+      '<img src="' + img.data + '" alt="Imagen ' + (i + 1) + '" onclick="window.open(\'' + img.data + '\',\'_blank\')">' +
+    '</div>'
   ).join('');
+
+  dots.innerHTML = images.map((_, i) =>
+    '<span class="carousel-dot' + (i === 0 ? ' active' : '') + '" data-index="' + i + '"></span>'
+  ).join('');
+
+  function goTo(index) {
+    if (index < 0) index = images.length - 1;
+    if (index >= images.length) index = 0;
+    current = index;
+    slides.querySelectorAll('.carousel-slide').forEach((s, i) => s.classList.toggle('active', i === current));
+    dots.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  prevBtn.onclick = () => goTo(current - 1);
+  nextBtn.onclick = () => goTo(current + 1);
+
+  dots.addEventListener('click', (e) => {
+    const dot = e.target.closest('.carousel-dot');
+    if (dot) goTo(parseInt(dot.dataset.index));
+  });
+
+  viewport.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') goTo(current - 1);
+    if (e.key === 'ArrowRight') goTo(current + 1);
+  });
+  viewport.setAttribute('tabindex', '0');
+
+  if (images.length === 1) {
+    prevBtn.style.display = 'none';
+    nextBtn.style.display = 'none';
+  }
 }
 
 async function renderSimilar(currentId, town, type) {
