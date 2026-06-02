@@ -2,7 +2,7 @@
   es: {
     nav_home: 'Inicio', nav_properties: 'Propiedades', nav_services: 'Servicios',
     nav_contact: 'Contacto', nav_crm: 'CRM',
-    hero_title: 'Tu negocio, nuestro compromiso',
+    hero_title: 'CENTRAL DE TRASPASOS | Expertos en traspasos, venta y alquiler de locales en Málaga y Costa del Sol',
     hero_subtitle: 'Especialistas en compraventa, alquiler y traspaso de locales y negocios en Málaga y la Costa del Sol',
     search_title: 'Busca tu próximo local o negocio',
     search_town: 'Todas las localidades', search_type: 'Todos los tipos',
@@ -111,7 +111,7 @@
     capture_promo_card4_desc: 'Nos encargamos de todo el proceso administrativo y legal hasta el cierre de la operación.',
     capture_promo_btn: 'Quiero tasar mi propiedad →',
     nav_capture: 'Vende tu propiedad',
-    capture_hero_title: '¿Quieres vender, alquilar o traspasar tu propiedad?',
+    capture_hero_title: 'CENTRAL DE TRASPASOS | Vende, alquila o traspasa tu local o negocio en Málaga y Costa del Sol',
     capture_hero_sub: 'Ponemos tu negocio en el mercado con la máxima visibilidad y las mejores condiciones',
     capture_form_title: 'Cuéntanos sobre tu propiedad',
     capture_form_name: 'Tu nombre', capture_form_email: 'Tu email',

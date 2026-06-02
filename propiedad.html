@@ -5,7 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title id="pageTitle">CENTRAL DE TRASPASOS - Propiedad</title>
 <meta name="description" content="" id="pageDesc">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CENTRAL DE TRASPASOS">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://centraldetraspasos.com/propiedad" id="canonicalLink">
+<link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+<link rel="apple-touch-icon" href="img/favicon.svg">
 <link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
 </head>
 <body>
 
@@ -254,6 +263,49 @@ async function loadProperty() {
   document.getElementById('detailTown').textContent = p.town;
   document.getElementById('detailDesc').textContent = desc;
   document.getElementById('detailLocationDesc').textContent = getTownInfo(p.town, lang);
+
+  const url = 'https://centraldetraspasos.com/propiedad?id=' + p.id;
+  const imgUrl = p.images && p.images.length ? p.images[0].data : 'https://centraldetraspasos.com/img/og-image.jpg';
+
+  function setMeta(prop, content) {
+    let el = document.querySelector('meta[' + prop + ']');
+    if (el) el.content = content;
+  }
+
+  setMeta('property="og:url"', url);
+  setMeta('property="og:title"', title + ' - CENTRAL DE TRASPASOS');
+  setMeta('property="og:description"', desc);
+  setMeta('property="og:image"', imgUrl);
+  setMeta('name="twitter:url"', url);
+  setMeta('name="twitter:title"', title + ' - CENTRAL DE TRASPASOS');
+  setMeta('name="twitter:description"', desc);
+  setMeta('name="twitter:image"', imgUrl);
+  document.getElementById('canonicalLink').href = url;
+
+  const ld = document.getElementById('propLd') || document.createElement('script');
+  ld.id = 'propLd';
+  ld.type = 'application/ld+json';
+  ld.textContent = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "RealEstateListing",
+    "name": title,
+    "description": desc,
+    "url": url,
+    "image": imgUrl,
+    "datePosted": p.createdAt,
+    "seller": {
+      "@type": "RealEstateAgent",
+      "name": "CENTRAL DE TRASPASOS",
+      "url": "https://centraldetraspasos.com"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": p.price,
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock"
+    }
+  });
+  if (!ld.parentNode) document.head.appendChild(ld);
 
   renderGallery(p.images);
   await renderSimilar(p.id, p.town, p.type);
