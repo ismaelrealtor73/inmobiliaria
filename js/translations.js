@@ -287,7 +287,6 @@ function applyTranslation() {
   });
   document.documentElement.lang = currentLang;
   localStorage.setItem('lang', currentLang);
-  document.dispatchEvent(new CustomEvent('langchange', { detail: currentLang }));
 }
 
 function setLang(lang) {
