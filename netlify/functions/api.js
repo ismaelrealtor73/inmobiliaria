@@ -47,6 +47,9 @@ async function initStore(store, key, defaults) {
   let data = await getStoreData(store);
   if (!data) {
     data = {};
+  }
+  if (!data[key] || (Array.isArray(data[key]) && data[key].length === 0)) {
+    data[key] = JSON.parse(JSON.stringify(defaults));
     await store.setJSON('data', data);
   }
   return data;
@@ -69,13 +72,11 @@ export default async (req, context) => {
 
     if (path === 'properties' && method === 'GET') {
       const data = await initStore(store, 'properties', DEFAULT_PROPERTIES);
-      if (!data.properties) data.properties = DEFAULT_PROPERTIES;
       return json(data.properties);
     }
 
     if (path === 'properties' && method === 'POST') {
       const data = await initStore(store, 'properties', DEFAULT_PROPERTIES);
-      if (!data.properties) data.properties = DEFAULT_PROPERTIES;
       const prop = await req.json();
       prop.id = Date.now();
       prop.createdAt = new Date().toISOString().split('T')[0];
@@ -87,7 +88,6 @@ export default async (req, context) => {
     if (path.startsWith('properties/') && method === 'PUT') {
       const id = parseInt(path.split('/')[1]);
       const data = await initStore(store, 'properties', DEFAULT_PROPERTIES);
-      if (!data.properties) data.properties = DEFAULT_PROPERTIES;
       const idx = data.properties.findIndex(p => p.id === id);
       if (idx === -1) return error(404, 'Propiedad no encontrada');
       const updates = await req.json();
@@ -99,7 +99,6 @@ export default async (req, context) => {
     if (path.startsWith('properties/') && method === 'DELETE') {
       const id = parseInt(path.split('/')[1]);
       const data = await initStore(store, 'properties', DEFAULT_PROPERTIES);
-      if (!data.properties) data.properties = DEFAULT_PROPERTIES;
       data.properties = data.properties.filter(p => p.id !== id);
       await store.setJSON('data', data);
       return json({ success: true });
@@ -107,13 +106,11 @@ export default async (req, context) => {
 
     if (path === 'leads' && method === 'GET') {
       const data = await initStore(store, 'leads', []);
-      if (!data.leads) data.leads = [];
       return json(data.leads);
     }
 
     if (path === 'leads' && method === 'POST') {
       const data = await initStore(store, 'leads', []);
-      if (!data.leads) data.leads = [];
       const lead = await req.json();
       lead.id = Date.now();
       lead.status = 'new';
@@ -127,7 +124,6 @@ export default async (req, context) => {
     if (path.startsWith('leads/') && method === 'DELETE') {
       const id = parseInt(path.split('/')[1]);
       const data = await initStore(store, 'leads', []);
-      if (!data.leads) data.leads = [];
       data.leads = data.leads.filter(l => l.id !== id);
       await store.setJSON('data', data);
       return json({ success: true });
@@ -136,7 +132,6 @@ export default async (req, context) => {
     if (path.startsWith('leads/') && method === 'PUT') {
       const id = parseInt(path.split('/')[1]);
       const data = await initStore(store, 'leads', []);
-      if (!data.leads) data.leads = [];
       const idx = data.leads.findIndex(l => l.id === id);
       if (idx === -1) return error(404, 'Lead no encontrado');
       const updates = await req.json();
@@ -146,24 +141,21 @@ export default async (req, context) => {
     }
 
     if (path === 'site-content' && method === 'GET') {
-      const data = await initStore(store, 'site-content', DEFAULT_SITE_CONTENT);
-      if (!data.siteContent) data.siteContent = DEFAULT_SITE_CONTENT;
+      const data = await initStore(store, 'siteContent', DEFAULT_SITE_CONTENT);
       return json(data.siteContent);
     }
 
     if (path === 'site-content' && method === 'PUT') {
-      const data = await initStore(store, 'site-content', DEFAULT_SITE_CONTENT);
+      const data = await initStore(store, 'siteContent', DEFAULT_SITE_CONTENT);
       const updates = await req.json();
-      const existing = data.siteContent || DEFAULT_SITE_CONTENT;
-      data.siteContent = { ...existing, ...updates };
+      data.siteContent = { ...data.siteContent, ...updates };
       await store.setJSON('data', data);
       return json(data.siteContent);
     }
 
     if (path.startsWith('images/') && method === 'POST') {
       const key = path.split('/')[1];
-      const data = await initStore(store, 'site-content', DEFAULT_SITE_CONTENT);
-      if (!data.siteContent) data.siteContent = { ...DEFAULT_SITE_CONTENT };
+      const data = await initStore(store, 'siteContent', DEFAULT_SITE_CONTENT);
       if (!data.siteContent.site_images) data.siteContent.site_images = {};
       const { imageData } = await req.json();
       data.siteContent.site_images[key] = imageData;
@@ -173,7 +165,7 @@ export default async (req, context) => {
 
     if (path.startsWith('images/') && method === 'DELETE') {
       const key = path.split('/')[1];
-      const data = await initStore(store, 'site-content', DEFAULT_SITE_CONTENT);
+      const data = await initStore(store, 'siteContent', DEFAULT_SITE_CONTENT);
       if (data.siteContent && data.siteContent.site_images) {
         delete data.siteContent.site_images[key];
         await store.setJSON('data', data);
