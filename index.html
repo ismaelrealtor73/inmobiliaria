@@ -468,6 +468,7 @@ document.getElementById('menuToggle').addEventListener('click', () => {
 });
 
 document.addEventListener('DOMContentLoaded', async () => {
+  await loadHeaderLogo();
   try { emailjs.init('YOUR_PUBLIC_KEY'); } catch(e) {}
   try {
     await applySiteContent();
@@ -480,6 +481,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 document.addEventListener('langchange', async () => {
+  await loadHeaderLogo();
   await applySiteContent();
   populateSearchTowns();
   await populateContactProperties();

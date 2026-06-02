@@ -201,6 +201,7 @@ async function applySiteContent() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+  await loadHeaderLogo();
   populateSearchTowns();
   await applySiteContent();
   await filterProperties();
@@ -210,6 +211,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 document.addEventListener('langchange', async () => {
+  await loadHeaderLogo();
   populateSearchTowns();
   await filterProperties();
 });

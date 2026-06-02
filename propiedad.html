@@ -342,11 +342,13 @@ document.getElementById('menuToggle').addEventListener('click', () => {
 });
 
 document.addEventListener('DOMContentLoaded', async () => {
+  await loadHeaderLogo();
   try { emailjs.init('YOUR_PUBLIC_KEY'); } catch(e) {}
   try { await loadProperty(); } catch(e) { console.error(e); }
 });
 
 document.addEventListener('langchange', async () => {
+  await loadHeaderLogo();
   await loadProperty();
 });
 </script>

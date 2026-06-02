@@ -361,3 +361,13 @@ async function loadSidebarLogo() {
   }
 }
 
+async function loadHeaderLogo() {
+  const logo = document.getElementById('logoHeader');
+  if (!logo || logo.dataset.logoLoaded) return;
+  const sc = await getSiteContent();
+  if (sc.site_images && sc.site_images.logo) {
+    logo.innerHTML = '<img src="' + sc.site_images.logo + '" alt="CENTRAL DE TRASPASOS" style="height:40px;width:auto;display:block">';
+    logo.dataset.logoLoaded = 'true';
+  }
+}
+
