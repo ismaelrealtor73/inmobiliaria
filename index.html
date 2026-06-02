@@ -407,17 +407,20 @@ async function applySiteContent() {
   }
 }
 
+document.getElementById('menuToggle').addEventListener('click', () => {
+  document.getElementById('mainNav').classList.toggle('open');
+});
+
 document.addEventListener('DOMContentLoaded', async () => {
-  emailjs.init('YOUR_PUBLIC_KEY');
-  await applySiteContent();
-  populateSearchTowns();
-  await populateContactProperties();
-  const featured = await getPublishedProperties();
-  renderProperties(featured.filter(p => p.featured));
-  updateCalc();
-  document.getElementById('menuToggle').addEventListener('click', () => {
-    document.getElementById('mainNav').classList.toggle('open');
-  });
+  try { emailjs.init('YOUR_PUBLIC_KEY'); } catch(e) {}
+  try {
+    await applySiteContent();
+    populateSearchTowns();
+    await populateContactProperties();
+    const featured = await getPublishedProperties();
+    renderProperties(featured.filter(p => p.featured));
+    updateCalc();
+  } catch(e) { console.error(e); }
 });
 
 document.addEventListener('langchange', async () => {

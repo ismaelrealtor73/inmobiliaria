@@ -180,12 +180,13 @@ function submitCapture(e) {
   });
 }
 
+document.getElementById('menuToggle').addEventListener('click', () => {
+  document.getElementById('mainNav').classList.toggle('open');
+});
+
 document.addEventListener('DOMContentLoaded', () => {
-  emailjs.init('YOUR_PUBLIC_KEY');
+  try { emailjs.init('YOUR_PUBLIC_KEY'); } catch(e) {}
   populateTowns();
-  document.getElementById('menuToggle').addEventListener('click', () => {
-    document.getElementById('mainNav').classList.toggle('open');
-  });
 });
 </script>
 <a href="https://wa.me/34645412519" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
