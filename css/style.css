@@ -40,7 +40,7 @@ ul { list-style: none; }
 }
 .header-inner {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 16px 24px; max-width: 1200px; margin: 0 auto;
+  padding: 8px 24px; max-width: 1200px; margin: 0 auto;
 }
 .logo {
   font-family: 'Playfair Display', serif;
@@ -49,7 +49,7 @@ ul { list-style: none; }
 }
 .logo.small { font-size: 1.2rem; }
 .logo.long { font-size: 1.1rem; letter-spacing: 0; }
-.logo img { display: block; height: 75px; width: auto; max-width: 320px; }
+.logo img { display: block; height: 110px; width: auto; max-width: 380px; }
 .logo span { color: var(--primary); }
 .logo .green { color: var(--gold); }
 .nav { display: flex; align-items: center; gap: 32px; }
@@ -672,7 +672,7 @@ ul { list-style: none; }
   .hamburger { display: block; }
   .header-inner { flex-wrap: wrap; gap: 8px; position: relative; }
   .logo { font-size: 1.2rem; }
-  .logo img { height: 55px; max-width: 220px; }
+  .logo img { height: 70px; max-width: 260px; }
   .nav {
     display: none; order: 3; width: 100%; flex-direction: column;
     background: white; border-radius: 0 0 16px 16px;
