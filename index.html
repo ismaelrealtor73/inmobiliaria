@@ -290,11 +290,11 @@ function renderProperties(props) {
   applyTranslation();
 }
 
-function filterProperties() {
+async function filterProperties() {
   const town = document.getElementById('searchTown').value;
   const type = document.getElementById('searchType').value;
   const text = document.getElementById('searchText').value.toLowerCase();
-  let props = getPublishedProperties();
+  let props = await getPublishedProperties();
   if (town) props = props.filter(p => p.town === town);
   if (type) props = props.filter(p => p.type === type);
   if (text) props = props.filter(p =>
@@ -315,10 +315,11 @@ function populateSearchTowns() {
   });
 }
 
-function populateContactProperties() {
+async function populateContactProperties() {
   const sel = document.getElementById('contactProperty');
   sel.innerHTML = '<option value="">—</option>';
-  getPublishedProperties().forEach(p => {
+  const props = await getPublishedProperties();
+  props.forEach(p => {
     const opt = document.createElement('option');
     opt.value = p.id;
     opt.textContent = (p['title_' + currentLang] || p['title_es']) + ' - ' + p.town;
@@ -326,7 +327,7 @@ function populateContactProperties() {
   });
 }
 
-function submitContact(e) {
+async function submitContact(e) {
   e.preventDefault();
   const name = document.getElementById('contactName').value.trim();
   const email = document.getElementById('contactEmail').value.trim();
@@ -336,10 +337,11 @@ function submitContact(e) {
   if (!name || !email || !message) return;
   let propTitle = '';
   if (propId) {
-    const p = getPublishedProperties().find(x => x.id == propId);
+    const props = await getPublishedProperties();
+    const p = props.find(x => x.id == propId);
     if (p) propTitle = p['title_' + currentLang] || p['title_es'];
   }
-  addLead({ name, email, phone, propertyId: propId, propertyTitle: propTitle, message });
+  await addLead({ name, email, phone, propertyId: propId, propertyTitle: propTitle, message });
   emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
     to_email: 'info@centraldetraspasos.com',
     from_name: name,
@@ -380,8 +382,8 @@ function updateCalc() {
   }
 }
 
-function applySiteContent() {
-  const sc = getSiteContent();
+async function applySiteContent() {
+  const sc = await getSiteContent();
   if (sc.hero_title_es) {
     document.getElementById('heroTitle').textContent = currentLang === 'en' && sc.hero_title_en ? sc.hero_title_en : sc.hero_title_es;
     document.getElementById('heroTitle').dataset.i18n = '';
@@ -405,23 +407,24 @@ function applySiteContent() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   emailjs.init('YOUR_PUBLIC_KEY');
-  applySiteContent();
+  await applySiteContent();
   populateSearchTowns();
-  populateContactProperties();
-  renderProperties(getPublishedProperties().filter(p => p.featured));
+  await populateContactProperties();
+  const featured = await getPublishedProperties();
+  renderProperties(featured.filter(p => p.featured));
   updateCalc();
   document.getElementById('menuToggle').addEventListener('click', () => {
     document.getElementById('mainNav').classList.toggle('open');
   });
 });
 
-document.addEventListener('langchange', () => {
-  applySiteContent();
+document.addEventListener('langchange', async () => {
+  await applySiteContent();
   populateSearchTowns();
-  populateContactProperties();
-  filterProperties();
+  await populateContactProperties();
+  await filterProperties();
   updateCalc();
 });
 </script>

@@ -66,9 +66,9 @@ if (!user) { throw new Error('redirect'); }
 
 function handleLogout() { logout(); window.location.href = 'login.html'; }
 
-function renderDashboard() {
-  const props = getProperties();
-  const leads = getLeads();
+async function renderDashboard() {
+  const props = await getProperties();
+  const leads = await getLeads();
   const isAgent = user.role === 'agent';
   const myProps = isAgent ? props.filter(p => p.createdBy === user.username) : props;
 

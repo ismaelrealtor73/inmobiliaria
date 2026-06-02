@@ -157,9 +157,10 @@ function renderGallery(images) {
   ).join('');
 }
 
-function renderSimilar(currentId, town, type) {
+async function renderSimilar(currentId, town, type) {
   const grid = document.getElementById('similarGrid');
-  const props = getPublishedProperties().filter(p => p.id !== currentId && (p.town === town || p.type === type)).slice(0, 3);
+  const all = await getPublishedProperties();
+  const props = all.filter(p => p.id !== currentId && (p.town === town || p.type === type)).slice(0, 3);
   const lang = currentLang;
   if (!props.length) {
     document.getElementById('similarProperties').style.display = 'none';
@@ -183,12 +184,12 @@ function renderSimilar(currentId, town, type) {
   }).join('');
 }
 
-function loadProperty() {
+async function loadProperty() {
   const params = new URLSearchParams(window.location.search);
   const id = parseInt(params.get('id'));
   if (!id) { window.location.href = 'propiedades.html'; return; }
 
-  const props = getPublishedProperties();
+  const props = await getPublishedProperties();
   const p = props.find(x => x.id === id);
   if (!p) { window.location.href = 'propiedades.html'; return; }
 
@@ -207,10 +208,10 @@ function loadProperty() {
   document.getElementById('detailLocationDesc').textContent = getTownInfo(p.town, lang);
 
   renderGallery(p.images);
-  renderSimilar(p.id, p.town, p.type);
+  await renderSimilar(p.id, p.town, p.type);
 }
 
-function submitDetailContact(e) {
+async function submitDetailContact(e) {
   e.preventDefault();
   const name = document.getElementById('detailContactName').value.trim();
   const email = document.getElementById('detailContactEmail').value.trim();
@@ -219,11 +220,11 @@ function submitDetailContact(e) {
 
   const params = new URLSearchParams(window.location.search);
   const id = parseInt(params.get('id'));
-  const props = getPublishedProperties();
+  const props = await getPublishedProperties();
   const p = props.find(x => x.id === id);
   const propTitle = p ? (p['title_' + currentLang] || p['title_es']) : '';
 
-  addLead({ name, email, phone, propertyId: id, propertyTitle: propTitle, message: 'Solicitud de información desde ficha de propiedad: ' + propTitle });
+  await addLead({ name, email, phone, propertyId: id, propertyTitle: propTitle, message: 'Solicitud de información desde ficha de propiedad: ' + propTitle });
   emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
     to_email: 'info@centraldetraspasos.com',
     from_name: name,
@@ -236,16 +237,16 @@ function submitDetailContact(e) {
   e.target.reset();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   emailjs.init('YOUR_PUBLIC_KEY');
-  loadProperty();
+  await loadProperty();
   document.getElementById('menuToggle').addEventListener('click', () => {
     document.getElementById('mainNav').classList.toggle('open');
   });
 });
 
-document.addEventListener('langchange', () => {
-  loadProperty();
+document.addEventListener('langchange', async () => {
+  await loadProperty();
 });
 </script>
 <a href="https://wa.me/34645412519" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">

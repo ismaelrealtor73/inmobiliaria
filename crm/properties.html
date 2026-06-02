@@ -160,22 +160,22 @@ function populateTownSelect() {
   TOWNS.forEach(t => { const o = document.createElement('option'); o.value = t; o.textContent = t; sel.appendChild(o); });
 }
 
-function getFilteredProps() {
-  let props = getProperties();
+async function getFilteredProps() {
+  let props = await getProperties();
   if (isAgent) props = props.filter(p => p.createdBy === user.username);
   if (currentFilter === 'published') props = props.filter(p => p.status === 'published');
   if (currentFilter === 'draft') props = props.filter(p => p.status === 'draft');
   return props;
 }
 
-function setTab(filter) {
+async function setTab(filter) {
   currentFilter = filter;
   document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.filter === filter));
-  renderTable();
+  await renderTable();
 }
 
-function renderTable() {
-  const props = getFilteredProps();
+async function renderTable() {
+  const props = await getFilteredProps();
   const tbody = document.getElementById('propsBody');
   document.getElementById('userInfo').innerHTML = `<strong>${user.name}</strong><br><span class="role-badge ${user.role}">${user.role}</span>`;
 
@@ -302,7 +302,7 @@ function openModal(prop) {
 
 function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); pendingImages = []; }
 
-function saveProp(e) {
+async function saveProp(e) {
   e.preventDefault();
   const id = document.getElementById('propId').value;
   const obj = {
@@ -317,40 +317,30 @@ function saveProp(e) {
     featured: document.getElementById('propFeatured').checked,
     images: pendingImages.map(img => ({ data: img.data, featured: img.featured })),
   };
-  const props = getProperties();
   if (id) {
-    const idx = props.findIndex(p => p.id == id);
-    if (idx >= 0) { Object.assign(props[idx], obj); }
+    await updateProperty(parseInt(id), obj);
   } else {
-    obj.id = Date.now();
-    obj.createdAt = new Date().toISOString().split('T')[0];
     obj.createdBy = user.username;
-    props.push(obj);
-  }
-  const saved = saveProperties(props);
-  if (!saved) {
-    showToast('Error: las imágenes son demasiado grandes. Reduce el peso de las fotos o usa menos imágenes.', true);
-    return;
+    await addProperty(obj);
   }
   closeModal();
-  renderTable();
+  await renderTable();
   showToast(t('crm_props_saved'));
 }
 
-function editProp(id) {
-  const props = getProperties();
+async function editProp(id) {
+  const props = await getProperties();
   const p = props.find(x => x.id === id);
   if (p && (user.role === 'admin' || p.createdBy === user.username)) openModal(p);
 }
 
-function deleteProp(id) {
+async function deleteProp(id) {
   if (!confirm(t('crm_props_confirm_delete'))) return;
-  let props = getProperties();
+  const props = await getProperties();
   const p = props.find(x => x.id === id);
   if (p && (user.role !== 'admin' && p.createdBy !== user.username)) return;
-  props = props.filter(p => p.id !== id);
-  saveProperties(props);
-  renderTable();
+  await deleteProperty(id);
+  await renderTable();
   showToast(t('crm_props_deleted'));
 }
 
@@ -361,16 +351,16 @@ function showToast(msg, isError) {
   setTimeout(() => { el.className = 'toast'; }, 3000);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   loadSidebarLogo();
   populateTownSelect();
-  renderTable();
+  await renderTable();
 });
 
-document.addEventListener('langchange', () => {
+document.addEventListener('langchange', async () => {
   const editing = document.getElementById('propId').value;
   document.getElementById('modalTitle').textContent = t(editing ? 'crm_props_edit' : 'crm_props_add');
-  renderTable();
+  await renderTable();
 });
 </script>
 </body>

@@ -140,12 +140,12 @@ function renderProperties(props) {
   applyTranslation();
 }
 
-function filterProperties() {
+async function filterProperties() {
   const town = document.getElementById('searchTown').value;
   const type = document.getElementById('searchType').value;
   const text = document.getElementById('searchText').value.toLowerCase();
   const sort = document.getElementById('sortSelect').value;
-  let props = getPublishedProperties();
+  let props = await getPublishedProperties();
   if (town) props = props.filter(p => p.town === town);
   if (type) props = props.filter(p => p.type === type);
   if (text) props = props.filter(p =>
@@ -169,8 +169,8 @@ function populateSearchTowns() {
   });
 }
 
-function applySiteContent() {
-  const sc = getSiteContent();
+async function applySiteContent() {
+  const sc = await getSiteContent();
   const fp = document.getElementById('footerPhone');
   const fe = document.getElementById('footerEmail');
   const fa = document.getElementById('footerAddress');
@@ -180,18 +180,18 @@ function applySiteContent() {
   else if (sc.contact_address_es && fa) fa.textContent = '📍 ' + sc.contact_address_es;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   populateSearchTowns();
-  applySiteContent();
-  filterProperties();
+  await applySiteContent();
+  await filterProperties();
   document.getElementById('menuToggle').addEventListener('click', () => {
     document.getElementById('mainNav').classList.toggle('open');
   });
 });
 
-document.addEventListener('langchange', () => {
+document.addEventListener('langchange', async () => {
   populateSearchTowns();
-  filterProperties();
+  await filterProperties();
 });
 </script>
 <a href="https://wa.me/34645412519" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">

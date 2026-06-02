@@ -138,8 +138,8 @@ if (!user) throw new Error('redirect');
 
 function handleLogout() { logout(); window.location.href = 'login.html'; }
 
-function loadSettings() {
-  const sc = getSiteContent();
+async function loadSettings() {
+  const sc = await getSiteContent();
   document.getElementById('userInfo').innerHTML = `<strong>${user.name}</strong><br><span class="role-badge admin">admin</span>`;
 
   const fields = ['hero_title_es','hero_title_en','hero_subtitle_es','hero_subtitle_en',
@@ -164,22 +164,20 @@ function loadSettings() {
 async function uploadSiteImage(key, input) {
   if (!input.files || !input.files[0]) return;
   const data = await readFileAsDataURL(input.files[0]);
-  const sc = getSiteContent();
-  if (!sc.site_images) sc.site_images = {};
-  sc.site_images[key] = data;
-  saveSiteContent(sc);
-  loadSettings();
+  await saveSiteImage(key, data);
+  await loadSettings();
   showToast(t('settings_saved'));
 }
 
-function removeSiteImage(key) {
-  const sc = getSiteContent();
-  if (sc.site_images) { delete sc.site_images[key]; saveSiteContent(sc); loadSettings(); showToast(t('settings_saved')); }
+async function removeSiteImage(key) {
+  await deleteSiteImage(key);
+  await loadSettings();
+  showToast(t('settings_saved'));
 }
 
-function saveSettings(e) {
+async function saveSettings(e) {
   e.preventDefault();
-  const sc = getSiteContent();
+  const sc = await getSiteContent();
   sc.hero_title_es = document.getElementById('hero_title_es').value;
   sc.hero_title_en = document.getElementById('hero_title_en').value;
   sc.hero_subtitle_es = document.getElementById('hero_subtitle_es').value;
@@ -191,7 +189,7 @@ function saveSettings(e) {
   sc.contact_address_es = document.getElementById('contact_address_es').value;
   sc.contact_address_en = document.getElementById('contact_address_en').value;
   sc.logo_text = document.getElementById('logo_text').value;
-  saveSiteContent(sc);
+  await saveSiteContent(sc);
   showToast(t('settings_saved'));
 }
 
@@ -202,7 +200,7 @@ function showToast(msg) {
   setTimeout(() => { el.className = 'toast'; }, 3000);
 }
 
-document.addEventListener('DOMContentLoaded', () => { loadSidebarLogo(); loadSettings(); });
+document.addEventListener('DOMContentLoaded', async () => { loadSidebarLogo(); await loadSettings(); });
 document.addEventListener('langchange', loadSettings);
 </script>
 </body>

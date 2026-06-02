@@ -76,13 +76,38 @@ const DEFAULT_SITE_CONTENT = {
   site_images: {}  // { 'hero': 'base64...', 'logo': 'base64...', 'about': 'base64...' }
 };
 
+const API_BASE = '/api';
+
+const _cache = { properties: null, leads: null, siteContent: null };
+
+function useApi() { return window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'; }
+
+async function apiFetch(path, opts = {}) {
+  const res = await fetch(`${API_BASE}/${path}`, {
+    headers: { 'Content-Type': 'application/json', ...opts.headers },
+    ...opts
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ error: res.statusText }));
+    throw new Error(err.error || 'Error de conexión');
+  }
+  return res.json();
+}
+
 /* ========== AUTH ========== */
 function getCurrentUser() {
   const data = localStorage.getItem('crm_user');
   return data ? JSON.parse(data) : null;
 }
 
-function login(username, password) {
+async function login(username, password) {
+  if (useApi()) {
+    try {
+      const user = await apiFetch('login', { method: 'POST', body: JSON.stringify({ username, password }) });
+      localStorage.setItem('crm_user', JSON.stringify(user));
+      return true;
+    } catch { return false; }
+  }
   const user = USERS.find(u => u.username === username && u.password === password);
   if (user) {
     localStorage.setItem('crm_user', JSON.stringify({ username: user.username, role: user.role, name: user.name }));
@@ -108,66 +133,178 @@ function requireAdmin() {
 }
 
 /* ========== PROPERTIES ========== */
-function getProperties() {
+async function getProperties() {
+  if (useApi()) {
+    if (_cache.properties) return _cache.properties;
+    try {
+      _cache.properties = await apiFetch('properties');
+      return _cache.properties;
+    } catch { }
+  }
   try {
     const data = localStorage.getItem('crm_properties');
     if (data) return JSON.parse(data);
   } catch (e) {
-    console.error('Error reading properties from localStorage:', e);
     localStorage.removeItem('crm_properties');
   }
   localStorage.setItem('crm_properties', JSON.stringify(DEFAULT_PROPERTIES));
   return JSON.parse(JSON.stringify(DEFAULT_PROPERTIES));
 }
 
-function saveProperties(props) {
-  try {
-    localStorage.setItem('crm_properties', JSON.stringify(props));
-    return true;
-  } catch (e) {
-    console.error('Error saving properties to localStorage:', e);
-    return false;
+function _invalidateCache() { _cache.properties = null; _cache.leads = null; _cache.siteContent = null; }
+
+async function addProperty(prop) {
+  if (useApi()) {
+    const created = await apiFetch('properties', { method: 'POST', body: JSON.stringify(prop) });
+    _cache.properties = null;
+    return created;
   }
+  const props = await getProperties();
+  prop.id = Date.now();
+  prop.createdAt = new Date().toISOString().split('T')[0];
+  props.push(prop);
+  localStorage.setItem('crm_properties', JSON.stringify(props));
+  return prop;
 }
 
-function getPublishedProperties() {
-  return getProperties().filter(p => p.status === 'published');
+async function updateProperty(id, updates) {
+  if (useApi()) {
+    const updated = await apiFetch(`properties/${id}`, { method: 'PUT', body: JSON.stringify(updates) });
+    _cache.properties = null;
+    return updated;
+  }
+  const props = await getProperties();
+  const idx = props.findIndex(p => p.id === id);
+  if (idx === -1) throw new Error('Propiedad no encontrada');
+  Object.assign(props[idx], updates);
+  localStorage.setItem('crm_properties', JSON.stringify(props));
+  return props[idx];
+}
+
+async function deleteProperty(id) {
+  if (useApi()) {
+    await apiFetch(`properties/${id}`, { method: 'DELETE' });
+    _cache.properties = null;
+    return;
+  }
+  let props = await getProperties();
+  props = props.filter(p => p.id !== id);
+  localStorage.setItem('crm_properties', JSON.stringify(props));
+}
+
+async function getPublishedProperties() {
+  const props = await getProperties();
+  return props.filter(p => p.status === 'published');
 }
 
 /* ========== LEADS ========== */
-function getLeads() {
+async function getLeads() {
+  if (useApi()) {
+    if (_cache.leads) return _cache.leads;
+    try {
+      _cache.leads = await apiFetch('leads');
+      return _cache.leads;
+    } catch { }
+  }
   const data = localStorage.getItem('crm_leads');
   return data ? JSON.parse(data) : [];
 }
 
-function saveLeads(leads) {
-  localStorage.setItem('crm_leads', JSON.stringify(leads));
-}
-
-function addLead(lead) {
-  const leads = getLeads();
+async function addLead(lead) {
+  if (useApi()) {
+    const created = await apiFetch('leads', { method: 'POST', body: JSON.stringify(lead) });
+    _cache.leads = null;
+    return created;
+  }
+  const leads = await getLeads();
   lead.id = Date.now();
   lead.status = 'new';
   lead.createdAt = new Date().toISOString().split('T')[0];
   lead.notes = '';
   leads.unshift(lead);
-  saveLeads(leads);
+  localStorage.setItem('crm_leads', JSON.stringify(leads));
+}
+
+async function updateLead(id, updates) {
+  if (useApi()) {
+    const updated = await apiFetch(`leads/${id}`, { method: 'PUT', body: JSON.stringify(updates) });
+    _cache.leads = null;
+    return updated;
+  }
+  const leads = await getLeads();
+  const idx = leads.findIndex(l => l.id === id);
+  if (idx === -1) throw new Error('Lead no encontrado');
+  Object.assign(leads[idx], updates);
+  localStorage.setItem('crm_leads', JSON.stringify(leads));
+  return leads[idx];
+}
+
+async function deleteLeadAPI(id) {
+  if (useApi()) {
+    await apiFetch(`leads/${id}`, { method: 'DELETE' });
+    _cache.leads = null;
+    return;
+  }
+  let leads = await getLeads();
+  leads = leads.filter(l => l.id !== id);
+  localStorage.setItem('crm_leads', JSON.stringify(leads));
 }
 
 /* ========== SITE CONTENT ========== */
-function getSiteContent() {
+async function getSiteContent() {
+  if (useApi()) {
+    if (_cache.siteContent) return _cache.siteContent;
+    try {
+      _cache.siteContent = await apiFetch('site-content');
+      return _cache.siteContent;
+    } catch { }
+  }
   const data = localStorage.getItem('crm_site_content');
   if (data) return JSON.parse(data);
-  saveSiteContent(DEFAULT_SITE_CONTENT);
+  saveSiteContentLocal(DEFAULT_SITE_CONTENT);
   return { ...DEFAULT_SITE_CONTENT };
 }
 
-function saveSiteContent(content) {
+function saveSiteContentLocal(content) {
   localStorage.setItem('crm_site_content', JSON.stringify(content));
 }
 
-function getSiteImage(key) {
-  const sc = getSiteContent();
+async function saveSiteContent(content) {
+  if (useApi()) {
+    const saved = await apiFetch('site-content', { method: 'PUT', body: JSON.stringify(content) });
+    _cache.siteContent = null;
+    return saved;
+  }
+  saveSiteContentLocal(content);
+}
+
+async function saveSiteImage(key, imageData) {
+  if (useApi()) {
+    await apiFetch(`images/${key}`, { method: 'POST', body: JSON.stringify({ imageData }) });
+    _cache.siteContent = null;
+    return;
+  }
+  const sc = await getSiteContent();
+  if (!sc.site_images) sc.site_images = {};
+  sc.site_images[key] = imageData;
+  saveSiteContentLocal(sc);
+}
+
+async function deleteSiteImage(key) {
+  if (useApi()) {
+    await apiFetch(`images/${key}`, { method: 'DELETE' });
+    _cache.siteContent = null;
+    return;
+  }
+  const sc = await getSiteContent();
+  if (sc.site_images) {
+    delete sc.site_images[key];
+    saveSiteContentLocal(sc);
+  }
+}
+
+async function getSiteImage(key) {
+  const sc = await getSiteContent();
   return sc.site_images && sc.site_images[key] ? sc.site_images[key] : null;
 }
 
@@ -215,10 +352,10 @@ function getStatusBadge(status, lang) {
   return `<span class="badge ${cls}">${label}</span>`;
 }
 
-function loadSidebarLogo() {
+async function loadSidebarLogo() {
   const img = document.getElementById('sidebarLogoImg');
   if (!img) return;
-  const sc = getSiteContent();
+  const sc = await getSiteContent();
   if (sc.site_images && sc.site_images.logo) {
     img.src = sc.site_images.logo;
   }

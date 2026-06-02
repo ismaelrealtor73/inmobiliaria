@@ -71,10 +71,10 @@ const isAdmin = user.role === 'admin';
 
 function handleLogout() { logout(); window.location.href = 'login.html'; }
 
-function renderLeads() {
+async function renderLeads() {
   const filterStatus = document.getElementById('filterStatus').value;
   const search = document.getElementById('leadSearch').value.toLowerCase();
-  let leads = getLeads();
+  let leads = await getLeads();
   if (filterStatus) leads = leads.filter(l => l.status === filterStatus);
   if (search) leads = leads.filter(l =>
     l.name.toLowerCase().includes(search) ||
@@ -109,8 +109,8 @@ function renderLeads() {
   applyTranslation();
 }
 
-function openLeadDetail(id) {
-  const leads = getLeads();
+async function openLeadDetail(id) {
+  const leads = await getLeads();
   const l = leads.find(x => x.id === id);
   if (!l) return;
   const badgeClass = l.status === 'new' ? 'badge-new' : l.status === 'contacted' ? 'badge-contacted' : 'badge-closed';
@@ -140,24 +140,23 @@ function openLeadDetail(id) {
 
 function closeLeadModal() { document.getElementById('leadModal').classList.remove('open'); }
 
-function saveLeadNotes(id) {
-  const leads = getLeads();
-  const l = leads.find(x => x.id === id);
-  if (l) { l.notes = document.getElementById('leadNotes').value; saveLeads(leads); renderLeads(); showToast(t('crm_props_saved')); }
+async function saveLeadNotes(id) {
+  const notes = document.getElementById('leadNotes').value;
+  await updateLead(id, { notes });
+  await renderLeads();
+  showToast(t('crm_props_saved'));
 }
 
-function updateStatus(id, status) {
-  const leads = getLeads();
-  const l = leads.find(x => x.id === id);
-  if (l) { l.status = status; saveLeads(leads); renderLeads(); showToast(t('crm_props_saved')); }
+async function updateStatus(id, status) {
+  await updateLead(id, { status });
+  await renderLeads();
+  showToast(t('crm_props_saved'));
 }
 
-function deleteLead(id) {
+async function deleteLead(id) {
   if (!confirm(t('crm_leads_delete_confirm'))) return;
-  let leads = getLeads();
-  leads = leads.filter(l => l.id !== id);
-  saveLeads(leads);
-  renderLeads();
+  await deleteLeadAPI(id);
+  await renderLeads();
   showToast('Lead eliminado');
 }
 
