@@ -142,7 +142,9 @@ export default async (req, context) => {
 
     if (path === 'site-content' && method === 'GET') {
       const data = await initStore(store, 'siteContent', DEFAULT_SITE_CONTENT);
-      return json(data.siteContent);
+      const res = { ...data.siteContent };
+      res.site_images = {};
+      return json(res);
     }
 
     if (path === 'site-content' && method === 'PUT') {
@@ -151,6 +153,14 @@ export default async (req, context) => {
       data.siteContent = { ...data.siteContent, ...updates };
       await store.setJSON('data', data);
       return json(data.siteContent);
+    }
+
+    if (path.startsWith('images/') && method === 'GET') {
+      const key = path.split('/')[1];
+      const data = await initStore(store, 'siteContent', DEFAULT_SITE_CONTENT);
+      const img = data.siteContent && data.siteContent.site_images && data.siteContent.site_images[key];
+      if (!img) return error(404, 'Imagen no encontrada');
+      return json({ imageData: img });
     }
 
     if (path.startsWith('images/') && method === 'POST') {

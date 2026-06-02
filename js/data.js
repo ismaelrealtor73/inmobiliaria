@@ -304,6 +304,12 @@ async function deleteSiteImage(key) {
 }
 
 async function getSiteImage(key) {
+  if (useApi()) {
+    try {
+      const res = await apiFetch(`images/${key}`);
+      return res.imageData || null;
+    } catch { return null; }
+  }
   const sc = await getSiteContent();
   return sc.site_images && sc.site_images[key] ? sc.site_images[key] : null;
 }
@@ -355,18 +361,18 @@ function getStatusBadge(status, lang) {
 async function loadSidebarLogo() {
   const img = document.getElementById('sidebarLogoImg');
   if (!img) return;
-  const sc = await getSiteContent();
-  if (sc.site_images && sc.site_images.logo) {
-    img.src = sc.site_images.logo;
+  const data = await getSiteImage('logo');
+  if (data) {
+    img.src = data;
   }
 }
 
 async function loadHeaderLogo() {
   const logo = document.getElementById('logoHeader');
   if (!logo || logo.dataset.logoLoaded) return;
-  const sc = await getSiteContent();
-  if (sc.site_images && sc.site_images.logo) {
-    logo.innerHTML = '<img src="' + sc.site_images.logo + '" alt="CENTRAL DE TRASPASOS">';
+  const data = await getSiteImage('logo');
+  if (data) {
+    logo.innerHTML = '<img src="' + data + '" alt="CENTRAL DE TRASPASOS">';
     logo.dataset.logoLoaded = 'true';
   }
 }

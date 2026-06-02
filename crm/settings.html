@@ -154,12 +154,13 @@ async function loadSettings() {
 
   ['hero','logo','about'].forEach(key => {
     const preview = document.getElementById(key + 'Preview');
-    const data = sc.site_images && sc.site_images[key];
-    if (data) {
-      preview.innerHTML = '<img src="' + data + '" alt="">';
-    } else {
-      preview.innerHTML = '<span class="placeholder">' + t('settings_image_' + key) + '</span>';
-    }
+    getSiteImage(key).then(data => {
+      if (data) {
+        preview.innerHTML = '<img src="' + data + '" alt="">';
+      } else {
+        preview.innerHTML = '<span class="placeholder">' + t('settings_image_' + key) + '</span>';
+      }
+    });
   });
 }
 

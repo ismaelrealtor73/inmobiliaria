@@ -459,8 +459,9 @@ async function applySiteContent() {
     const key = currentLang === 'en' ? 'about_desc_en' : 'about_desc';
     if (sc[key]) { aboutDesc.textContent = sc[key]; aboutDesc.dataset.i18n = ''; }
   }
-  if (sc.site_images && sc.site_images.hero) {
-    document.getElementById('heroSection').style.background = 'linear-gradient(135deg, rgba(15,43,61,0.88), rgba(26,122,106,0.88)), url(' + sc.site_images.hero + ') center/cover';
+  const heroImg = await getSiteImage('hero');
+  if (heroImg) {
+    document.getElementById('heroSection').style.background = 'linear-gradient(135deg, rgba(15,43,61,0.88), rgba(26,122,106,0.88)), url(' + heroImg + ') center/cover';
   }
 }
 
