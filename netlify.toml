@@ -5,3 +5,34 @@
   from = "/api/*"
   to = "/.netlify/functions/api/:splat"
   status = 200
+
+[[redirects]]
+  from = "/blog"
+  to = "/blog.html"
+  status = 200
+
+[[redirects]]
+  from = "/aviso-legal"
+  to = "/aviso-legal.html"
+  status = 200
+
+[[redirects]]
+  from = "/traspasos-marbella"
+  to = "/traspasos-marbella.html"
+  status = 200
+
+[[redirects]]
+  from = "/locales-fuengirola"
+  to = "/locales-fuengirola.html"
+  status = 200
+
+[[redirects]]
+  from = "/locales-torremolinos"
+  to = "/locales-torremolinos.html"
+  status = 200
+
+[[redirects]]
+  from = "/locales-benalmadena"
+  to = "/locales-benalmadena.html"
+  status = 200
+

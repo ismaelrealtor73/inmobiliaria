@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 900">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f0f1a"/>
+      <stop offset="100%" stop-color="#1a0a2e"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c9a84c"/>
+      <stop offset="100%" stop-color="#f0d060"/>
+    </linearGradient>
+    <linearGradient id="btn" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#25f4ee"/>
+      <stop offset="100%" stop-color="#fe2c55"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="720" height="900" fill="url(#bg)"/>
+
+  <!-- Glow circles -->
+  <circle cx="360" cy="200" r="180" fill="#25f4ee" opacity="0.08"/>
+  <circle cx="560" cy="500" r="140" fill="#fe2c55" opacity="0.06"/>
+
+  <!-- Dice / party dots pattern -->
+  <g opacity="0.15">
+    <circle cx="80" cy="100" r="4" fill="#25f4ee"/>
+    <circle cx="640" cy="120" r="3" fill="#fe2c55"/>
+    <circle cx="120" cy="780" r="4" fill="#f0d060"/>
+    <circle cx="600" cy="800" r="3" fill="#25f4ee"/>
+    <circle cx="50" cy="450" r="3" fill="#fe2c55"/>
+    <circle cx="670" cy="400" r="4" fill="#f0d060"/>
+  </g>
+
+  <!-- Top badge -->
+  <rect x="240" y="40" width="240" height="36" rx="18" fill="url(#gold)"/>
+  <text x="360" y="64" font-family="Arial, sans-serif" font-weight="700" font-size="16" fill="#0f0f1a" text-anchor="middle" letter-spacing="1">EXCLUSIVA CENTRAL DE TRASPASOS</text>
+
+  <!-- Main headline -->
+  <text x="360" y="170" font-family="'Playfair Display', Georgia, serif" font-weight="700" font-size="52" fill="white" text-anchor="middle" letter-spacing="1">DISCOTECA</text>
+  <text x="360" y="230" font-family="'Playfair Display', Georgia, serif" font-weight="700" font-size="36" fill="#f0d060" text-anchor="middle" letter-spacing="3">EN VENTA</text>
+  <text x="360" y="268" font-family="Arial, sans-serif" font-size="18" fill="rgba(255,255,255,0.6)" text-anchor="middle">BENALMÁDENA COSTA</text>
+
+  <!-- Divider -->
+  <line x1="260" y1="295" x2="460" y2="295" stroke="url(#gold)" stroke-width="2" opacity="0.6"/>
+
+  <!-- Price -->
+  <text x="360" y="345" font-family="Arial, sans-serif" font-weight="800" font-size="48" fill="white" text-anchor="middle">580.000 €</text>
+
+  <!-- Key features -->
+  <g font-family="Arial, sans-serif" font-size="20" fill="white">
+    <!-- 500m2 -->
+    <circle cx="180" cy="410" r="36" fill="#25f4ee" opacity="0.15"/>
+    <text x="180" y="416" font-weight="700" font-size="22" fill="#25f4ee" text-anchor="middle">500</text>
+    <text x="180" y="465" font-size="14" fill="rgba(255,255,255,0.7)" text-anchor="middle">m² totales</text>
+
+    <!-- Aforo -->
+    <circle cx="360" cy="410" r="36" fill="#fe2c55" opacity="0.15"/>
+    <text x="360" y="416" font-weight="700" font-size="22" fill="#fe2c55" text-anchor="middle">450</text>
+    <text x="360" y="465" font-size="14" fill="rgba(255,255,255,0.7)" text-anchor="middle">aforo personas</text>
+
+    <!-- Licencia -->
+    <circle cx="540" cy="410" r="36" fill="#f0d060" opacity="0.15"/>
+    <text x="540" y="416" font-weight="700" font-size="20" fill="#f0d060" text-anchor="middle">06:00</text>
+    <text x="540" y="465" font-size="14" fill="rgba(255,255,255,0.7)" text-anchor="middle">licencia hasta</text>
+  </g>
+
+  <!-- Includes line -->
+  <text x="360" y="530" font-family="Arial, sans-serif" font-size="16" fill="rgba(255,255,255,0.5)" text-anchor="middle">✅ Equipo de sonido   ✅ Iluminación   ✅ Terraza</text>
+
+  <!-- CTA Background -->
+  <rect x="100" y="570" width="520" height="56" rx="28" fill="url(#btn)"/>
+  <text x="360" y="605" font-family="Arial, sans-serif" font-weight="800" font-size="20" fill="white" text-anchor="middle" letter-spacing="1">📲 INFO Y VISITAS: +34 645 412 519</text>
+
+  <!-- Bottom text -->
+  <text x="360" y="680" font-family="Arial, sans-serif" font-size="15" fill="rgba(255,255,255,0.4)" text-anchor="middle">CENTRAL DE TRASPASOS · Expertos en locales y negocios</text>
+  <text x="360" y="710" font-family="Arial, sans-serif" font-size="14" fill="rgba(255,255,255,0.25)" text-anchor="middle">Málaga · Costa del Sol · centraldetraspasos.com</text>
+
+  <!-- TikTok icon bottom-right -->
+  <g transform="translate(325, 760)">
+    <path d="M35 .06c1.97-.05 3.92-.03 5.87-.03.12 2.3.95 4.63 2.63 6.25 1.68 1.67 4.05 2.43 6.36 2.69V19.1c-2.16-.08-4.34-.53-6.3-1.46-.86-.38-1.65-.88-2.43-1.39-.02 4.38.02 8.76-.03 13.13-.12 2.1-.81 4.18-2.03 5.91C37.25 41.7 32.15 44 27.98 43.8c-2.15.12-4.29-.47-6.12-1.54C18.82 40.35 16.7 37.2 16.5 33.9c-.03-.75-.05-1.5-.02-2.24.27-2.85 1.68-5.58 3.87-7.44 2.49-2.15 5.97-3.19 9.23-2.58.03 2.22-.06 4.44-.06 6.66-1.48-.48-3.22-.35-4.53.56-.95.61-1.67 1.56-2.04 2.62-.32.77-.22 1.61-.21 2.43.36 2.46 2.73 4.53 5.25 4.3 1.68-.02 3.29-.99 4.16-2.42.29-.5.6-1.01.62-1.59.15-2.68.09-5.36.1-8.04.02-6.04-.01-12.07.03-18.1z" fill="#25f4ee"/>
+  </g>
+  <text x="372" y="840" font-family="Arial, sans-serif" font-size="13" fill="rgba(255,255,255,0.3)" text-anchor="middle">@centraldetraspasos</text>
+
+  <!-- Border glow -->
+  <rect x="2" y="2" width="716" height="896" rx="16" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+</svg>

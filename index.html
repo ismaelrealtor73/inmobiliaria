@@ -40,12 +40,33 @@
   "url": "https://centraldetraspasos.com",
   "telephone": "+34 645 412 519",
   "email": "info@centraldetraspasos.com",
+  "image": "https://centraldetraspasos.com/img/og-image.jpg",
+  "priceRange": "€€",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Málaga",
     "addressRegion": "Andalucía",
     "addressCountry": "ES"
   },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 36.7213,
+    "longitude": -4.4214
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "19:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "10:00",
+      "closes": "14:00"
+    }
+  ],
   "areaServed": [
     {"@type": "City", "name": "Málaga"},
     {"@type": "City", "name": "Marbella"},
@@ -54,10 +75,11 @@
     {"@type": "City", "name": "Benalmádena"},
     {"@type": "City", "name": "Antequera"},
     {"@type": "City", "name": "Estepona"},
-    {"@type": "City", "name": "Mijas"}
+    {"@type": "City", "name": "Mijas"},
+    {"@type": "City", "name": "Rincón de la Victoria"},
+    {"@type": "City", "name": "Vélez-Málaga"},
+    {"@type": "City", "name": "Nerja"}
   ],
-  "priceRange": "€€",
-  "image": "https://centraldetraspasos.com/img/og-image.jpg",
   "sameAs": [
     "https://wa.me/34645412519"
   ]
@@ -210,109 +232,9 @@
   </div>
 </section>
 
-<section class="section" id="contact">
-  <div class="container" style="text-align:center;max-width:600px;margin:0 auto;">
-    <h2 class="section-title" style="margin-bottom:24px">📩 <span data-i18n="nav_contact">Contacto</span></h2>
-    <form id="contactForm" onsubmit="submitContact(event)" style="background:white;padding:32px;border-radius:var(--radius);box-shadow:var(--shadow);text-align:left">
-      <div class="form-row">
-        <div class="form-group">
-          <label data-i18n="crm_leads_name">Nombre</label>
-          <input type="text" id="contactName" required>
-        </div>
-        <div class="form-group">
-          <label data-i18n="crm_leads_email">Email</label>
-          <input type="email" id="contactEmail" required>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label data-i18n="crm_leads_phone">Teléfono</label>
-          <input type="tel" id="contactPhone">
-        </div>
-        <div class="form-group">
-          <label data-i18n="crm_leads_property">Propiedad</label>
-          <select id="contactProperty"><option value="">—</option></select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label data-i18n="crm_leads_message">Mensaje</label>
-        <textarea id="contactMessage" required></textarea>
-      </div>
-      <button type="submit" class="btn btn-secondary" data-i18n="nav_contact">Enviar</button>
-    </form>
-    <div style="margin-top:24px;padding:20px;background:var(--light);border-radius:var(--radius-sm);border:1px solid rgba(15,43,61,0.04)">
-      <p style="margin:4px 0;color:var(--text);font-size:0.95rem">📞 +34 645 412 519</p>
-      <p style="margin:4px 0;color:var(--text);font-size:0.95rem">✉️ info@centraldetraspasos.com</p>
-    </div>
-  </div>
-</section>
 
-<section class="section" id="calculator" style="background:var(--light)">
-  <div class="container">
-    <h2 class="section-title">🧮 <span data-i18n="calc_title">Calculadora de Hipoteca</span></h2>
-    <div class="calc-container">
-      <div class="calc-row">
-        <div class="form-group">
-          <label data-i18n="calc_amount">Importe del préstamo (€)</label>
-          <input type="range" id="calcAmount" class="calc-slider" min="10000" max="1000000" value="150000" step="10000" oninput="updateCalc()">
-          <span id="calcAmountLabel" style="font-weight:700;color:var(--primary)">150.000 €</span>
-        </div>
-        <div class="form-group">
-          <label data-i18n="calc_rate">Interés anual (%)</label>
-          <input type="range" id="calcRate" class="calc-slider" min="0.5" max="10" value="3.5" step="0.1" oninput="updateCalc()">
-          <span id="calcRateLabel" style="font-weight:700;color:var(--primary)">3,5%</span>
-        </div>
-      </div>
-      <div class="calc-row">
-        <div class="form-group">
-          <label data-i18n="calc_term">Plazo (años)</label>
-          <input type="range" id="calcTerm" class="calc-slider" min="5" max="40" value="25" step="1" oninput="updateCalc()">
-          <span id="calcTermLabel" style="font-weight:700;color:var(--primary)">25 años</span>
-        </div>
-      </div>
-      <div class="calc-result" id="calcResult">
-        <div class="label" data-i18n="calc_monthly">Cuota mensual</div>
-        <div class="payment" id="calcMonthly">0 €</div>
-        <div class="detail" id="calcDetail"></div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section class="section" id="invCalculator">
-  <div class="container">
-    <h2 class="section-title">📈 <span data-i18n="inv_title">Calculadora de Rentabilidad</span></h2>
-    <p style="text-align:center;color:var(--text-light);margin-bottom:32px;max-width:600px;margin-left:auto;margin-right:auto;" data-i18n="inv_desc">Descubre la rentabilidad anual de un local comercial antes de invertir</p>
-    <div class="calc-container" style="max-width:600px;margin:0 auto;">
-      <div class="calc-row">
-        <div class="form-group">
-          <label data-i18n="inv_price">Precio del local (€)</label>
-          <input type="range" id="invPrice" class="calc-slider" min="30000" max="500000" value="150000" step="5000" oninput="updateInvCalc()">
-          <span id="invPriceLabel" style="font-weight:700;color:var(--primary)">150.000 €</span>
-        </div>
-        <div class="form-group">
-          <label data-i18n="inv_rent">Alquiler mensual esperado (€)</label>
-          <input type="range" id="invRent" class="calc-slider" min="300" max="5000" value="1200" step="50" oninput="updateInvCalc()">
-          <span id="invRentLabel" style="font-weight:700;color:var(--primary)">1.200 €</span>
-        </div>
-      </div>
-      <div class="calc-row">
-        <div class="form-group">
-          <label data-i18n="inv_expenses">Gastos anuales (comunidad, IBI, %)</label>
-          <input type="range" id="invExpenses" class="calc-slider" min="5" max="30" value="15" step="1" oninput="updateInvCalc()">
-          <span id="invExpensesLabel" style="font-weight:700;color:var(--primary)">15%</span>
-        </div>
-      </div>
-      <div class="calc-result" id="invResult" style="text-align:center;">
-        <div class="label" data-i18n="inv_yield">Rentabilidad neta anual</div>
-        <div class="payment" id="invYield" style="font-size:2.2rem;">0%</div>
-        <div class="detail" id="invDetail" style="margin-top:8px;"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="quickCapture" style="background:var(--light);text-align:center;">
+<section class="section" id="quickCapture" style="text-align:center;">
   <div class="container" style="max-width:600px;">
     <h2 class="section-title">⚡ <span>Tasación gratuita en 24h</span></h2>
     <p style="color:var(--text-light);margin-bottom:24px;">¿Tienes un local o negocio? Te lo tasamos gratis y sin compromiso. Respondemos en menos de 24 horas.</p>
@@ -344,6 +266,80 @@
   </div>
 </section>
 
+<section class="section" id="calculators" style="background:var(--light)">
+  <div class="container">
+    <h2 class="section-title">🧮 Calculadoras</h2>
+    <p style="text-align:center;color:var(--text-light);margin-bottom:32px;">Calcula tu hipoteca y la rentabilidad de tu inversión</p>
+    <div class="calc-container" id="dualCalc">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;">
+        <div>
+          <h3 style="font-family:'Playfair Display',serif;margin-bottom:16px;font-size:1.1rem;">Calculadora de Hipoteca</h3>
+          <div class="calc-row">
+            <div class="form-group">
+              <label data-i18n="calc_amount">Importe del préstamo (€)</label>
+              <input type="range" id="calcAmount" class="calc-slider" min="10000" max="1000000" value="150000" step="10000" oninput="updateCalc()">
+              <span id="calcAmountLabel" style="font-weight:700;color:var(--primary)">150.000 €</span>
+            </div>
+          </div>
+          <div class="calc-row">
+            <div class="form-group">
+              <label data-i18n="calc_rate">Interés anual (%)</label>
+              <input type="range" id="calcRate" class="calc-slider" min="0.5" max="10" value="3.5" step="0.1" oninput="updateCalc()">
+              <span id="calcRateLabel" style="font-weight:700;color:var(--primary)">3,5%</span>
+            </div>
+          </div>
+          <div class="calc-row">
+            <div class="form-group">
+              <label data-i18n="calc_term">Plazo (años)</label>
+              <input type="range" id="calcTerm" class="calc-slider" min="5" max="40" value="25" step="1" oninput="updateCalc()">
+              <span id="calcTermLabel" style="font-weight:700;color:var(--primary)">25 años</span>
+            </div>
+          </div>
+          <div class="calc-result" id="calcResult">
+            <div class="label" data-i18n="calc_monthly">Cuota mensual</div>
+            <div class="payment" id="calcMonthly">0 €</div>
+            <div class="detail" id="calcDetail"></div>
+          </div>
+        </div>
+        <div>
+          <h3 style="font-family:'Playfair Display',serif;margin-bottom:16px;font-size:1.1rem;">Calculadora de Rentabilidad</h3>
+          <p style="color:var(--text-light);font-size:0.85rem;margin-bottom:16px;" data-i18n="inv_desc">Descubre la rentabilidad anual de un local comercial antes de invertir</p>
+          <div class="calc-row">
+            <div class="form-group">
+              <label data-i18n="inv_price">Precio del local (€)</label>
+              <input type="range" id="invPrice" class="calc-slider" min="30000" max="500000" value="150000" step="5000" oninput="updateInvCalc()">
+              <span id="invPriceLabel" style="font-weight:700;color:var(--primary)">150.000 €</span>
+            </div>
+          </div>
+          <div class="calc-row">
+            <div class="form-group">
+              <label data-i18n="inv_rent">Alquiler mensual esperado (€)</label>
+              <input type="range" id="invRent" class="calc-slider" min="300" max="5000" value="1200" step="50" oninput="updateInvCalc()">
+              <span id="invRentLabel" style="font-weight:700;color:var(--primary)">1.200 €</span>
+            </div>
+          </div>
+          <div class="calc-row">
+            <div class="form-group">
+              <label data-i18n="inv_expenses">Gastos anuales (comunidad, IBI, %)</label>
+              <input type="range" id="invExpenses" class="calc-slider" min="5" max="30" value="15" step="1" oninput="updateInvCalc()">
+              <span id="invExpensesLabel" style="font-weight:700;color:var(--primary)">15%</span>
+            </div>
+          </div>
+          <div class="calc-result" id="invResult" style="text-align:center;">
+            <div class="label" data-i18n="inv_yield">Rentabilidad neta anual</div>
+            <div class="payment" id="invYield" style="font-size:2.2rem;">0%</div>
+            <div class="detail" id="invDetail" style="margin-top:8px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>
+      #dualCalc { max-width: 900px; margin: 0 auto; }
+      @media (max-width: 768px) { #calculators .calc-container { max-width: 100% !important; } #dualCalc > div { grid-template-columns: 1fr !important; } }
+    </style>
+  </div>
+</section>
+
 <footer class="footer" id="footer">
   <div class="container">
     <div class="footer-grid">
@@ -358,7 +354,8 @@
         <a href="captacion.html" data-i18n="nav_capture">Vende tu propiedad</a><br>
         <a href="#services" data-i18n="nav_services">Servicios</a><br>
         <a href="#contact" data-i18n="nav_contact">Contacto</a><br>
-        <a href="blog.html" data-i18n="nav_blog">Blog</a>
+        <a href="blog.html" data-i18n="nav_blog">Blog</a><br>
+        <a href="aviso-legal.html">Aviso Legal</a>
       </div>
       <div>
         <h4 data-i18n="footer_contact_title">Contacto</h4>
@@ -368,10 +365,10 @@
       </div>
       <div>
         <h4 data-i18n="footer_follow">Síguenos</h4>
-        <div class="social-icons">
-          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
-          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+        <div class="social-icons social-icons-demo">
+          <span aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></span>
+          <span aria-label="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></span>
+          <span aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></span>
         </div>
       </div>
     </div>
@@ -397,7 +394,7 @@ function renderProperties(props) {
     const tagClass = getTypeTag(p.type);
     const coverImg = p.images && p.images.length ? p.images.find(i=>i.featured) || p.images[0] : null;
     const imgStyle = coverImg && coverImg.data ? 'background:none' : 'background:linear-gradient(135deg,' + (p.type==='sale'?'#2E86AB':p.type==='rent'?'#36B37E':'#e67e22') + ',#1a2a3a)';
-    const imgContent = coverImg && coverImg.data ? '<img src="' + coverImg.data + '" style="width:100%;height:100%;object-fit:cover" alt="" onerror="this.style.display=\'none\';this.parentNode.style.background=\'linear-gradient(135deg,' + (p.type==='sale'?'#2E86AB':p.type==='rent'?'#36B37E':'#e67e22') + ',#1a2a3a)\';this.parentNode.innerHTML=\'🏪\'">' : '🏪';
+    const imgContent = coverImg && coverImg.data ? '<img src="' + coverImg.data + '" style="width:100%;height:100%;object-fit:cover" alt="' + (p['title_' + lang] || p['title_es']) + ' - ' + p.town + ' - CENTRAL DE TRASPASOS" onerror="this.style.display=\'none\';this.parentNode.style.background=\'linear-gradient(135deg,' + (p.type==='sale'?'#2E86AB':p.type==='rent'?'#36B37E':'#e67e22') + ',#1a2a3a)\';this.parentNode.innerHTML=\'🏪\'">' : '🏪';
     return '<a href="propiedad.html?id=' + p.id + '" class="property-card-link">' +
       '<div class="property-card">' +
       '<div class="property-img" style="' + imgStyle + '">' + imgContent +
@@ -451,44 +448,7 @@ function populateQCTowns() {
   });
 }
 
-async function populateContactProperties() {
-  const sel = document.getElementById('contactProperty');
-  sel.innerHTML = '<option value="">—</option>';
-  const props = await getPublishedProperties();
-  props.forEach(p => {
-    const opt = document.createElement('option');
-    opt.value = p.id;
-    opt.textContent = (p['title_' + currentLang] || p['title_es']) + ' - ' + p.town;
-    sel.appendChild(opt);
-  });
-}
 
-async function submitContact(e) {
-  e.preventDefault();
-  const name = document.getElementById('contactName').value.trim();
-  const email = document.getElementById('contactEmail').value.trim();
-  const phone = document.getElementById('contactPhone').value.trim();
-  const propId = document.getElementById('contactProperty').value;
-  const message = document.getElementById('contactMessage').value.trim();
-  if (!name || !email || !message) return;
-  let propTitle = '';
-  if (propId) {
-    const props = await getPublishedProperties();
-    const p = props.find(x => x.id == propId);
-    if (p) propTitle = p['title_' + currentLang] || p['title_es'];
-  }
-  await addLead({ name, email, phone, propertyId: propId, propertyTitle: propTitle, message });
-  emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
-    to_email: 'info@centraldetraspasos.com',
-    from_name: name,
-    from_email: email,
-    phone: phone || 'No especificado',
-    property: propTitle || 'Consulta general',
-    message: message
-  }).catch(() => {});
-  showToast(t('crm_props_saved'));
-  e.target.reset();
-}
 
 function showToast(msg) {
   const el = document.createElement('div');
@@ -589,7 +549,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     await applySiteContent();
     populateSearchTowns();
     populateQCTowns();
-    await populateContactProperties();
     const featured = await getPublishedProperties();
     renderProperties(featured.filter(p => p.featured));
     updateCalc();
@@ -602,7 +561,6 @@ document.addEventListener('langchange', async () => {
   await applySiteContent();
   populateSearchTowns();
   populateQCTowns();
-  await populateContactProperties();
   await filterProperties();
   updateCalc();
   updateInvCalc();
