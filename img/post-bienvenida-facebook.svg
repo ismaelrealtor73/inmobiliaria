@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f2b3d"/>
+      <stop offset="100%" style="stop-color:#1a4a6a"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.10"/>
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.04"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1080" height="8" fill="#e8a838"/>
+
+  <text x="540" y="100" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="bold" fill="#e8a838" letter-spacing="3">CENTRAL DE TRASPASOS</text>
+  <text x="540" y="125" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#8ab4c8" letter-spacing="2">INMOBILIARIA · COSTA DEL SOL</text>
+
+  <text x="540" y="260" text-anchor="middle" font-family="Georgia, serif" font-size="42" font-weight="bold" fill="#ffffff">¡ESTRENAMOS</text>
+  <text x="540" y="320" text-anchor="middle" font-family="Georgia, serif" font-size="42" font-weight="bold" fill="#e8a838">PÁGINA DE FACEBOOK!</text>
+
+  <line x1="290" y1="350" x2="790" y2="350" stroke="#e8a838" stroke-width="2" opacity="0.5"/>
+
+  <text x="540" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#ffffff">🏪 CENTRAL DE TRASPASOS</text>
+
+  <rect x="80" y="460" width="920" height="220" rx="16" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="540" y="510" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#ffffff">Agencia inmobiliaria especializada en</text>
+  <text x="540" y="545" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#ffffff">la compra, venta, alquiler y traspaso de</text>
+  <text x="540" y="580" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#e8a838" font-weight="bold">locales comerciales y negocios</text>
+  <text x="540" y="615" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#8ab4c8">en la Costa del Sol</text>
+  <text x="540" y="655" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#8ab4c8">📍 Málaga · Torremolinos · Fuengirola · Benalmádena · Marbella</text>
+
+  <rect x="80" y="730" width="920" height="200" rx="16" fill="url(#card)" stroke="#e8a838" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="540" y="775" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#e8a838">✨ SERVICIOS</text>
+  <text x="540" y="815" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">✅ Compraventa de locales comerciales</text>
+  <text x="540" y="845" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">✅ Traspaso de negocios (restaurantes, discotecas, bares)</text>
+  <text x="540" y="875" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">✅ Alquiler de locales para emprendedores</text>
+  <text x="540" y="905" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">✅ Tasación profesional gratuita</text>
+
+  <rect x="60" y="1000" width="960" height="100" rx="12" fill="#e8a838" opacity="0.12" stroke="#e8a838" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="540" y="1040" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#e8a838" font-weight="bold">Síguenos y comparte para llegar</text>
+  <text x="540" y="1075" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">a todos los que buscan local o negocio en Málaga</text>
+
+  <rect x="240" y="1150" width="600" height="65" rx="32" fill="#e8a838"/>
+  <text x="540" y="1190" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#0f2b3d">TASACIÓN GRATUITA → 645 412 519</text>
+
+  <text x="540" y="1260" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#8ab4c8">📧 info@centraldetraspasos.com · 🌐 centraldetraspasos.com</text>
+
+  <rect x="0" y="1342" width="1080" height="8" fill="#e8a838"/>
+</svg>

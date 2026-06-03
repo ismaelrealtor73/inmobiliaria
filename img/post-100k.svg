@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f2b3d"/>
+      <stop offset="100%" style="stop-color:#1a4a6a"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.10"/>
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.04"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1080" height="8" fill="#e8a838"/>
+
+  <text x="540" y="80" text-anchor="middle" font-family="Georgia, serif" font-size="24" font-weight="bold" fill="#e8a838" letter-spacing="3">CENTRAL DE TRASPASOS</text>
+  <text x="540" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#8ab4c8" letter-spacing="2">INMOBILIARIA · COSTA DEL SOL</text>
+
+  <text x="540" y="200" text-anchor="middle" font-family="Georgia, serif" font-size="48" font-weight="bold" fill="#ffffff">100.000€ PARA INVERTIR</text>
+  <text x="540" y="260" text-anchor="middle" font-family="Georgia, serif" font-size="32" fill="#e8a838">¿Local comercial o piso?</text>
+  <line x1="340" y1="285" x2="740" y2="285" stroke="#e8a838" stroke-width="2" opacity="0.5"/>
+
+  <!-- LOCAL side -->
+  <rect x="40" y="320" width="480" height="420" rx="16" fill="url(#card)" stroke="#4caf50" stroke-width="2"/>
+  <text x="280" y="380" text-anchor="middle" font-family="Georgia, serif" font-size="30" font-weight="bold" fill="#4caf50">🏪 LOCAL</text>
+  <line x1="120" y1="395" x2="440" y2="395" stroke="#4caf50" opacity="0.3"/>
+  <text x="280" y="430" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">✅ Rentabilidad 7-10%</text>
+  <text x="280" y="465" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">✅ Contratos largos (5-10 años)</text>
+  <text x="280" y="500" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">✅ Menos impagos</text>
+  <text x="280" y="535" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">✅ Inquilino paga IBI y comunidad</text>
+  <text x="280" y="570" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">✅ Revalorización constante</text>
+
+  <rect x="80" y="610" width="400" height="70" rx="12" fill="#4caf50" opacity="0.2"/>
+  <text x="280" y="653" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="bold" fill="#4caf50">Rentabilidad: 7-10%</text>
+
+  <!-- PISO side -->
+  <rect x="560" y="320" width="480" height="420" rx="16" fill="url(#card)" stroke="#ff5722" stroke-width="2"/>
+  <text x="800" y="380" text-anchor="middle" font-family="Georgia, serif" font-size="30" font-weight="bold" fill="#ff5722">🏠 PISO</text>
+  <line x1="640" y1="395" x2="960" y2="395" stroke="#ff5722" opacity="0.3"/>
+  <text x="800" y="430" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">❌ Rentabilidad 4-5%</text>
+  <text x="800" y="465" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">❌ Rotación constante</text>
+  <text x="800" y="500" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">❌ Gastos de comunidad a tu cargo</text>
+  <text x="800" y="535" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">❌ Derramas imprevistas</text>
+  <text x="800" y="570" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">❌ OKUPACIÓN</text>
+
+  <rect x="600" y="610" width="400" height="70" rx="12" fill="#ff5722" opacity="0.2"/>
+  <text x="800" y="653" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="bold" fill="#ff5722">Rentabilidad: 4-5%</text>
+
+  <!-- Diferencia key -->
+  <rect x="40" y="780" width="1000" height="70" rx="12" fill="#e8a838" opacity="0.15" stroke="#e8a838" stroke-width="1.5"/>
+  <text x="540" y="825" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#e8a838">Diferencia: hasta el DOBLE de rentabilidad al año</text>
+
+  <rect x="40" y="880" width="1000" height="140" rx="12" fill="url(#card)"/>
+  <text x="540" y="920" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">Con 100.000€ en un local al 8% → 8.000€/año</text>
+  <text x="540" y="950" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">Con 100.000€ en un piso al 4,5% → 4.500€/año</text>
+  <text x="540" y="990" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#e8a838" font-weight="bold">3.500€ de diferencia CADA AÑO</text>
+
+  <rect x="190" y="1070" width="700" height="65" rx="32" fill="#e8a838"/>
+  <text x="540" y="1110" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#0f2b3d">TE ASESORAMOS SIN COMPROMISO</text>
+
+  <text x="540" y="1170" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#8ab4c8">📞 +34 645 412 519 · 📧 info@centraldetraspasos.com · 📲 DM</text>
+</svg>

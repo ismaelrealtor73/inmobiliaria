@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f2b3d"/>
+      <stop offset="100%" style="stop-color:#1a4a6a"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.06"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+
+  <!-- Top accent line -->
+  <rect x="0" y="0" width="1080" height="8" fill="#e8a838"/>
+
+  <!-- Logo area -->
+  <text x="540" y="80" text-anchor="middle" font-family="Georgia, serif" font-size="32" font-weight="bold" fill="#e8a838" letter-spacing="3">CENTRAL DE TRASPASOS</text>
+  <text x="540" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#8ab4c8" letter-spacing="2">INMOBILIARIA · COSTA DEL SOL</text>
+
+  <!-- Main title -->
+  <text x="540" y="200" text-anchor="middle" font-family="Georgia, serif" font-size="52" font-weight="bold" fill="#ffffff" filter="url(#shadow)">¿DÓNDE INVERTIR</text>
+  <text x="540" y="260" text-anchor="middle" font-family="Georgia, serif" font-size="52" font-weight="bold" fill="#e8a838" filter="url(#shadow)">EN MÁLAGA 2026?</text>
+
+  <!-- Subtitle -->
+  <text x="540" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#8ab4c8">Rentabilidad media por zonas</text>
+
+  <!-- Line separator -->
+  <line x1="340" y1="335" x2="740" y2="335" stroke="#e8a838" stroke-width="2" opacity="0.5"/>
+
+  <!-- Cards - Row 1 -->
+  <!-- Málaga Capital -->
+  <rect x="60" y="370" width="460" height="130" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
+  <text x="290" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#ffffff">MÁLAGA CAPITAL</text>
+  <text x="290" y="448" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#8ab4c8">Centro, Teatinos, Carretera de Cádiz</text>
+  <text x="290" y="482" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#4caf50">7,2%</text>
+  <text x="400" y="482" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#8ab4c8">rentabilidad media</text>
+
+  <!-- Marbella -->
+  <rect x="560" y="370" width="460" height="130" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
+  <text x="790" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#ffffff">MARBELLA</text>
+  <text x="790" y="448" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#8ab4c8">Puerto Banús, Centro, Nueva Andalucía</text>
+  <text x="790" y="482" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#ff9800">6,5%</text>
+  <text x="900" y="482" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#8ab4c8">rentabilidad media</text>
+
+  <!-- Row 2 -->
+  <!-- Torremolinos -->
+  <rect x="60" y="530" width="460" height="130" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
+  <text x="290" y="580" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#ffffff">TORREMOLINOS</text>
+  <text x="290" y="608" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#8ab4c8">La Carihuela, Bajondillo, Playamar</text>
+  <text x="290" y="642" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#4caf50">8,1%</text>
+  <text x="400" y="642" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#8ab4c8">rentabilidad media</text>
+
+  <!-- Fuengirola -->
+  <rect x="560" y="530" width="460" height="130" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
+  <text x="790" y="580" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#ffffff">FUENGIROLA</text>
+  <text x="790" y="608" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#8ab4c8">Paseo Marítimo, Los Boliches, Centro</text>
+  <text x="790" y="642" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#4caf50">7,8%</text>
+  <text x="900" y="642" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#8ab4c8">rentabilidad media</text>
+
+  <!-- Row 3 -->
+  <!-- Benalmádena -->
+  <rect x="60" y="690" width="460" height="130" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
+  <text x="290" y="740" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#ffffff">BENALMÁDENA</text>
+  <text x="290" y="768" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#8ab4c8">Puerto Marina, Arroyo de la Miel</text>
+  <text x="290" y="802" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#4caf50">7,5%</text>
+  <text x="400" y="802" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#8ab4c8">rentabilidad media</text>
+
+  <!-- Key fact -->
+  <rect x="60" y="690" width="960" height="130" rx="12" fill="none"/>
+  <rect x="60" y="850" width="960" height="150" rx="12" fill="#e8a838" opacity="0.12" stroke="#e8a838" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="540" y="900" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#e8a838" font-weight="bold">💡 La Costa del Sol lidera la recuperación</text>
+  <text x="540" y="935" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">del mercado comercial en Andalucía</text>
+  <text x="540" y="965" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#8ab4c8">Fuente: Datos de mercado 2026 · CENTRAL DE TRASPASOS</text>
+
+  <!-- CTA -->
+  <rect x="240" y="1050" width="600" height="70" rx="35" fill="#e8a838"/>
+  <text x="540" y="1093" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="bold" fill="#0f2b3d">¿TIENES UN LOCAL? TASACIÓN GRATIS</text>
+
+  <!-- Contact bar -->
+  <text x="540" y="1175" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#8ab4c8">📞 +34 645 412 519 · 📲 DM abierto</text>
+  <text x="540" y="1205" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#5a7d8c">centraldetraspasos.com</text>
+
+  <!-- Bottom accent -->
+  <rect x="0" y="1342" width="1080" height="8" fill="#e8a838"/>
+
+  <!-- Page indicator -->
+  <circle cx="460" cy="1290" r="8" fill="#e8a838"/>
+  <circle cx="500" cy="1290" r="6" fill="#ffffff" opacity="0.3"/>
+  <circle cx="540" cy="1290" r="6" fill="#ffffff" opacity="0.3"/>
+  <circle cx="580" cy="1290" r="6" fill="#ffffff" opacity="0.3"/>
+  <circle cx="620" cy="1290" r="6" fill="#ffffff" opacity="0.3"/>
+</svg>

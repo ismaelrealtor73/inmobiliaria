@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f2b3d"/>
+      <stop offset="100%" style="stop-color:#1a4a6a"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.10"/>
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.04"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1080" height="8" fill="#e8a838"/>
+
+  <text x="540" y="80" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="bold" fill="#e8a838" letter-spacing="3">CENTRAL DE TRASPASOS</text>
+  <text x="540" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#8ab4c8" letter-spacing="2">INMOBILIARIA · COSTA DEL SOL</text>
+
+  <text x="540" y="210" text-anchor="middle" font-family="Georgia, serif" font-size="56" font-weight="bold" fill="#e8a838">🔍</text>
+  <text x="540" y="290" text-anchor="middle" font-family="Georgia, serif" font-size="44" font-weight="bold" fill="#ffffff">BUSCAMOS LOCALES</text>
+  <text x="540" y="340" text-anchor="middle" font-family="Georgia, serif" font-size="32" fill="#e8a838">PARA INVERSORES</text>
+  <line x1="290" y1="365" x2="790" y2="365" stroke="#e8a838" stroke-width="2" opacity="0.5"/>
+
+  <text x="540" y="415" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#8ab4c8">Tenemos compradores buscando AHORA:</text>
+
+  <rect x="100" y="455" width="880" height="65" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="540" y="496" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#ffffff">📍 Locales comerciales en Málaga Centro (hasta 300.000€)</text>
+
+  <rect x="100" y="535" width="880" height="65" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="540" y="576" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#ffffff">📍 Naves industriales en Málaga y provincia</text>
+
+  <rect x="100" y="615" width="880" height="65" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="540" y="656" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#ffffff">📍 Restaurantes con terraza en Torremolinos y Fuengirola</text>
+
+  <rect x="100" y="695" width="880" height="65" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="540" y="736" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#ffffff">📍 Discotecas / Pubs en Marbella y Benalmádena</text>
+
+  <rect x="100" y="775" width="880" height="65" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="540" y="816" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#ffffff">📍 Locales en renta en toda la Costa del Sol</text>
+
+  <rect x="60" y="900" width="960" height="140" rx="12" fill="#e8a838" opacity="0.12" stroke="#e8a838" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="540" y="950" text-anchor="middle" font-family="Georgia, serif" font-size="26" fill="#e8a838" font-weight="bold">Si tu local encaja, te buscamos comprador</text>
+  <text x="540" y="990" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#ffffff">en 48 horas</text>
+
+  <rect x="190" y="1090" width="700" height="65" rx="32" fill="#e8a838"/>
+  <text x="540" y="1130" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#0f2b3d">MÁNDANOS DM O AL 645 412 519</text>
+
+  <text x="540" y="1200" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#8ab4c8">📧 info@centraldetraspasos.com · 🌐 centraldetraspasos.com</text>
+</svg>

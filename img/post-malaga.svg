@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f2b3d"/>
+      <stop offset="100%" style="stop-color:#1a4a6a"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.10"/>
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.04"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1080" height="8" fill="#e8a838"/>
+
+  <text x="540" y="80" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="bold" fill="#e8a838" letter-spacing="3">CENTRAL DE TRASPASOS</text>
+  <text x="540" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#8ab4c8" letter-spacing="2">INMOBILIARIA · COSTA DEL SOL</text>
+
+  <text x="540" y="220" text-anchor="middle" font-family="Georgia, serif" font-size="48" font-weight="bold" fill="#ffffff">MÁLAGA</text>
+  <text x="540" y="280" text-anchor="middle" font-family="Georgia, serif" font-size="42" font-weight="bold" fill="#e8a838">LA PROVINCIA DEL MOMENTO</text>
+  <line x1="290" y1="310" x2="790" y2="310" stroke="#e8a838" stroke-width="2" opacity="0.5"/>
+
+  <text x="540" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" fill="#ffffff">Málaga está en el radar de todos los inversores</text>
+
+  <rect x="60" y="420" width="960" height="55" rx="12" fill="url(#card)"/>
+  <text x="80" y="455" font-family="Arial, sans-serif" font-size="17" fill="#8ab4c8">🇪🇸</text>
+  <text x="120" y="455" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">Inversores nacionales buscando locales comerciales</text>
+
+  <rect x="60" y="485" width="960" height="55" rx="12" fill="url(#card)"/>
+  <text x="80" y="520" font-family="Arial, sans-serif" font-size="17" fill="#8ab4c8">🇪🇺</text>
+  <text x="120" y="520" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">Inversores extranjeros (alemanes, nórdicos, británicos)</text>
+
+  <rect x="60" y="550" width="960" height="55" rx="12" fill="url(#card)"/>
+  <text x="80" y="585" font-family="Arial, sans-serif" font-size="17" fill="#8ab4c8">🏪</text>
+  <text x="120" y="585" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">Alta demanda de hostelería, ocio y naves logísticas</text>
+
+  <rect x="60" y="615" width="960" height="55" rx="12" fill="url(#card)"/>
+  <text x="80" y="650" font-family="Arial, sans-serif" font-size="17" fill="#8ab4c8">📈</text>
+  <text x="120" y="650" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">Revalorización constante + turismo récord año tras año</text>
+
+  <rect x="60" y="730" width="960" height="180" rx="12" fill="#e8a838" opacity="0.12" stroke="#e8a838" stroke-width="2"/>
+  <text x="540" y="780" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#e8a838" font-weight="bold">🔥 Datos clave 2026</text>
+  <text x="540" y="825" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#ffffff">Málaga lidera la creación de empleo en Andalucía</text>
+  <text x="540" y="860" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#ffffff">El aeropuerto bate récords de pasajeros mes tras mes</text>
+  <text x="540" y="895" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#ffffff">La demanda de locales supera la oferta disponible</text>
+
+  <rect x="60" y="960" width="960" height="100" rx="12" fill="url(#card)"/>
+  <text x="540" y="1000" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#e8a838" font-weight="bold">Si tienes un activo en Málaga provincia,</text>
+  <text x="540" y="1035" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#e8a838" font-weight="bold">ahora es el momento.</text>
+
+  <rect x="190" y="1100" width="700" height="65" rx="32" fill="#e8a838"/>
+  <text x="540" y="1140" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#0f2b3d">HABLEMOS → DM O 645 412 519</text>
+
+  <text x="540" y="1210" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#8ab4c8">📧 info@centraldetraspasos.com · 🌐 centraldetraspasos.com</text>
+</svg>

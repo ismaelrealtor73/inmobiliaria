@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f2b3d"/>
+      <stop offset="100%" style="stop-color:#1a4a6a"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.10"/>
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.04"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1080" height="8" fill="#e8a838"/>
+
+  <text x="540" y="80" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="bold" fill="#e8a838" letter-spacing="3">CENTRAL DE TRASPASOS</text>
+  <text x="540" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#8ab4c8" letter-spacing="2">INMOBILIARIA · COSTA DEL SOL</text>
+
+  <text x="540" y="220" text-anchor="middle" font-family="Georgia, serif" font-size="44" font-weight="bold" fill="#ffffff">¿CÓMO SE TASA</text>
+  <text x="540" y="280" text-anchor="middle" font-family="Georgia, serif" font-size="44" font-weight="bold" fill="#e8a838">UN LOCAL COMERCIAL?</text>
+  <line x1="290" y1="310" x2="790" y2="310" stroke="#e8a838" stroke-width="2" opacity="0.5"/>
+
+  <text x="540" y="370" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#8ab4c8">Esto es lo que tenemos en cuenta:</text>
+
+  <!-- Factor 1 -->
+  <rect x="80" y="410" width="920" height="70" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1"/>
+  <text x="120" y="453" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#e8a838">📍</text>
+  <text x="170" y="453" font-family="Arial, sans-serif" font-size="19" fill="#ffffff">Ubicación</text>
+  <text x="170" y="472" font-family="Arial, sans-serif" font-size="14" fill="#8ab4c8">Zona, calle, afluencia, accesos</text>
+
+  <!-- Factor 2 -->
+  <rect x="80" y="500" width="920" height="70" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1"/>
+  <text x="120" y="543" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#e8a838">📏</text>
+  <text x="170" y="543" font-family="Arial, sans-serif" font-size="19" fill="#ffffff">Superficie útil y distribución</text>
+  <text x="170" y="562" font-family="Arial, sans-serif" font-size="14" fill="#8ab4c8">Metros reales, forma, altura, escaparate</text>
+
+  <!-- Factor 3 -->
+  <rect x="80" y="590" width="920" height="70" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1"/>
+  <text x="120" y="633" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#e8a838">🔌</text>
+  <text x="170" y="633" font-family="Arial, sans-serif" font-size="19" fill="#ffffff">Instalaciones y estado</text>
+  <text x="170" y="652" font-family="Arial, sans-serif" font-size="14" fill="#8ab4c8">Electricidad, agua, aire, reformas necesarias</text>
+
+  <!-- Factor 4 -->
+  <rect x="80" y="680" width="920" height="70" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1"/>
+  <text x="120" y="723" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#e8a838">📄</text>
+  <text x="170" y="723" font-family="Arial, sans-serif" font-size="19" fill="#ffffff">Licencia de actividad</text>
+  <text x="170" y="742" font-family="Arial, sans-serif" font-size="14" fill="#8ab4c8">Si tiene o no, tipo de actividad permitida</text>
+
+  <!-- Factor 5 -->
+  <rect x="80" y="770" width="920" height="70" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1"/>
+  <text x="120" y="813" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#e8a838">📊</text>
+  <text x="170" y="813" font-family="Arial, sans-serif" font-size="19" fill="#ffffff">Comparables de mercado</text>
+  <text x="170" y="832" font-family="Arial, sans-serif" font-size="14" fill="#8ab4c8">Precios reales de venta en la misma zona</text>
+
+  <rect x="80" y="890" width="920" height="110" rx="12" fill="#e8a838" opacity="0.12" stroke="#e8a838" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="540" y="935" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#e8a838" font-weight="bold">Nosotros te damos el precio REAL</text>
+  <text x="540" y="970" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">No el que tú crees. El que lo vende.</text>
+
+  <rect x="190" y="1050" width="700" height="65" rx="32" fill="#e8a838"/>
+  <text x="540" y="1090" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#0f2b3d">PIDE TU TASACIÓN GRATIS → DM</text>
+
+  <text x="540" y="1165" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#8ab4c8">📞 +34 645 412 519 · 📧 info@centraldetraspasos.com</text>
+</svg>

@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f2b3d"/>
+      <stop offset="100%" style="stop-color:#1a4a6a"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.06"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1080" height="8" fill="#e8a838"/>
+
+  <text x="540" y="80" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="bold" fill="#e8a838" letter-spacing="3">CENTRAL DE TRASPASOS</text>
+  <text x="540" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#8ab4c8" letter-spacing="2">INMOBILIARIA · COSTA DEL SOL</text>
+
+  <text x="540" y="180" text-anchor="middle" font-family="Georgia, serif" font-size="42" font-weight="bold" fill="#ffffff">BENALMÁDENA</text>
+  <line x1="390" y1="195" x2="690" y2="195" stroke="#e8a838" stroke-width="2"/>
+
+  <rect x="60" y="230" width="960" height="200" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.15" stroke-width="1"/>
+  <text x="540" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff">📍 Zonas clave</text>
+  <text x="100" y="310" font-family="Arial, sans-serif" font-size="16" fill="#8ab4c8">• Puerto Marina — ocio nocturno, restauración premium</text>
+  <text x="100" y="340" font-family="Arial, sans-serif" font-size="16" fill="#8ab4c8">• Arroyo de la Miel — centro neurálgico, comercio diario</text>
+  <text x="100" y="370" font-family="Arial, sans-serif" font-size="16" fill="#8ab4c8">• Benalmádena Pueblo — encanto, restaurantes con terraza</text>
+  <text x="100" y="400" font-family="Arial, sans-serif" font-size="16" fill="#8ab4c8">• Torrequebrada — golf, residentes internacionales</text>
+
+  <rect x="60" y="460" width="960" height="120" rx="12" fill="#4caf50" opacity="0.12" stroke="#4caf50" stroke-width="1"/>
+  <text x="540" y="505" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#4caf50">Rentabilidad media: 7,5%</text>
+  <text x="540" y="540" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">Precio medio local 80m²: 80.000€ – 220.000€</text>
+
+  <!-- Comparison table -->
+  <text x="540" y="650" text-anchor="middle" font-family="Georgia, serif" font-size="32" font-weight="bold" fill="#ffffff">COMPARATIVA RÁPIDA</text>
+  <line x1="340" y1="665" x2="740" y2="665" stroke="#e8a838" stroke-width="2"/>
+
+  <rect x="60" y="700" width="960" height="50" rx="8" fill="#e8a838" opacity="0.2"/>
+  <text x="200" y="731" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#e8a838">ZONA</text>
+  <text x="540" y="731" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#e8a838">RENTABILIDAD</text>
+  <text x="850" y="731" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#e8a838">PRECIO ENTRADA</text>
+
+  <rect x="60" y="750" width="960" height="45" rx="8" fill="url(#card)"/>
+  <text x="200" y="779" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">Torremolinos</text>
+  <text x="540" y="779" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#4caf50">8,1%</text>
+  <text x="850" y="779" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#8ab4c8">90.000€</text>
+
+  <rect x="60" y="795" width="960" height="45" rx="8" fill="url(#card)"/>
+  <text x="200" y="824" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">Fuengirola</text>
+  <text x="540" y="824" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#4caf50">7,8%</text>
+  <text x="850" y="824" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#8ab4c8">100.000€</text>
+
+  <rect x="60" y="840" width="960" height="45" rx="8" fill="url(#card)"/>
+  <text x="200" y="869" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">Benalmádena</text>
+  <text x="540" y="869" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#4caf50">7,5%</text>
+  <text x="850" y="869" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#8ab4c8">80.000€</text>
+
+  <rect x="60" y="885" width="960" height="45" rx="8" fill="url(#card)"/>
+  <text x="200" y="914" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">Málaga Capital</text>
+  <text x="540" y="914" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#4caf50">7,2%</text>
+  <text x="850" y="914" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#8ab4c8">120.000€</text>
+
+  <rect x="60" y="930" width="960" height="45" rx="8" fill="url(#card)"/>
+  <text x="200" y="959" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">Marbella</text>
+  <text x="540" y="959" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ff9800">6,5%</text>
+  <text x="850" y="959" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#8ab4c8">200.000€</text>
+
+  <rect x="60" y="1020" width="960" height="150" rx="12" fill="#e8a838" opacity="0.12" stroke="#e8a838" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="540" y="1070" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#e8a838" font-weight="bold">🎯 ¿Dónde invertir?</text>
+  <text x="540" y="1105" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">Alta rentabilidad → Torremolinos · Revalorización → Marbella</text>
+  <text x="540" y="1135" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">Equilibrio → Fuengirola · Volumen → Málaga Capital</text>
+
+  <rect x="240" y="1210" width="600" height="60" rx="30" fill="#e8a838"/>
+  <text x="540" y="1247" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#0f2b3d">TE AYUDAMOS A ELEGIR</text>
+
+  <text x="540" y="1300" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#8ab4c8">📞 +34 645 412 519 · 📲 DM abierto</text>
+
+  <circle cx="460" cy="1330" r="6" fill="#ffffff" opacity="0.3"/>
+  <circle cx="500" cy="1330" r="6" fill="#ffffff" opacity="0.3"/>
+  <circle cx="540" cy="1330" r="6" fill="#ffffff" opacity="0.3"/>
+  <circle cx="580" cy="1330" r="8" fill="#e8a838"/>
+  <circle cx="620" cy="1330" r="6" fill="#ffffff" opacity="0.3"/>
+</svg>
