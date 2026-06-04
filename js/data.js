@@ -132,6 +132,42 @@ function requireAdmin() {
   return user;
 }
 
+/* ========== USERS ========== */
+async function getUsers() {
+  if (useApi()) {
+    try { return await apiFetch('users'); } catch { }
+  }
+  return JSON.parse(JSON.stringify(USERS));
+}
+
+async function addUser(user) {
+  if (useApi()) {
+    const created = await apiFetch('users', { method: 'POST', body: JSON.stringify(user) });
+    return created;
+  }
+  USERS.push(user);
+  return user;
+}
+
+async function updateUser(username, updates) {
+  if (useApi()) {
+    const updated = await apiFetch('users/' + encodeURIComponent(username), { method: 'PUT', body: JSON.stringify(updates) });
+    return updated;
+  }
+  const u = USERS.find(x => x.username === username);
+  if (u) Object.assign(u, updates);
+  return u;
+}
+
+async function deleteUser(username) {
+  if (useApi()) {
+    return await apiFetch('users/' + encodeURIComponent(username), { method: 'DELETE' });
+  }
+  const idx = USERS.findIndex(u => u.username === username);
+  if (idx !== -1) USERS.splice(idx, 1);
+  return { success: true };
+}
+
 /* ========== PROPERTIES ========== */
 async function getProperties() {
   if (useApi()) {

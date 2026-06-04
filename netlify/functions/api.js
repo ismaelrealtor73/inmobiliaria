@@ -78,9 +78,48 @@ export default async (req, context) => {
   try {
     if (path === 'login' && method === 'POST') {
       const { username, password } = await req.json();
-      const user = USERS.find(u => u.username === username && u.password === password);
+      const data = await getStoreData(store);
+      const users = (data && data.users) || [];
+      const allUsers = [...users, ...USERS];
+      const user = allUsers.find(u => u.username === username && u.password === password);
       if (!user) return error(401, 'Credenciales inválidas');
       return json({ username: user.username, role: user.role, name: user.name });
+    }
+
+    if (path === 'users' && method === 'GET') {
+      const data = await initStore(store, 'users', USERS);
+      return json(data.users);
+    }
+
+    if (path === 'users' && method === 'POST') {
+      const data = await initStore(store, 'users', USERS);
+      const newUser = await req.json();
+      if (!newUser.username || !newUser.password) return error(400, 'Usuario y contraseña requeridos');
+      if (data.users.find(u => u.username === newUser.username)) return error(409, 'El usuario ya existe');
+      newUser.role = newUser.role || 'agent';
+      newUser.name = newUser.name || newUser.username;
+      data.users.push(newUser);
+      await store.setJSON('data', data);
+      return json(newUser);
+    }
+
+    if (path.startsWith('users/') && method === 'PUT') {
+      const username = path.split('/')[1];
+      const data = await initStore(store, 'users', USERS);
+      const idx = data.users.findIndex(u => u.username === username);
+      if (idx === -1) return error(404, 'Usuario no encontrado');
+      const updates = await req.json();
+      data.users[idx] = { ...data.users[idx], ...updates };
+      await store.setJSON('data', data);
+      return json(data.users[idx]);
+    }
+
+    if (path.startsWith('users/') && method === 'DELETE') {
+      const username = path.split('/')[1];
+      const data = await initStore(store, 'users', USERS);
+      data.users = data.users.filter(u => u.username !== username);
+      await store.setJSON('data', data);
+      return json({ success: true });
     }
 
     if (path === 'properties' && method === 'GET') {

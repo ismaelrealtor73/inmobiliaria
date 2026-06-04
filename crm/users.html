@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRM - Usuarios | CENTRAL DE TRASPASOS</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="crm-body">
+
+<header class="crm-header">
+  <div class="crm-header-inner">
+    <div class="logo">CENTRAL DE TRASPASOS <span style="font-size:0.75rem;color:rgba(255,255,255,0.5)">CRM</span></div>
+    <nav class="crm-nav">
+      <a href="dashboard.html" data-i18n="crm_dashboard">Dashboard</a>
+      <a href="properties.html" data-i18n="crm_properties">Propiedades</a>
+      <a href="leads.html" data-i18n="crm_leads">Leads</a>
+      <a href="users.html" class="active" data-i18n="crm_users">Usuarios</a>
+      <a href="settings.html" data-i18n="crm_settings">Ajustes</a>
+      <div class="lang-switch">
+        <button class="lang-btn" data-lang="es" onclick="setLang('es')"><img src="../img/flag-es.svg" class="flag-icon" alt=""> ES</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')"><img src="../img/flag-gb.svg" class="flag-icon" alt=""> EN</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="crm-layout">
+  <nav class="crm-sidebar">
+    <div class="crm-sidebar-logo" id="sidebarLogo"><img src="../img/logo.svg" alt="Logo" id="sidebarLogoImg"></div>
+    <a href="dashboard.html">📊 <span data-i18n="crm_dashboard">Dashboard</span></a>
+    <a href="properties.html">🏪 <span data-i18n="crm_properties">Propiedades</span></a>
+    <a href="leads.html">📩 <span data-i18n="crm_leads">Leads</span></a>
+    <a href="users.html" class="active">👥 <span data-i18n="crm_users">Usuarios</span></a>
+    <a href="settings.html">⚙️ <span data-i18n="crm_settings">Ajustes</span></a>
+    <a href="#" onclick="handleLogout()" style="margin-top:auto;border-top:1px solid #e0e8e8;padding-top:16px">🚪 <span data-i18n="crm_logout">Cerrar sesión</span></a>
+    <div style="padding:12px 24px;font-size:0.8rem;color:var(--text-light)" id="userInfo"></div>
+  </nav>
+
+  <main class="crm-content">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
+      <h2 data-i18n="crm_users_title">Gestión de Usuarios</h2>
+      <button onclick="openModal()" class="btn btn-primary" data-i18n="crm_users_add">Añadir Usuario</button>
+    </div>
+
+    <div id="usersList">
+      <table class="crm-table">
+        <thead><tr>
+          <th data-i18n="crm_form_username">Usuario</th>
+          <th data-i18n="crm_form_name">Nombre</th>
+          <th data-i18n="crm_form_role">Rol</th>
+          <th data-i18n="crm_table_actions">Acciones</th>
+        </tr></thead>
+        <tbody id="usersTableBody"></tbody>
+      </table>
+    </div>
+  </main>
+</div>
+
+<div class="modal-overlay" id="userModal" style="display:none" onclick="if(event.target===this)closeModal()">
+  <div class="modal-content" style="max-width:500px">
+    <h3 id="modalTitle" data-i18n="crm_users_add">Añadir Usuario</h3>
+    <form id="userForm" onsubmit="saveUser(event)">
+      <input type="hidden" id="editUsername">
+      <div class="form-group">
+        <label data-i18n="crm_form_username">Usuario</label>
+        <input type="text" id="userUsername" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label data-i18n="crm_form_name">Nombre</label>
+        <input type="text" id="userName" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label data-i18n="crm_form_password">Contraseña</label>
+        <input type="text" id="userPassword" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label data-i18n="crm_form_role">Rol</label>
+        <select id="userRole" class="form-control">
+          <option value="agent" data-i18n="crm_role_agent">Agente</option>
+          <option value="admin" data-i18n="crm_role_admin">Admin</option>
+        </select>
+      </div>
+      <div style="display:flex;gap:12px;margin-top:16px">
+        <button type="submit" class="btn btn-primary" data-i18n="crm_form_save">Guardar</button>
+        <button type="button" class="btn" onclick="closeModal()" data-i18n="crm_form_cancel">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="../js/translations.js"></script>
+<script src="../js/data.js"></script>
+<script>
+const user = requireAdmin();
+if (!user) { throw new Error('redirect'); }
+
+function handleLogout() { logout(); window.location.href = 'login.html'; }
+
+async function renderUsers() {
+  const users = await getUsers();
+  document.getElementById('userInfo').innerHTML =
+    `<strong>${user.name}</strong><br><span class="role-badge ${user.role}">${user.role}</span>`;
+  const tbody = document.getElementById('usersTableBody');
+  tbody.innerHTML = users.map(u => {
+    const isSelf = u.username === user.username;
+    return '<tr>' +
+      '<td><strong>' + u.username + '</strong></td>' +
+      '<td>' + (u.name || u.username) + '</td>' +
+      '<td><span class="role-badge ' + u.role + '">' + (u.role === 'admin' ? t('crm_role_admin') : t('crm_role_agent')) + '</span></td>' +
+      '<td>' +
+        '<button class="btn btn-sm" onclick="editUser(\'' + u.username + '\')" ' + (isSelf ? '' : '') + '>' + t('crm_users_edit') + '</button> ' +
+        '<button class="btn btn-sm btn-danger" onclick="confirmDelete(\'' + u.username + '\')" ' + (isSelf ? 'disabled style="opacity:0.5"' : '') + '>' + t('crm_users_delete') + '</button>' +
+      '</td></tr>';
+  }).join('');
+  applyTranslation();
+}
+
+function openModal(u) {
+  document.getElementById('editUsername').value = u ? u.username : '';
+  document.getElementById('userUsername').value = u ? u.username : '';
+  document.getElementById('userName').value = u ? (u.name || '') : '';
+  document.getElementById('userPassword').value = '';
+  document.getElementById('userRole').value = u ? u.role : 'agent';
+  document.getElementById('userUsername').disabled = !!u;
+  document.getElementById('modalTitle').textContent = u ? t('crm_users_edit') : t('crm_users_add');
+  document.getElementById('userPassword').required = !u;
+  document.getElementById('userModal').style.display = 'flex';
+}
+
+function closeModal() {
+  document.getElementById('userModal').style.display = 'none';
+}
+
+async function saveUser(e) {
+  e.preventDefault();
+  const editUsername = document.getElementById('editUsername').value;
+  const username = document.getElementById('userUsername').value.trim();
+  const name = document.getElementById('userName').value.trim();
+  const password = document.getElementById('userPassword').value;
+  const role = document.getElementById('userRole').value;
+  if (!username || !name) return showToast('Completa todos los campos');
+  if (!editUsername && !password) return showToast('La contraseña es requerida');
+
+  try {
+    if (editUsername) {
+      const updates = { name, role };
+      if (password) updates.password = password;
+      await updateUser(editUsername, updates);
+    } else {
+      await addUser({ username, name, password, role });
+    }
+    closeModal();
+    showToast(t('crm_users_saved'));
+    await renderUsers();
+  } catch(e) {
+    showToast('Error: ' + e.message);
+  }
+}
+
+async function confirmDelete(username) {
+  if (!confirm(t('crm_users_confirm_delete'))) return;
+  try {
+    await deleteUser(username);
+    showToast(t('crm_users_deleted'));
+    await renderUsers();
+  } catch(e) {
+    showToast('Error: ' + e.message);
+  }
+}
+
+function showToast(msg) {
+  const el = document.createElement('div');
+  el.className = 'toast show'; el.textContent = msg;
+  document.body.appendChild(el);
+  setTimeout(() => { el.classList.remove('show'); setTimeout(() => el.remove(), 300); }, 3000);
+}
+
+document.addEventListener('DOMContentLoaded', () => { loadSidebarLogo(); renderUsers(); });
+document.addEventListener('langchange', renderUsers);
+</script>
+</body>
+</html>
