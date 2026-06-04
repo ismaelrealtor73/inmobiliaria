@@ -508,6 +508,7 @@ async function submitQuickCapture(e) {
   const desc = document.getElementById('qcDesc').value.trim();
   if (!name || !phone) return;
   await addLead({ name, email: '', phone, propertyId: '', propertyTitle: 'Tasación rápida: ' + type + ' en ' + town, message: desc || 'Solicitud de tasación' });
+  sendEmailNotification({ name, phone, subject: 'Nueva solicitud de tasación: ' + type + ' en ' + town, message: desc || 'Solicitud de tasación' });
   showToast('Solicitud enviada. Te contactaremos en 24h.');
   e.target.reset();
 }

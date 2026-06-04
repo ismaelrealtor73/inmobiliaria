@@ -238,6 +238,7 @@ async function submitContact(e) {
   const message = document.getElementById('contactMessage').value.trim();
   if (!name || !email || !message) return;
   await addLead({ name, email, phone, propertyId: '', propertyTitle: subject, message });
+  sendEmailNotification({ name, email, phone, subject: '[Blog] ' + subject, message });
   showToast('Mensaje enviado correctamente');
   e.target.reset();
 }
