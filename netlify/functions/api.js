@@ -1,14 +1,14 @@
 import { getStore } from '@netlify/blobs';
 import nodemailer from 'nodemailer';
 
-const SMTP_HOST = 'mail.nominalia.com';
-const SMTP_PORT = parseInt(process.env.SMTP_PORT || '587');
-const SMTP_USER = 'info@centraldetraspasos.com';
-const SMTP_PASS = process.env.SMTP_PASS || 'Escalant__25';
+const SMTP_HOST = 'smtp.gmail.com';
+const SMTP_PORT = 587;
+const SMTP_USER = process.env.SMTP_USER || 'ismaelcostahappyhome@gmail.com';
+const SMTP_PASS = process.env.SMTP_PASS || 'ekefzuzhkfumhxcs';
 
 function getTransporter() {
   return nodemailer.createTransport({
-    host: SMTP_HOST, port: SMTP_PORT, secure: SMTP_PORT === 465,
+    host: SMTP_HOST, port: SMTP_PORT, secure: false,
     auth: { user: SMTP_USER, pass: SMTP_PASS }
   });
 }
