@@ -480,6 +480,8 @@ ul { list-style: none; }
 .btn-delete:hover { background: #b91c1c; }
 .btn-post { background: var(--secondary); color: white; }
 .btn-post:hover { background: #1a8a76; }
+.btn-reel { background: #E4405F; color: white; }
+.btn-reel:hover { background: #c1354d; }
 .btn-view { background: var(--secondary); color: white; }
 .btn-view:hover { background: #146a5a; }
 
