@@ -530,8 +530,8 @@ async function prepareReel(id) {
       const scale = Math.max(canvas.width / img.width, canvas.height / img.height);
       const progress = localFrame / (secsPerImage * fps);
       const zoom = 1 + progress * 0.1;
-      const sw = img.width / scale / zoom;
-      const sh = img.height / scale / zoom;
+      const sw = canvas.width / (scale * zoom);
+      const sh = canvas.height / (scale * zoom);
       const sx = (img.width - sw) / 2;
       const sy = (img.height - sh) / 2;
       ctx.drawImage(img, sx, sy, sw, sh, 0, 0, canvas.width, canvas.height);
