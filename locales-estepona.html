@@ -55,10 +55,15 @@
       <a href="blog.html">Blog</a>
       <a href="index.html#contact">Contacto</a>
       <a href="crm/login.html">CRM</a>
+      <div class="lang-switch">
+        <button class="lang-btn" data-lang="es" onclick="setLang('es')"><img src="img/flag-es.svg" class="flag-icon" alt=""> ES</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')"><img src="img/flag-gb.svg" class="flag-icon" alt=""> EN</button>
+      </div>
     </nav>
   </div>
 </header>
 
+<div class="lang-es">
 <section class="city-hero">
   <h1>Locales y traspasos en Estepona</h1>
   <p>Estepona, la joya del suroeste de la Costa del Sol, combina el encanto de su casco antiguo andaluz con un puerto deportivo de primer nivel y playas galardonadas. Un destino en pleno crecimiento para inversores y emprendedores.</p>
@@ -99,6 +104,50 @@
 
   <a href="propiedades.html" class="btn btn-primary" style="margin-top:16px;display:inline-block;">Ver propiedades disponibles</a>
 </div>
+</div>
+
+<div class="lang-en" style="display:none">
+<section class="city-hero">
+  <h1>Premises and Transfers in Estepona</h1>
+  <p>Estepona, the jewel of the southwest Costa del Sol, combines the charm of its Andalusian old town with a first-class marina and award-winning beaches. A fast-growing destination for investors and entrepreneurs.</p>
+</section>
+
+<div class="city-content">
+  <h2>Strategic Areas in Estepona</h2>
+  <ul>
+    <li><strong>Marina</strong> — Restaurants, beach bars, and shops with sea views and high footfall throughout the year</li>
+    <li><strong>Old Town</strong> — Lively streets with terraces, tapas bars, and local shops in a unique pedestrian environment</li>
+    <li><strong>Nueva Andalucía (border)</strong> — Area bordering Marbella, high demand for commercial premises and quality hospitality</li>
+    <li><strong>Cancelada</strong> — Coastal neighbourhood with a family atmosphere, ideal for restaurants and local services</li>
+    <li><strong>Arroyo Enmedio / La Lobilla</strong> — Commercial expansion area with new residential developments</li>
+  </ul>
+
+  <div class="city-cta">
+    <h3>Do you have a premises or business in Estepona?</h3>
+    <p>We help you sell, rent, or transfer it. Free valuation and professional advice.</p>
+    <a href="captacion.html" class="btn btn-secondary">Request a free valuation</a>
+  </div>
+
+  <h2>Reference Prices in Estepona (2026)</h2>
+  <ul>
+    <li>Commercial premises rent: €600 – €3,000/month</li>
+    <li>Restaurant/bar transfer: €25,000 – €200,000</li>
+    <li>Premises in the Marina: from €150,000</li>
+    <li>Premises sale: €70,000 – €400,000</li>
+  </ul>
+
+  <h2>Why Estepona?</h2>
+  <ul>
+    <li>Over 70,000 inhabitants and strong population growth</li>
+    <li>Marina with capacity for more than 400 boats</li>
+    <li>Old town awarded as one of the most beautiful in Andalusia</li>
+    <li>Proximity to Marbella, Sotogrande, and Gibraltar</li>
+    <li>High domestic and international tourist demand throughout the year</li>
+  </ul>
+
+  <a href="propiedades.html" class="btn btn-primary" style="margin-top:16px;display:inline-block;">View available properties</a>
+</div>
+</div>
 
 <footer class="footer">
   <div class="container">
@@ -134,6 +183,9 @@
   </div>
 </footer>
 
+<script src="js/translations.js"></script>
+<script src="js/data.js"></script>
+<script src="js/page-lang.js"></script>
 <script>
 document.getElementById('menuToggle2').addEventListener('click', () => {
   document.getElementById('mainNav2').classList.toggle('open');

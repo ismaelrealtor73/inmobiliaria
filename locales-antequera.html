@@ -55,10 +55,15 @@
       <a href="blog.html">Blog</a>
       <a href="index.html#contact">Contacto</a>
       <a href="crm/login.html">CRM</a>
+      <div class="lang-switch">
+        <button class="lang-btn" data-lang="es" onclick="setLang('es')"><img src="img/flag-es.svg" class="flag-icon" alt=""> ES</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')"><img src="img/flag-gb.svg" class="flag-icon" alt=""> EN</button>
+      </div>
     </nav>
   </div>
 </header>
 
+<div class="lang-es">
 <section class="city-hero">
   <h1>Locales y traspasos en Antequera</h1>
   <p>Antequera, corazón de Andalucía, es una ciudad histórica en pleno crecimiento económico. Su privilegiada ubicación como cruce de comunicaciones la convierte en un polo estratégico para la inversión comercial y empresarial.</p>
@@ -99,6 +104,50 @@
 
   <a href="propiedades.html" class="btn btn-primary" style="margin-top:16px;display:inline-block;">Ver propiedades disponibles</a>
 </div>
+</div>
+
+<div class="lang-en" style="display:none">
+<section class="city-hero">
+  <h1>Premises and Transfers in Antequera</h1>
+  <p>Antequera, the heart of Andalusia, is a historic city undergoing strong economic growth. Its privileged location as a communications hub makes it a strategic pole for commercial and business investment.</p>
+</section>
+
+<div class="city-content">
+  <h2>Strategic Areas in Antequera</h2>
+  <ul>
+    <li><strong>Historic centre</strong> — Traditional shopping streets, Plaza de San Sebastián, ideal for charming shops, bars, and restaurants</li>
+    <li><strong>Industrial area</strong> — Industrial estates with high logistics and commercial activity, warehouses and premises for businesses</li>
+    <li><strong>Commercial area (Av. Málaga)</strong> — Major brands and franchises, high local footfall</li>
+    <li><strong>A-92 surroundings</strong> — Service and hospitality area on the main Andalusian motorway, with heavy traveller traffic</li>
+    <li><strong>AVE station</strong> — New expansion area with potential for hospitality and traveller services</li>
+  </ul>
+
+  <div class="city-cta">
+    <h3>Do you have a premises or business in Antequera?</h3>
+    <p>We help you sell, rent, or transfer it. Free valuation and professional advice.</p>
+    <a href="captacion.html" class="btn btn-secondary">Request a free valuation</a>
+  </div>
+
+  <h2>Reference Prices in Antequera (2026)</h2>
+  <ul>
+    <li>Commercial premises rent: €350 – €1,800/month</li>
+    <li>Restaurant/bar transfer: €12,000 – €90,000</li>
+    <li>Industrial unit / logistics premises: €60,000 – €250,000</li>
+    <li>Premises sale: €40,000 – €200,000</li>
+  </ul>
+
+  <h2>Why Antequera?</h2>
+  <ul>
+    <li>Over 41,000 inhabitants and capital of the region</li>
+    <li>Key communications hub: A-92, A-45, AVE Madrid-Málaga-Seville</li>
+    <li>Historic heritage declared a UNESCO World Heritage Site</li>
+    <li>Excellent connection to Málaga city (45 min by AVE, 50 min by car)</li>
+    <li>Growing demand for commercial premises due to logistics and industrial expansion</li>
+  </ul>
+
+  <a href="propiedades.html" class="btn btn-primary" style="margin-top:16px;display:inline-block;">View available properties</a>
+</div>
+</div>
 
 <footer class="footer">
   <div class="container">
@@ -134,6 +183,9 @@
   </div>
 </footer>
 
+<script src="js/translations.js"></script>
+<script src="js/data.js"></script>
+<script src="js/page-lang.js"></script>
 <script>
 document.getElementById('menuToggle2').addEventListener('click', () => {
   document.getElementById('mainNav2').classList.toggle('open');

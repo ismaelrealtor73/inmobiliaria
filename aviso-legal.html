@@ -33,10 +33,15 @@
       <a href="blog.html">Blog</a>
       <a href="index.html#contact">Contacto</a>
       <a href="crm/login.html">CRM</a>
+      <div class="lang-switch">
+        <button class="lang-btn" data-lang="es" onclick="setLang('es')"><img src="img/flag-es.svg" class="flag-icon" alt=""> ES</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')"><img src="img/flag-gb.svg" class="flag-icon" alt=""> EN</button>
+      </div>
     </nav>
   </div>
 </header>
 
+<div class="lang-es">
 <div class="legal">
   <h1>Aviso Legal y Política de Privacidad</h1>
   <p class="updated">Última actualización: junio 2026</p>
@@ -76,6 +81,48 @@
   <h2>7. Legislación aplicable</h2>
   <p>Las presentes condiciones se rigen por la legislación española. Para cualquier controversia, las partes se someten a los juzgados y tribunales de Málaga.</p>
 </div>
+</div>
+<div class="lang-en" style="display:none">
+<div class="legal">
+  <h1>Legal Notice & Privacy Policy</h1>
+  <p class="updated">Last updated: June 2026</p>
+
+  <h2>1. Website Ownership</h2>
+  <p>This legal notice regulates the use of the website <strong>centraldetraspasos.com</strong>, owned by:</p>
+  <p>
+    <strong>CENTRAL DE TRASPASOS</strong><br>
+    Contact: info@centraldetraspasos.com<br>
+    Phone: +34 645 412 519<br>
+    Málaga, Costa del Sol, Spain
+  </p>
+
+  <h2>2. Intellectual Property</h2>
+  <p>All content on this website (texts, images, logos, design) is the property of CENTRAL DE TRASPASOS or used with the necessary rights. Total or partial reproduction without express authorization is prohibited.</p>
+
+  <h2>3. Data Protection (GDPR)</h2>
+  <p>In accordance with the General Data Protection Regulation (EU) 2016/679 and the Spanish Organic Law 3/2018 on Personal Data Protection and Digital Rights, we inform you:</p>
+  <ul>
+    <li><strong>Controller:</strong> CENTRAL DE TRASPASOS</li>
+    <li><strong>Purpose:</strong> Management of information requests, commercial contact, property valuation, and sending communications related to our real estate services</li>
+    <li><strong>Legitimation:</strong> Consent of the interested party when filling out contact or property submission forms</li>
+    <li><strong>Recipients:</strong> Data will not be transferred to third parties except where required by law</li>
+    <li><strong>Rights:</strong> Access, rectification, deletion, limitation, portability, and opposition. You may exercise these by writing to info@centraldetraspasos.com</li>
+    <li><strong>Retention period:</strong> Data will be kept as long as mutual interest exists or as required to comply with legal obligations</li>
+  </ul>
+
+  <h2>4. Website Use</h2>
+  <p>The user undertakes to make appropriate use of the content and services, and not to use them for illegal activities or contrary to good faith.</p>
+
+  <h2>5. Third-Party Links</h2>
+  <p>This website may contain links to external sites. CENTRAL DE TRASPASOS is not responsible for the content or privacy policies of such sites.</p>
+
+  <h2>6. Cookies</h2>
+  <p>This website uses technical cookies necessary for the operation of the site. Tracking or advertising cookies are not used without the user's express consent.</p>
+
+  <h2>7. Applicable Law</h2>
+  <p>These terms are governed by Spanish law. For any disputes, the parties submit to the courts and tribunals of Málaga.</p>
+</div>
+</div>
 
 <footer class="footer">
   <div class="container">
@@ -111,6 +158,9 @@
   </div>
 </footer>
 
+<script src="js/translations.js"></script>
+<script src="js/data.js"></script>
+<script src="js/page-lang.js"></script>
 <script>
 document.getElementById('menuToggle').addEventListener('click', () => {
   document.getElementById('mainNav').classList.toggle('open');

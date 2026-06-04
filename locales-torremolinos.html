@@ -55,10 +55,15 @@
       <a href="blog.html">Blog</a>
       <a href="index.html#contact">Contacto</a>
       <a href="crm/login.html">CRM</a>
+      <div class="lang-switch">
+        <button class="lang-btn" data-lang="es" onclick="setLang('es')"><img src="img/flag-es.svg" class="flag-icon" alt=""> ES</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')"><img src="img/flag-gb.svg" class="flag-icon" alt=""> EN</button>
+      </div>
     </nav>
   </div>
 </header>
 
+<div class="lang-es">
 <section class="city-hero">
   <h1>Locales y traspasos en Torremolinos</h1>
   <p>Torremolinos, cuna del turismo en la Costa del Sol, ofrece un mercado inmobiliario comercial vibrante. Restaurantes, chiringuitos, bares y comercios encuentran aquí el entorno perfecto para prosperar.</p>
@@ -98,6 +103,49 @@
 
   <a href="propiedades.html" class="btn btn-primary" style="margin-top:16px;display:inline-block;">Ver propiedades disponibles</a>
 </div>
+</div>
+
+<div class="lang-en" style="display:none">
+<section class="city-hero">
+  <h1>Premises and Transfers in Torremolinos</h1>
+  <p>Torremolinos, the birthplace of tourism on the Costa del Sol, offers a vibrant commercial real estate market. Restaurants, beach bars, bars, and shops find the perfect environment to thrive here.</p>
+</section>
+
+<div class="city-content">
+  <h2>Key Areas for Your Business in Torremolinos</h2>
+  <ul>
+    <li><strong>La Carihuela</strong> — The most famous fishing neighbourhood. Beach bars, fish restaurants, and lively atmosphere all year round</li>
+    <li><strong>Plaza Mayor and centre</strong> — Shops, bars, and restaurants with high pedestrian traffic</li>
+    <li><strong>Playamar</strong> — Residential area with good demand for services and shops</li>
+    <li><strong>Bajondillo</strong> — Next to the beach, ideal for hospitality and shops</li>
+    <li><strong>Los Álamos</strong> — Growing area, great investment opportunities</li>
+  </ul>
+
+  <div class="city-cta">
+    <h3>Do you have a business in Torremolinos?</h3>
+    <p>We help you transfer or sell it. Free valuation and comprehensive advice.</p>
+    <a href="captacion.html" class="btn btn-secondary">Request a free valuation</a>
+  </div>
+
+  <h2>Reference Prices in Torremolinos (2026)</h2>
+  <ul>
+    <li>Commercial premises rent: €500 – €2,000/month</li>
+    <li>Restaurant/bar transfer: €25,000 – €120,000</li>
+    <li>Seasonal beach bar: check availability</li>
+    <li>Premises sale: €70,000 – €280,000</li>
+  </ul>
+
+  <h2>Specialised Services in Torremolinos</h2>
+  <ul>
+    <li>Professional valuation adapted to the Torremolinos market</li>
+    <li>Portfolio of local and international investors</li>
+    <li>Management of licences and municipal documentation</li>
+    <li>Advice for seasonal and year-round businesses</li>
+  </ul>
+
+  <a href="propiedades.html" class="btn btn-primary" style="margin-top:16px;display:inline-block;">View available properties</a>
+</div>
+</div>
 
 <footer class="footer">
   <div class="container">
@@ -133,6 +181,9 @@
   </div>
 </footer>
 
+<script src="js/translations.js"></script>
+<script src="js/data.js"></script>
+<script src="js/page-lang.js"></script>
 <script>
 document.getElementById('menuToggle2').addEventListener('click', () => {
   document.getElementById('mainNav2').classList.toggle('open');

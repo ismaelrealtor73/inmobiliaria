@@ -55,10 +55,15 @@
       <a href="blog.html">Blog</a>
       <a href="index.html#contact">Contacto</a>
       <a href="crm/login.html">CRM</a>
+      <div class="lang-switch">
+        <button class="lang-btn" data-lang="es" onclick="setLang('es')"><img src="img/flag-es.svg" class="flag-icon" alt=""> ES</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')"><img src="img/flag-gb.svg" class="flag-icon" alt=""> EN</button>
+      </div>
     </nav>
   </div>
 </header>
 
+<div class="lang-es">
 <section class="city-hero">
   <h1>Locales y traspasos en Benalmádena</h1>
   <p>Benalmádena Costa es uno de los destinos más completos de la Costa del Sol: playa, puerto deportivo, ocio nocturno y una creciente comunidad de residentes internacionales. Un mercado ideal para la hostelería y los negocios.</p>
@@ -98,6 +103,49 @@
 
   <a href="propiedades.html" class="btn btn-primary" style="margin-top:16px;display:inline-block;">Ver propiedades disponibles</a>
 </div>
+</div>
+
+<div class="lang-en" style="display:none">
+<section class="city-hero">
+  <h1>Premises and Transfers in Benalmádena</h1>
+  <p>Benalmádena Costa is one of the most complete destinations on the Costa del Sol: beach, marina, nightlife, and a growing community of international residents. An ideal market for hospitality and businesses.</p>
+</section>
+
+<div class="city-content">
+  <h2>Strategic Areas in Benalmádena</h2>
+  <ul>
+    <li><strong>Puerto Marina</strong> — The most important marina. Restaurants, nightclubs, and luxury shops</li>
+    <li><strong>Benalmádena Costa (beach area)</strong> — Beach bars, bars, and restaurants with high tourist footfall</li>
+    <li><strong>Arroyo de la Miel</strong> — Bustling hub with shops, bars, and daily activity</li>
+    <li><strong>Benalmádena Pueblo</strong> — Traditional charm, ideal for terrace restaurants and craft shops</li>
+    <li><strong>Torrequebrada</strong> — High-end residential area, golf course, demand for exclusive services</li>
+  </ul>
+
+  <div class="city-cta">
+    <h3>Do you have a premises or business in Benalmádena?</h3>
+    <p>We help you sell, rent, or transfer it. Free valuation and professional advice.</p>
+    <a href="captacion.html" class="btn btn-secondary">Request a free valuation</a>
+  </div>
+
+  <h2>Reference Prices in Benalmádena (2026)</h2>
+  <ul>
+    <li>Commercial premises rent: €500 – €2,800/month</li>
+    <li>Restaurant/bar transfer: €20,000 – €180,000</li>
+    <li>Nightclub/pub: €80,000 – €580,000</li>
+    <li>Premises sale: €60,000 – €350,000</li>
+  </ul>
+
+  <h2>Why Benalmádena?</h2>
+  <ul>
+    <li>Over 60,000 inhabitants + tourist floating population</li>
+    <li>Puerto Marina, one of the most award-winning marinas in the world</li>
+    <li>Leading nightlife scene on the Costa del Sol</li>
+    <li>Established international community (British, Nordic, German)</li>
+  </ul>
+
+  <a href="propiedades.html" class="btn btn-primary" style="margin-top:16px;display:inline-block;">View available properties</a>
+</div>
+</div>
 
 <footer class="footer">
   <div class="container">
@@ -133,6 +181,9 @@
   </div>
 </footer>
 
+<script src="js/translations.js"></script>
+<script src="js/data.js"></script>
+<script src="js/page-lang.js"></script>
 <script>
 document.getElementById('menuToggle2').addEventListener('click', () => {
   document.getElementById('mainNav2').classList.toggle('open');

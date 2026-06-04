@@ -90,10 +90,15 @@ tr:nth-child(even) { background: var(--light); }
       <a href="/propiedades">Propiedades</a>
       <a href="/captacion">Vende tu propiedad</a>
       <a href="/blog">Blog</a>
+      <div class="lang-switch">
+        <button class="lang-btn" data-lang="es" onclick="setLang('es')"><img src="../img/flag-es.svg" class="flag-icon" alt=""> ES</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')"><img src="../img/flag-gb.svg" class="flag-icon" alt=""> EN</button>
+      </div>
     </nav>
   </div>
 </header>
 
+<div class="lang-es">
 <article class="post">
   <h1>Alquiler de local comercial en Málaga: precios, zonas y consejos 2026</h1>
   <div class="post-meta">📅 28 mayo 2026 • 📖 5 min lectura • Por CENTRAL DE TRASPASOS</div>
@@ -152,6 +157,68 @@ tr:nth-child(even) { background: var(--light); }
     <a href="/blog">← Volver al blog</a>
   </p>
 </article>
+</div>
+
+<div class="lang-en" style="display:none">
+<article class="post">
+  <h1>Commercial Premises Rental in Málaga: Prices, Areas and Tips 2026</h1>
+  <div class="post-meta">📅 May 28, 2026 • 📖 5 min read • By CENTRAL DE TRASPASOS</div>
+
+  <p>Finding a commercial premises for rent in Málaga and the Costa del Sol can be a complex task if you do not know the market well. Prices vary enormously depending on location, size, and type of activity.</p>
+
+  <p>At <strong>CENTRAL DE TRASPASOS</strong> we help you find the ideal premises for your business. This guide will give you a clear overview of current prices and the best areas.</p>
+
+  <h2>Indicative prices by area (2026)</h2>
+  <table>
+    <tr><th>Area</th><th>Average price m²/month</th><th>80m² premises approx.</th><th>Best for</th></tr>
+    <tr><td>Málaga center</td><td>€15-25/m²</td><td>€1,200-2,000</td><td>Shops, restaurants</td></tr>
+    <tr><td>Málaga East</td><td>€10-15/m²</td><td>€800-1,200</td><td>Offices, clinics</td></tr>
+    <tr><td>Teatinos</td><td>€8-12/m²</td><td>€640-960</td><td>Youth dining</td></tr>
+    <tr><td>Marbella center</td><td>€18-30/m²</td><td>€1,440-2,400</td><td>Boutiques, restaurants</td></tr>
+    <tr><td>Puerto Banús</td><td>€25-40/m²</td><td>€2,000-3,200</td><td>Luxury, dining</td></tr>
+    <tr><td>Fuengirola</td><td>€10-18/m²</td><td>€800-1,440</td><td>Retail, hospitality</td></tr>
+    <tr><td>Benalmádena</td><td>€9-16/m²</td><td>€720-1,280</td><td>Hospitality, services</td></tr>
+    <tr><td>Torremolinos</td><td>€8-14/m²</td><td>€640-1,120</td><td>Traditional retail</td></tr>
+    <tr><td>Antequera</td><td>€5-8/m²</td><td>€400-640</td><td>Local businesses</td></tr>
+  </table>
+
+  <h2>Most in-demand types of premises</h2>
+  <ul>
+    <li><strong>Retail premises</strong> — for shops, boutiques, supermarkets</li>
+    <li><strong>Hospitality premises</strong> — bars, restaurants, pubs (with license)</li>
+    <li><strong>Offices</strong> — professional practices, consulting rooms, coworking</li>
+    <li><strong>Industrial units</strong> — warehouses, workshops, logistics</li>
+    <li><strong>Clinic premises</strong> — dentistry, physiotherapy, aesthetics</li>
+  </ul>
+
+  <h2>Tips for renting a commercial premises</h2>
+  <ol>
+    <li><strong>Check the activity license</strong> — Not all premises are suitable for everything. Make sure the license allows your activity.</li>
+    <li><strong>Negotiate a rent-free period</strong> — Many landlords grant 1-3 months of free rent for renovation work.</li>
+    <li><strong>Study the contract</strong> — Recommended minimum term: 5 years (Urban Leases Act).</li>
+    <li><strong>Calculate all costs</strong> — Community fees, IBI, waste tax, insurance.</li>
+    <li><strong>Evaluate the location</strong> — 80% of a business's success depends on its location.</li>
+  </ol>
+
+  <div class="highlight-box">
+    <strong>💡 CENTRAL DE TRASPASOS tip:</strong> Before signing, visit the premises at different times of day (morning, afternoon, evening) to understand the real pedestrian flow and the atmosphere of the area.
+  </div>
+
+  <h2>Rent or transfer?</h2>
+  <p>A <strong>rental</strong> gives you flexibility but requires initial investment in equipment and renovation. A <strong>transfer</strong> is more expensive initially but the business is already running with customers and suppliers.</p>
+  <p>The choice depends on your budget, time, and experience. We advise you with no obligation.</p>
+
+  <div class="cta-box">
+    <h3>Looking for a premises for rent in Málaga?</h3>
+    <p style="opacity:0.9;margin-bottom:4px;">We have premises available across the province</p>
+    <a href="/propiedades" class="btn btn-primary btn-lg">View rental premises</a>
+  </div>
+
+  <p style="margin-top:40px;padding-top:24px;border-top:1px solid #eef1f4;">
+    <a href="/blog">← Back to blog</a>
+  </p>
+</article>
+</div>
 
 <footer class="footer">
   <div class="container">
@@ -167,6 +234,7 @@ tr:nth-child(even) { background: var(--light); }
 
 <script src="../js/translations.js"></script>
 <script src="../js/data.js"></script>
+<script src="../js/page-lang.js"></script>
 <script>
 document.getElementById('menuToggle').addEventListener('click', () => {
   document.getElementById('mainNav').classList.toggle('open');

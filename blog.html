@@ -85,7 +85,8 @@
 </section>
 
 <div class="container" style="padding: 60px 24px 80px;">
-  <p style="font-size:1.1rem;color:var(--text-light);margin-bottom:8px;">📖 Artículos recientes</p>
+  <p style="font-size:1.1rem;color:var(--text-light);margin-bottom:8px;">📖 <span class="lang-es">Artículos recientes</span><span class="lang-en" style="display:none">Recent Articles</span></p>
+  <div class="lang-es">
   <div class="blog-grid">
 
     <article class="blog-card">
@@ -148,6 +149,72 @@
       </div>
     </article>
 
+  </div>
+  </div>
+  <div class="lang-en" style="display:none">
+  <div class="blog-grid">
+
+    <article class="blog-card">
+      <div class="blog-card-img" style="background:linear-gradient(135deg,#2E86AB,#1a4a6a);">📋</div>
+      <div class="blog-card-body">
+        <div class="blog-card-cat">Complete Guide</div>
+        <h3><a href="blog/guia-traspaso-local-malaga.html">How to transfer a business in Málaga: complete 2026 guide</a></h3>
+        <p>Everything you need to know to transfer your business in Málaga: documentation, deadlines, prices, and how to find the ideal buyer.</p>
+        <div class="blog-card-meta">📅 June 2, 2026 • 📖 8 min read</div>
+      </div>
+    </article>
+
+    <article class="blog-card">
+      <div class="blog-card-img" style="background:linear-gradient(135deg,#e67e22,#d35400);">🍕</div>
+      <div class="blog-card-body">
+        <div class="blog-card-cat">Tips</div>
+        <h3><a href="blog/locales-restaurante-costa-del-sol.html">The 5 best restaurant premises on the Costa del Sol in 2026</a></h3>
+        <p>The busiest areas with the best profitability to open a restaurant, pub or beach bar on the Costa del Sol.</p>
+        <div class="blog-card-meta">📅 June 1, 2026 • 📖 6 min read</div>
+      </div>
+    </article>
+
+    <article class="blog-card">
+      <div class="blog-card-img" style="background:linear-gradient(135deg,#36B37E,#1a7a4a);">🏢</div>
+      <div class="blog-card-body">
+        <div class="blog-card-cat">Guide</div>
+        <h3><a href="blog/alquiler-local-comercial-malaga.html">Renting commercial premises in Málaga: prices, areas and tips</a></h3>
+        <p>Guide with current rental prices for commercial premises in Málaga city and main Costa del Sol towns.</p>
+        <div class="blog-card-meta">📅 May 28, 2026 • 📖 5 min read</div>
+      </div>
+    </article>
+
+    <article class="blog-card">
+      <div class="blog-card-img" style="background:linear-gradient(135deg,#8E44AD,#5B2C6F);">💰</div>
+      <div class="blog-card-body">
+        <div class="blog-card-cat">Investment</div>
+        <h3><a href="blog/invertir-locales-costa-del-sol.html">Investing in commercial property on the Costa del Sol: 2026 guide</a></h3>
+        <p>Investment guide for commercial premises in Málaga, Marbella and the entire Costa del Sol. Yields, area prices and buyer tips.</p>
+        <div class="blog-card-meta">📅 June 6, 2026 • 📖 7 min read</div>
+      </div>
+    </article>
+
+    <article class="blog-card">
+      <div class="blog-card-img" style="background:linear-gradient(135deg,#E74C3C,#922B21);">📜</div>
+      <div class="blog-card-body">
+        <div class="blog-card-cat">Legal</div>
+        <h3><a href="blog/licencia-actividad-malaga.html">Activity license in Málaga: complete 2026 guide for commercial premises</a></h3>
+        <p>Everything about the activity license for commercial premises in Málaga. Types, deadlines, costs and how to get it step by step.</p>
+        <div class="blog-card-meta">📅 June 5, 2026 • 📖 6 min read</div>
+      </div>
+    </article>
+
+    <article class="blog-card">
+      <div class="blog-card-img" style="background:linear-gradient(135deg,#1ABC9C,#0E6655);">📊</div>
+      <div class="blog-card-body">
+        <div class="blog-card-cat">Guide</div>
+        <h3><a href="blog/tasacion-negocio-malaga.html">How to value a business in Málaga: 2026 appraisal guide</a></h3>
+        <p>Complete guide to value your business or commercial premises in Málaga. Key factors, valuation methods and transfer pricing.</p>
+        <div class="blog-card-meta">📅 June 4, 2026 • 📖 7 min read</div>
+      </div>
+    </article>
+
+  </div>
   </div>
   <section class="section" id="contact" style="background:var(--light);">
   <div class="container" style="text-align:center;max-width:600px;margin:0 auto;">
@@ -220,6 +287,7 @@
 
 <script src="js/translations.js"></script>
 <script src="js/data.js"></script>
+<script src="js/page-lang.js"></script>
 <script>
 document.getElementById('menuToggle').addEventListener('click', () => {
   document.getElementById('mainNav').classList.toggle('open');

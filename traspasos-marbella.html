@@ -62,10 +62,15 @@
       <a href="blog.html">Blog</a>
       <a href="index.html#contact">Contacto</a>
       <a href="crm/login.html">CRM</a>
+      <div class="lang-switch">
+        <button class="lang-btn" data-lang="es" onclick="setLang('es')"><img src="img/flag-es.svg" class="flag-icon" alt=""> ES</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')"><img src="img/flag-gb.svg" class="flag-icon" alt=""> EN</button>
+      </div>
     </nav>
   </div>
 </header>
 
+<div class="lang-es">
 <section class="city-hero">
   <h1>Traspasos de locales y negocios en Marbella</h1>
   <p>¿Buscas traspasar tu restaurante, pub o local comercial en Marbella? En CENTRAL DE TRASPASOS somos expertos en la compraventa y traspaso de negocios en una de las zonas más exclusivas de la Costa del Sol.</p>
@@ -110,6 +115,54 @@
   <p>Explora nuestra selección de locales comerciales, restaurantes y negocios disponibles en Marbella y toda la Costa del Sol.</p>
   <a href="propiedades.html" class="btn btn-primary" style="margin-top:16px;display:inline-block;">Ver propiedades en Marbella</a>
 </div>
+</div>
+
+<div class="lang-en" style="display:none">
+<section class="city-hero">
+  <h1>Business and Premises Transfers in Marbella</h1>
+  <p>Looking to transfer your restaurant, pub, or commercial premises in Marbella? At CENTRAL DE TRASPASOS we are experts in the sale and transfer of businesses in one of the most exclusive areas of the Costa del Sol.</p>
+</section>
+
+<div class="city-content">
+  <h2>Why Marbella is a Unique Market for Your Business</h2>
+  <p>Marbella is an international benchmark for luxury tourism and business. With a constant flow of visitors throughout the year, it is the ideal place to start a business in hospitality, retail, and services. The transfer market in Marbella is especially active in areas such as:</p>
+  <ul>
+    <li><strong>Puerto Banús</strong> — the epicenter of luxury, ideal for restaurants, bars, and exclusive shops</li>
+    <li><strong>Marbella city centre</strong> — Old town with high tourist and pedestrian traffic</li>
+    <li><strong>Nueva Andalucía</strong> — High-income residential area</li>
+    <li><strong>San Pedro Alcántara</strong> — Steady growth, great value for money</li>
+    <li><strong>Golden Mile</strong> — Hotels, restaurants, and high-end commercial premises</li>
+  </ul>
+
+  <div class="city-cta">
+    <h3>Do you have a business in Marbella and want to transfer it?</h3>
+    <p>We help you find the ideal buyer. Free valuation and professional advice.</p>
+    <a href="captacion.html" class="btn btn-secondary">Request a free valuation</a>
+  </div>
+
+  <h2>Indicative Transfer Prices in Marbella (2026)</h2>
+  <p>Transfer prices in Marbella vary according to location and type of business:</p>
+  <ul>
+    <li>Restaurants and bars: €40,000 – €250,000</li>
+    <li>Small commercial premises: €15,000 – €60,000</li>
+    <li>Nightclubs and pubs: €100,000 – €500,000</li>
+    <li>Offices and studios: €10,000 – €40,000</li>
+  </ul>
+
+  <h2>Services for Property Owners in Marbella</h2>
+  <ul>
+    <li>Professional business valuation</li>
+    <li>Listing on real estate portals and social media</li>
+    <li>Screening and filtering of qualified buyers</li>
+    <li>Legal and tax advice throughout the process</li>
+    <li>Support until the transfer contract is signed</li>
+  </ul>
+
+  <h2>Looking for a Premises for Your Business in Marbella?</h2>
+  <p>Explore our selection of commercial premises, restaurants, and businesses available in Marbella and throughout the Costa del Sol.</p>
+  <a href="propiedades.html" class="btn btn-primary" style="margin-top:16px;display:inline-block;">View properties in Marbella</a>
+</div>
+</div>
 
 <footer class="footer">
   <div class="container">
@@ -145,6 +198,9 @@
   </div>
 </footer>
 
+<script src="js/translations.js"></script>
+<script src="js/data.js"></script>
+<script src="js/page-lang.js"></script>
 <script>
 document.getElementById('menuToggle2').addEventListener('click', () => {
   document.getElementById('mainNav2').classList.toggle('open');

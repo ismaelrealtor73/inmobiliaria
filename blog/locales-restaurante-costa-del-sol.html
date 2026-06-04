@@ -86,10 +86,15 @@
       <a href="/propiedades">Propiedades</a>
       <a href="/captacion">Vende tu propiedad</a>
       <a href="/blog">Blog</a>
+      <div class="lang-switch">
+        <button class="lang-btn" data-lang="es" onclick="setLang('es')"><img src="../img/flag-es.svg" class="flag-icon" alt=""> ES</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')"><img src="../img/flag-gb.svg" class="flag-icon" alt=""> EN</button>
+      </div>
     </nav>
   </div>
 </header>
 
+<div class="lang-es">
 <article class="post">
   <h1>Los 5 mejores locales para restaurante en la Costa del Sol en 2026</h1>
   <div class="post-meta">📅 1 junio 2026 • 📖 6 min lectura • Por CENTRAL DE TRASPASOS</div>
@@ -151,6 +156,71 @@
     <a href="/blog">← Volver al blog</a>
   </p>
 </article>
+</div>
+
+<div class="lang-en" style="display:none">
+<article class="post">
+  <h1>The 5 Best Restaurant Premises on the Costa del Sol in 2026</h1>
+  <div class="post-meta">📅 June 1, 2026 • 📖 6 min read • By CENTRAL DE TRASPASOS</div>
+
+  <p>Opening a restaurant on the Costa del Sol is one of the most profitable investments in southern Europe. With over 300 days of sunshine a year and constant international tourism, the demand for hospitality premises continues to grow.</p>
+
+  <p>At <strong>CENTRAL DE TRASPASOS</strong> we present the 5 areas with the greatest potential for your restaurant, pub, or beach bar in 2026.</p>
+
+  <h2>1. Málaga Historic Center</h2>
+  <p>Málaga's city center concentrates the highest tourist and local footfall. Streets like Larios, Granada, and the Cathedral area have massive pedestrian traffic. Ideal for traditional Spanish food restaurants, Italian eateries, and tapas bars.</p>
+  <div class="highlight-box">
+    <strong>💰 Indicative transfer price:</strong> €60,000 – €150,000 depending on size and terrace.<br>
+    <strong>🎯 Customer profile:</strong> National and international tourists, young couples.
+  </div>
+
+  <h2>2. Puerto Banús, Marbella</h2>
+  <p>Puerto Banús remains the epicenter of luxury on the Costa del Sol. Restaurants here have a high-spending clientele. Transfer prices are high but the profitability per customer is the highest in the area.</p>
+  <div class="highlight-box">
+    <strong>💰 Indicative transfer price:</strong> €100,000 – €250,000.<br>
+    <strong>🎯 Customer profile:</strong> High-spending international clientele, celebrities.
+  </div>
+
+  <h2>3. Benalmádena Seafront Promenade</h2>
+  <p>The Marina and seafront promenade area of Benalmádena is one of the liveliest spots on the Costa del Sol. Bars, pubs, and beach bars operate year-round, with high season from March to October.</p>
+  <div class="highlight-box">
+    <strong>💰 Indicative transfer price:</strong> €40,000 – €90,000.<br>
+    <strong>🎯 Customer profile:</strong> Family tourism and Nordic visitors, foreign residents.
+  </div>
+
+  <h2>4. Fuengirola — Los Boliches</h2>
+  <p>The Los Boliches area in Fuengirola is known for its varied gastronomic offering and cosmopolitan atmosphere. Ideal for international restaurants (Indian, Chinese, Italian) as well as Spanish ones.</p>
+  <div class="highlight-box">
+    <strong>💰 Indicative transfer price:</strong> €30,000 – €70,000.<br>
+    <strong>🎯 Customer profile:</strong> Foreign residents, family tourism.
+  </div>
+
+  <h2>5. Torremolinos — La Nogalera</h2>
+  <p>Torremolinos maintains a strong hospitality offering with more affordable prices than Marbella or Málaga center. La Nogalera and Calle San Miguel concentrate the most activity.</p>
+  <div class="highlight-box">
+    <strong>💰 Indicative transfer price:</strong> €20,000 – €55,000.<br>
+    <strong>🎯 Customer profile:</strong> British tourism, families, backpackers.
+  </div>
+
+  <h2>What to consider before opening</h2>
+  <ul>
+    <li><strong>Activity license:</strong> Verify that the premises has a valid restaurant/bar license</li>
+    <li><strong>Terrace:</strong> A restaurant with a terrace generates 30-50% more revenue than one without</li>
+    <li><strong>Transfer vs. rental:</strong> Evaluate whether it is more profitable to take over an existing business or rent an empty premises</li>
+    <li><strong>Seasonality:</strong> The Costa del Sol has high season from April to October, but the best restaurants maintain stable income all year round</li>
+  </ul>
+
+  <div class="cta-box">
+    <h3>Looking for premises for your restaurant on the Costa del Sol?</h3>
+    <p style="opacity:0.9;margin-bottom:4px;">We have the best opportunities in Málaga, Marbella, Fuengirola, Benalmádena, and Torremolinos</p>
+    <a href="/propiedades" class="btn btn-primary btn-lg">View available properties</a>
+  </div>
+
+  <p style="margin-top:40px;padding-top:24px;border-top:1px solid #eef1f4;">
+    <a href="/blog">← Back to blog</a>
+  </p>
+</article>
+</div>
 
 <footer class="footer">
   <div class="container">
@@ -169,6 +239,7 @@
 
 <script src="../js/translations.js"></script>
 <script src="../js/data.js"></script>
+<script src="../js/page-lang.js"></script>
 <script>
 document.getElementById('menuToggle').addEventListener('click', () => {
   document.getElementById('mainNav').classList.toggle('open');

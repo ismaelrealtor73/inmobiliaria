@@ -55,10 +55,15 @@
       <a href="blog.html">Blog</a>
       <a href="index.html#contact">Contacto</a>
       <a href="crm/login.html">CRM</a>
+      <div class="lang-switch">
+        <button class="lang-btn" data-lang="es" onclick="setLang('es')"><img src="img/flag-es.svg" class="flag-icon" alt=""> ES</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')"><img src="img/flag-gb.svg" class="flag-icon" alt=""> EN</button>
+      </div>
     </nav>
   </div>
 </header>
 
+<div class="lang-es">
 <section class="city-hero">
   <h1>Locales y traspasos en Mijas</h1>
   <p>Mijas es uno de los municipios más extensos y diversos de la Costa del Sol: playa, montaña, pueblos blancos y una amplia oferta de ocio. Un enclave privilegiado para cualquier tipo de negocio.</p>
@@ -99,6 +104,50 @@
 
   <a href="propiedades.html" class="btn btn-primary" style="margin-top:16px;display:inline-block;">Ver propiedades disponibles</a>
 </div>
+</div>
+
+<div class="lang-en" style="display:none">
+<section class="city-hero">
+  <h1>Premises and Transfers in Mijas</h1>
+  <p>Mijas is one of the largest and most diverse municipalities on the Costa del Sol: beach, mountains, white villages, and a wide range of leisure options. A privileged location for any type of business.</p>
+</section>
+
+<div class="city-content">
+  <h2>Strategic Areas in Mijas</h2>
+  <ul>
+    <li><strong>Mijas Costa</strong> — Coastal strip with beach bars, restaurants, and commercial premises with high tourist turnover</li>
+    <li><strong>La Cala de Mijas</strong> — Coastal hub with beach, promenade, and a vibrant hospitality scene</li>
+    <li><strong>Mijas Pueblo</strong> — The quintessential Andalusian white village, ideal for craft shops, terrace bars, and charming restaurants</li>
+    <li><strong>El Chaparral</strong> — Residential area with a golf course, demand for exclusive services and local shops</li>
+    <li><strong>Laguna Beach / Riviera del Sol</strong> — Established developments with high demand for restaurant and service premises</li>
+  </ul>
+
+  <div class="city-cta">
+    <h3>Do you have a premises or business in Mijas?</h3>
+    <p>We help you sell, rent, or transfer it. Free valuation and professional advice.</p>
+    <a href="captacion.html" class="btn btn-secondary">Request a free valuation</a>
+  </div>
+
+  <h2>Reference Prices in Mijas (2026)</h2>
+  <ul>
+    <li>Commercial premises rent: €500 – €2,500/month</li>
+    <li>Restaurant/bar transfer: €18,000 – €150,000</li>
+    <li>Premises in La Cala: from €120,000</li>
+    <li>Premises sale: €50,000 – €350,000</li>
+  </ul>
+
+  <h2>Why Mijas?</h2>
+  <ul>
+    <li>Over 90,000 registered inhabitants with strong annual growth</li>
+    <li>Three distinct hubs attracting very diverse customer profiles</li>
+    <li>El Chaparral golf course and several others in the area</li>
+    <li>Excellent connections: A-7 motorway, close to Málaga and Marbella</li>
+    <li>Large international resident community (British, Nordic, German)</li>
+  </ul>
+
+  <a href="propiedades.html" class="btn btn-primary" style="margin-top:16px;display:inline-block;">View available properties</a>
+</div>
+</div>
 
 <footer class="footer">
   <div class="container">
@@ -134,6 +183,9 @@
   </div>
 </footer>
 
+<script src="js/translations.js"></script>
+<script src="js/data.js"></script>
+<script src="js/page-lang.js"></script>
 <script>
 document.getElementById('menuToggle2').addEventListener('click', () => {
   document.getElementById('mainNav2').classList.toggle('open');
