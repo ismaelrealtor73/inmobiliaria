@@ -1,4 +1,17 @@
 import { getStore } from '@netlify/blobs';
+import nodemailer from 'nodemailer';
+
+const SMTP_HOST = 'mail.nominalia.com';
+const SMTP_PORT = 465;
+const SMTP_USER = 'info@centraldetraspasos.com';
+const SMTP_PASS = process.env.SMTP_PASS || 'Escalant__25';
+
+function getTransporter() {
+  return nodemailer.createTransport({
+    host: SMTP_HOST, port: SMTP_PORT, secure: true,
+    auth: { user: SMTP_USER, pass: SMTP_PASS }
+  });
+}
 
 const USERS = [
   { username: 'admin', password: 'admin123', role: 'admin', name: 'Admin' },
@@ -180,6 +193,17 @@ export default async (req, context) => {
         delete data.siteContent.site_images[key];
         await store.setJSON('data', data);
       }
+      return json({ success: true });
+    }
+
+    if (path === 'send-email' && method === 'POST') {
+      const { to, subject, text, html } = await req.json();
+      if (!to || !subject) return error(400, 'Faltan campos requeridos (to, subject)');
+      const transporter = getTransporter();
+      await transporter.sendMail({
+        from: `"CENTRAL DE TRASPASOS" <${SMTP_USER}>`,
+        to, subject, text, html: html || text
+      });
       return json({ success: true });
     }
 

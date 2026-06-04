@@ -36,3 +36,18 @@
   to = "/locales-benalmadena.html"
   status = 200
 
+[[redirects]]
+  from = "/locales-estepona"
+  to = "/locales-estepona.html"
+  status = 200
+
+[[redirects]]
+  from = "/locales-mijas"
+  to = "/locales-mijas.html"
+  status = 200
+
+[[redirects]]
+  from = "/locales-antequera"
+  to = "/locales-antequera.html"
+  status = 200
+

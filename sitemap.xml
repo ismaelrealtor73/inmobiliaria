@@ -63,6 +63,36 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://centraldetraspasos.com/blog/tasacion-negocio-malaga.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/blog/licencia-actividad-malaga.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/blog/invertir-locales-costa-del-sol.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/locales-estepona</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/locales-mijas</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/locales-antequera</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://centraldetraspasos.com/aviso-legal</loc>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>

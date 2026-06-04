@@ -377,3 +377,16 @@ async function loadHeaderLogo() {
   }
 }
 
+async function sendEmailNotification({ name, email, phone, subject, message }) {
+  if (!useApi()) return;
+  await fetch('/api/send-email', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      to: 'info@centraldetraspasos.com',
+      subject: subject || 'Nuevo lead desde web',
+      text: `Nombre: ${name}\nEmail: ${email || 'No especificado'}\nTeléfono: ${phone || 'No especificado'}\nMensaje: ${message || ''}`
+    })
+  }).catch(() => {});
+}
+
