@@ -3,8 +3,8 @@ import nodemailer from 'nodemailer';
 
 const SMTP_HOST = 'smtp.gmail.com';
 const SMTP_PORT = 587;
-const SMTP_USER = process.env.SMTP_USER;
-const SMTP_PASS = process.env.SMTP_PASS;
+const SMTP_USER = process.env.SMTP_USER || 'ismaelcostahappyhome@gmail.com';
+const SMTP_PASS = process.env.SMTP_PASS || 'ekefzuzhkfumhxcs';
 
 function getTransporter() {
   return nodemailer.createTransport({
@@ -197,9 +197,7 @@ export default async (req, context) => {
     }
 
     if (path === 'send-email' && method === 'POST') {
-      const envKeys = Object.keys(process.env).filter(k => k.includes('SMTP') || k.includes('smtp'));
-      if (!process.env.SMTP_USER) return error(500, 'SMTP_USER no configurada. Variables SMTP disponibles: ' + JSON.stringify(envKeys));
-      if (!process.env.SMTP_PASS) return error(500, 'SMTP_PASS no configurada');
+      if (!SMTP_USER || !SMTP_PASS) return error(500, 'Credenciales SMTP no configuradas');
       const { to, subject, text, html } = await req.json();
       if (!to || !subject) return error(400, 'Faltan campos requeridos (to, subject)');
       const transporter = getTransporter();
