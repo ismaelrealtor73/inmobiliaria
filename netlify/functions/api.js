@@ -197,6 +197,8 @@ export default async (req, context) => {
     }
 
     if (path === 'send-email' && method === 'POST') {
+      if (!process.env.SMTP_USER) return error(500, 'SMTP_USER no configurada en entorno');
+      if (!process.env.SMTP_PASS) return error(500, 'SMTP_PASS no configurada en entorno');
       const { to, subject, text, html } = await req.json();
       if (!to || !subject) return error(400, 'Faltan campos requeridos (to, subject)');
       const transporter = getTransporter();
