@@ -207,8 +207,9 @@ async function renderTable() {
       '<td>' + statusLabel + '</td>' +
       '<td>' + agentLabel + '</td>' +
       '<td class="actions">' +
-      (canEdit ? '<button class="btn-sm btn-edit" onclick="editProp(' + p.id + ')">âœï¸ ' + t('edit') + '</button>' : '') +
-      (canEdit ? '<button class="btn-sm btn-delete" onclick="deleteProp(' + p.id + ')">ðŸ—‘ï¸ ' + t('delete') + '</button>' : '') +
+      (canEdit ? '<button class="btn-sm btn-edit" onclick="editProp(' + p.id + ')">\u270F\uFE0F ' + t('edit') + '</button>' : '') +
+      (canEdit ? '<button class="btn-sm btn-delete" onclick="deleteProp(' + p.id + ')">\uD83D\uDDD1\uFE0F ' + t('delete') + '</button>' : '') +
+      (p.status === 'published' ? '<button class="btn-sm btn-post" onclick="preparePost(' + p.id + ')" title="Preparar post para redes">\uD83D\uDCE4 Post</button>' : '') +
       '</td></tr>';
   }).join('');
   applyTranslation();
@@ -353,6 +354,100 @@ function showToast(msg, isError) {
   el.textContent = msg;
   el.className = 'toast show' + (isError ? ' error' : '');
   setTimeout(() => { el.className = 'toast'; }, 3000);
+}
+
+async function preparePost(id) {
+  const props = await getProperties();
+  const p = props.find(x => x.id === id);
+  if (!p) return showToast('Propiedad no encontrada', true);
+  const title = p['title_' + currentLang] || p['title_es'];
+  const price = formatPrice(p.price);
+  const typeLabel = getTypeLabel(p.type, currentLang);
+
+  const captionText = '\uD83C\uDFEA NUEVA PROPIEDAD\n' +
+    '\uD83D\uDCCD ' + p.town + '\n' +
+    '\uD83D\uDCB0 ' + price + ' (' + typeLabel + ')\n' +
+    '\uD83D\uDCDD ' + title + '\n' +
+    '\n' +
+    '\u2B07\uFE0F \u00BFTe interesa? Escr\u00EDbenos:\n' +
+    '\uD83D\uDCDE +34 645 412 519\n' +
+    '\u2709\uFE0F info@centraldetraspasos.com\n' +
+    '\uD83C\uDF10 centraldetraspasos.com\n' +
+    '\n' +
+    '#CENTRALDETRASPASOS #TraspasosM\u00E1laga #CostaDelSol #LocalesComerciales #' + p.town.replace(/ /g,'');
+
+  const canvas = document.createElement('canvas');
+  canvas.width = 1080;
+  canvas.height = 1350;
+  const ctx = canvas.getContext('2d');
+
+  const bgImg = p.images && p.images.length ? p.images.find(i=>i.featured) || p.images[0] : null;
+  if (bgImg) {
+    const img = new Image();
+    await new Promise((resolve, reject) => {
+      img.onload = resolve;
+      img.onerror = resolve;
+      img.src = bgImg.data;
+    });
+    const scale = Math.max(canvas.width / img.width, canvas.height / img.height);
+    const x = (canvas.width - img.width * scale) / 2;
+    const y = (canvas.height - img.height * scale) / 2;
+    ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
+    ctx.fillStyle = 'rgba(0,0,0,0.45)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  } else {
+    const grad = ctx.createLinearGradient(0,0,0,canvas.height);
+    grad.addColorStop(0,'#1A7A6A');
+    grad.addColorStop(1,'#0F2B3D');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.font = 'bold 120px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillStyle = 'rgba(255,255,255,0.08)';
+    ctx.fillText('\uD83C\uDFEA', canvas.width/2, canvas.height/2+40);
+  }
+
+  ctx.fillStyle = 'rgba(15,43,61,0.85)';
+  const overlayY = canvas.height - 320;
+  ctx.fillRect(0, overlayY, canvas.width, 320);
+  ctx.fillStyle = 'rgba(212,175,55,0.15)';
+  ctx.fillRect(0, overlayY, canvas.width, 4);
+
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#D4AF37';
+  ctx.font = 'bold 28px sans-serif';
+  ctx.fillText('CENTRAL DE TRASPASOS', 50, overlayY + 50);
+
+  ctx.fillStyle = '#ffffff';
+  ctx.font = 'bold 48px sans-serif';
+  const maxW = canvas.width - 100;
+  let fontSize = 48;
+  ctx.font = 'bold ' + fontSize + 'px sans-serif';
+  while (ctx.measureText(title).width > maxW && fontSize > 24) {
+    fontSize -= 2;
+    ctx.font = 'bold ' + fontSize + 'px sans-serif';
+  }
+  ctx.fillText(title, 50, overlayY + 120);
+
+  ctx.fillStyle = '#D4AF37';
+  ctx.font = 'bold 42px sans-serif';
+  ctx.fillText(price, 50, overlayY + 195);
+
+  ctx.fillStyle = 'rgba(255,255,255,0.7)';
+  ctx.font = '28px sans-serif';
+  ctx.fillText('\uD83D\uDCCD ' + p.town + ' \u00B7 ' + typeLabel, 50, overlayY + 260);
+
+  const link = document.createElement('a');
+  link.download = 'post-' + p.id + '.png';
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+
+  try {
+    await navigator.clipboard.writeText(captionText);
+    showToast('\u2705 Post descargado y texto copiado al portapapeles');
+  } catch {
+    showToast('\u2705 Post descargado');
+  }
 }
 
 document.addEventListener('DOMContentLoaded', async () => {

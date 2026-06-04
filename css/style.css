@@ -478,6 +478,8 @@ ul { list-style: none; }
 .btn-edit:hover { background: var(--primary-light); }
 .btn-delete { background: #dc2626; color: white; }
 .btn-delete:hover { background: #b91c1c; }
+.btn-post { background: var(--secondary); color: white; }
+.btn-post:hover { background: #1a8a76; }
 .btn-view { background: var(--secondary); color: white; }
 .btn-view:hover { background: #146a5a; }
 
@@ -742,6 +744,26 @@ ul { list-style: none; }
   #cta-capture .btn-lg { padding: 12px 32px; font-size: 0.9rem; }
   .toast { right: 16px; left: 16px; bottom: 16px; text-align: center; }
 }
+
+/* Cookie banner */
+#cookieBanner {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+  background: var(--primary); color: white; padding: 16px 24px;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+  animation: slideUp 0.3s ease;
+}
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+#cookieBanner .cookie-content {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+}
+#cookieBanner p { margin: 0; font-size: 0.88rem; line-height: 1.5; flex: 1; min-width: 260px; }
+#cookieBanner button {
+  background: var(--gold); color: var(--primary); border: none;
+  padding: 10px 28px; border-radius: 8px; font-weight: 700; font-size: 0.9rem;
+  cursor: pointer; white-space: nowrap; transition: opacity 0.2s;
+}
+#cookieBanner button:hover { opacity: 0.85; }
 
 @media (max-width: 480px) {
   .hero h1 { font-size: 1.5rem; }
