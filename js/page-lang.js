@@ -3,5 +3,11 @@ function applyPageLang(lang) {
   document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
 }
 
-document.addEventListener('DOMContentLoaded', () => applyPageLang(currentLang || 'es'));
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.location.pathname.startsWith('/en/')) {
+    setLang('en');
+  } else {
+    applyPageLang(currentLang || 'es');
+  }
+});
 document.addEventListener('langchange', () => applyPageLang(currentLang));
