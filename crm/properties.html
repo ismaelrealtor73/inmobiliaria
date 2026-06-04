@@ -408,8 +408,8 @@ async function preparePost(id) {
   }
 
   ctx.fillStyle = 'rgba(15,43,61,0.85)';
-  const overlayY = canvas.height - 320;
-  ctx.fillRect(0, overlayY, canvas.width, 320);
+  const overlayY = canvas.height - 400;
+  ctx.fillRect(0, overlayY, canvas.width, 400);
   ctx.fillStyle = 'rgba(212,175,55,0.15)';
   ctx.fillRect(0, overlayY, canvas.width, 4);
 
@@ -436,6 +436,14 @@ async function preparePost(id) {
   ctx.fillStyle = 'rgba(255,255,255,0.7)';
   ctx.font = '28px sans-serif';
   ctx.fillText('\uD83D\uDCCD ' + p.town + ' \u00B7 ' + typeLabel, 50, overlayY + 260);
+
+  ctx.fillStyle = '#D4AF37';
+  ctx.font = 'bold 24px sans-serif';
+  ctx.fillText('\uD83D\uDCDE Cont\u00E1ctanos: +34 645 412 519', 50, overlayY + 325);
+
+  ctx.fillStyle = 'rgba(255,255,255,0.5)';
+  ctx.font = '22px sans-serif';
+  ctx.fillText('\u2709\uFE0F info@centraldetraspasos.com  |  \uD83C\uDF10 centraldetraspasos.com', 50, overlayY + 365);
 
   const link = document.createElement('a');
   link.download = 'post-' + p.id + '.png';
