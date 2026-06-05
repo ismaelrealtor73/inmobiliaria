@@ -360,6 +360,18 @@ function readFileAsDataURL(file) {
   });
 }
 
+/* ========== URL HELPERS ========== */
+function slugify(text) {
+  return text.toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function getPropertyUrl(p) {
+  return '/propiedad/' + slugify(p.title_es || p.title_en) + '-' + p.id;
+}
+
 /* ========== FORMATTERS ========== */
 function getTypeLabel(type, lang) {
   const map = {
