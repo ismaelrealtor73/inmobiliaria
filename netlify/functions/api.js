@@ -76,24 +76,6 @@ export default async (req, context) => {
   const store = getStore('crm');
 
   try {
-    if (path === 'debug-env') {
-      const mask = (v) => v ? v.substring(0,4) + '****' : '(empty)';
-      const smtpUser = process.env.SMTP_USER || '(not set)';
-      const smtpPass = process.env.SMTP_PASS ? mask(process.env.SMTP_PASS) : '(not set)';
-      const nodeEnv = process.env.NODE_ENV || '(not set)';
-      const hasNetlify = !!process.env.NETLIFY;
-      const ctx = process.env.CONTEXT || '(not set)';
-      return json({
-        SMTP_USER: smtpUser,
-        SMTP_PASS: smtpPass,
-        SITE_NAME: process.env.SITE_NAME || '(not set)',
-        NODE_ENV: nodeEnv,
-        NETLIFY: hasNetlify,
-        CONTEXT: ctx,
-        envKeys: Object.keys(process.env).filter(k => !k.toLowerCase().includes('pass')).sort()
-      });
-    }
-
     if (path === 'login' && method === 'POST') {
       const { username, password } = await req.json();
       const data = await getStoreData(store);
