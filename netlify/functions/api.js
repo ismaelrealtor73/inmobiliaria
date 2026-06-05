@@ -86,6 +86,7 @@ export default async (req, context) => {
       return json({
         SMTP_USER: smtpUser,
         SMTP_PASS: smtpPass,
+        SITE_NAME: process.env.SITE_NAME || '(not set)',
         NODE_ENV: nodeEnv,
         NETLIFY: hasNetlify,
         CONTEXT: ctx,
