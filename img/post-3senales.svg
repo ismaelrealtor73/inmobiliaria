@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f2b3d"/>
+      <stop offset="100%" style="stop-color:#1a4a6a"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.10"/>
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.04"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1080" height="8" fill="#e8a838"/>
+  <text x="540" y="80" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="bold" fill="#e8a838" letter-spacing="3">CENTRAL DE TRASPASOS</text>
+  <text x="540" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#8ab4c8" letter-spacing="2">INMOBILIARIA · COSTA DEL SOL</text>
+  <text x="540" y="280" text-anchor="middle" font-family="Georgia, serif" font-size="52" font-weight="bold" fill="#ffffff">3 SEÑALES DE QUE</text>
+  <text x="540" y="340" text-anchor="middle" font-family="Georgia, serif" font-size="44" font-weight="bold" fill="#e8a838">TU LOCAL NECESITA</text>
+  <text x="540" y="400" text-anchor="middle" font-family="Georgia, serif" font-size="44" font-weight="bold" fill="#e8a838">UN TRASPASO</text>
+  <line x1="290" y1="440" x2="790" y2="440" stroke="#e8a838" stroke-width="2" opacity="0.5"/>
+  <text x="540" y="520" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#8ab4c8">Reconoce las señales antes de que sea tarde</text>
+  <rect x="190" y="1060" width="700" height="65" rx="32" fill="#e8a838"/>
+  <text x="540" y="1100" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#0f2b3d">TASACIÓN GRATUITA → DM</text>
+  <text x="540" y="1170" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#8ab4c8">📞 +34 645 412 519 · info@centraldetraspasos.com</text>
+  <text x="540" y="1310" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#8ab4c8" opacity="0.6">centraldetraspasos.com</text>
+</svg>
