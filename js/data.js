@@ -58,7 +58,12 @@ const DEFAULT_PROPERTIES = [
     town: 'Antequera', type: 'sale', price: 380000,
     desc_es: 'Nave de 500m² en polígono industrial. Muelles de carga, oficinas y patio.',
     desc_en: '500m² warehouse in industrial estate. Loading docks, offices and yard.',
-    images: [], featured: false, status: 'published', createdBy: 'admin', createdAt: '2026-04-10' }
+    images: [], featured: false, status: 'published', createdBy: 'admin', createdAt: '2026-04-10' },
+  { id: 7, title_es: 'Obrador con Take Away en Avda. Europa', title_en: 'Bakery Workshop with Take Away on Av. Europa',
+    town: 'Málaga', type: 'transfer', price: 20000,
+    desc_es: 'Oportunidad excepcional para emprendedores del sector alimentación. Obrador de 230m² totalmente equipado en tres plantas con zona de venta, producción y almacenamiento. Alta densidad residencial y comercial. Alquiler 1.500€.',
+    desc_en: 'Exceptional opportunity for food sector entrepreneurs. 230m² fully equipped workshop on three floors with sales area, production and storage. High residential and commercial density. Rent €1,500.',
+    images: [], featured: true, status: 'published', createdBy: 'admin', createdAt: '2026-06-08' }
 ];
 
 const DEFAULT_SITE_CONTENT = {
