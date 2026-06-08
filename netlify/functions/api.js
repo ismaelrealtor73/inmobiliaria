@@ -71,7 +71,9 @@ async function initStore(store, key, defaults) {
 
 export default async (req, context) => {
   const url = new URL(req.url);
-  const path = url.pathname.replace(/^\/api\//, '');
+  let path = url.pathname;
+  path = path.replace(/^\/\.netlify\/functions\/api\//, '');
+  path = path.replace(/^\/api\//, '');
   const method = req.method;
 
   const store = getStore('crm');
