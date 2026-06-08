@@ -482,6 +482,8 @@ ul { list-style: none; }
 .btn-post:hover { background: #1a8a76; }
 .btn-reel { background: #E4405F; color: white; }
 .btn-reel:hover { background: #c1354d; }
+.btn-card { background: #6366f1; color: white; }
+.btn-card:hover { background: #4f46e5; }
 .btn-view { background: var(--secondary); color: white; }
 .btn-view:hover { background: #146a5a; }
 
