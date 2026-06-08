@@ -1,18 +1,3 @@
-import { getStore } from '@netlify/blobs';
-import nodemailer from 'nodemailer';
-
-const SMTP_HOST = 'smtp.gmail.com';
-const SMTP_PORT = 587;
-const SMTP_USER = process.env.SMTP_USER || 'ismaelcostahappyhome@gmail.com';
-const SMTP_PASS = process.env.SMTP_PASS || 'ekefzuzhkfumhxcs';
-
-function getTransporter() {
-  return nodemailer.createTransport({
-    host: SMTP_HOST, port: SMTP_PORT, secure: false,
-    auth: { user: SMTP_USER, pass: SMTP_PASS }
-  });
-}
-
 const USERS = [
   { username: 'admin', password: 'admin123', role: 'admin', name: 'Admin', status: 'active' },
   { username: 'agente1', password: 'agente123', role: 'agent', name: 'María García', status: 'active' },
@@ -45,11 +30,11 @@ const DEFAULT_SITE_CONTENT = {
 };
 
 function error(status, message) {
-  return new Response(JSON.stringify({ error: message }), { status, headers: { 'Content-Type': 'application/json' } });
+  return { statusCode: status, body: JSON.stringify({ error: message }), headers: { 'Content-Type': 'application/json' } };
 }
 
 function json(data) {
-  return new Response(JSON.stringify(data), { status: 200, headers: { 'Content-Type': 'application/json' } });
+  return { statusCode: 200, body: JSON.stringify(data), headers: { 'Content-Type': 'application/json' } };
 }
 
 async function getStoreData(store) {
@@ -59,9 +44,7 @@ async function getStoreData(store) {
 
 async function initStore(store, key, defaults) {
   let data = await getStoreData(store);
-  if (!data) {
-    data = {};
-  }
+  if (!data) data = {};
   if (!data[key] || (Array.isArray(data[key]) && data[key].length === 0)) {
     data[key] = JSON.parse(JSON.stringify(defaults));
     await store.setJSON('data', data);
@@ -69,16 +52,16 @@ async function initStore(store, key, defaults) {
   return data;
 }
 
-export default async (req, context) => {
-  const url = new URL(req.url);
-  const path = url.pathname.replace(/^\/api\//, '');
-  const method = req.method;
+exports.handler = async (event, context) => {
+  const path = event.path.replace(/^\/api\//, '');
+  const method = event.httpMethod;
 
+  const { getStore } = await import('@netlify/blobs');
   const store = getStore('crm');
 
   try {
     if (path === 'login' && method === 'POST') {
-      const { username, password } = await req.json();
+      const { username, password } = JSON.parse(event.body);
       const data = await getStoreData(store);
       const users = (data && data.users) || [];
       const user = users.find(u => u.username === username && u.password === password);
@@ -94,7 +77,7 @@ export default async (req, context) => {
 
     if (path === 'users' && method === 'POST') {
       const data = await initStore(store, 'users', USERS);
-      const newUser = await req.json();
+      const newUser = JSON.parse(event.body);
       if (!newUser.username || !newUser.password) return error(400, 'Usuario y contraseña requeridos');
       if (data.users.find(u => u.username === newUser.username)) return error(409, 'El usuario ya existe');
       newUser.role = newUser.role || 'agent';
@@ -110,7 +93,7 @@ export default async (req, context) => {
       const data = await initStore(store, 'users', USERS);
       const idx = data.users.findIndex(u => u.username === username);
       if (idx === -1) return error(404, 'Usuario no encontrado');
-      const updates = await req.json();
+      const updates = JSON.parse(event.body);
       data.users[idx] = { ...data.users[idx], ...updates };
       await store.setJSON('data', data);
       return json(data.users[idx]);
@@ -149,7 +132,7 @@ export default async (req, context) => {
 
     if (path === 'properties' && method === 'POST') {
       const data = await initStore(store, 'properties', DEFAULT_PROPERTIES);
-      const prop = await req.json();
+      const prop = JSON.parse(event.body);
       prop.id = Date.now();
       prop.createdAt = new Date().toISOString().split('T')[0];
       data.properties.push(prop);
@@ -162,7 +145,7 @@ export default async (req, context) => {
       const data = await initStore(store, 'properties', DEFAULT_PROPERTIES);
       const idx = data.properties.findIndex(p => p.id === id);
       if (idx === -1) return error(404, 'Propiedad no encontrada');
-      const updates = await req.json();
+      const updates = JSON.parse(event.body);
       data.properties[idx] = { ...data.properties[idx], ...updates };
       await store.setJSON('data', data);
       return json(data.properties[idx]);
@@ -183,7 +166,7 @@ export default async (req, context) => {
 
     if (path === 'leads' && method === 'POST') {
       const data = await initStore(store, 'leads', []);
-      const lead = await req.json();
+      const lead = JSON.parse(event.body);
       lead.id = Date.now();
       lead.status = 'new';
       lead.createdAt = new Date().toISOString().split('T')[0];
@@ -206,7 +189,7 @@ export default async (req, context) => {
       const data = await initStore(store, 'leads', []);
       const idx = data.leads.findIndex(l => l.id === id);
       if (idx === -1) return error(404, 'Lead no encontrado');
-      const updates = await req.json();
+      const updates = JSON.parse(event.body);
       data.leads[idx] = { ...data.leads[idx], ...updates };
       await store.setJSON('data', data);
       return json(data.leads[idx]);
@@ -221,7 +204,7 @@ export default async (req, context) => {
 
     if (path === 'site-content' && method === 'PUT') {
       const data = await initStore(store, 'siteContent', DEFAULT_SITE_CONTENT);
-      const updates = await req.json();
+      const updates = JSON.parse(event.body);
       data.siteContent = { ...data.siteContent, ...updates };
       await store.setJSON('data', data);
       return json(data.siteContent);
@@ -239,7 +222,7 @@ export default async (req, context) => {
       const key = path.split('/')[1];
       const data = await initStore(store, 'siteContent', DEFAULT_SITE_CONTENT);
       if (!data.siteContent.site_images) data.siteContent.site_images = {};
-      const { imageData } = await req.json();
+      const { imageData } = JSON.parse(event.body);
       data.siteContent.site_images[key] = imageData;
       await store.setJSON('data', data);
       return json({ success: true });
@@ -256,12 +239,18 @@ export default async (req, context) => {
     }
 
     if (path === 'send-email' && method === 'POST') {
+      const SMTP_USER = process.env.SMTP_USER || 'ismaelcostahappyhome@gmail.com';
+      const SMTP_PASS = process.env.SMTP_PASS || 'ekefzuzhkfumhxcs';
       if (!SMTP_USER || !SMTP_PASS) return error(500, 'Credenciales SMTP no configuradas');
-      const { to, subject, text, html } = await req.json();
+      const { to, subject, text, html } = JSON.parse(event.body);
       if (!to || !subject) return error(400, 'Faltan campos requeridos (to, subject)');
-      const transporter = getTransporter();
+      const { createTransport } = await import('nodemailer');
+      const transporter = createTransport({
+        host: 'smtp.gmail.com', port: 587, secure: false,
+        auth: { user: SMTP_USER, pass: SMTP_PASS }
+      });
       await transporter.sendMail({
-        from: `"CENTRAL DE TRASPASOS" <${SMTP_USER}>`,
+        from: '"CENTRAL DE TRASPASOS" <' + SMTP_USER + '>',
         to, subject, text, html: html || text
       });
       return json({ success: true });

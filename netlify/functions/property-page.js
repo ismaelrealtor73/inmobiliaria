@@ -1,5 +1,3 @@
-import { getStore } from '@netlify/blobs';
-
 const DEFAULT_PROPERTIES = [
   { id: 1, title_es: 'Local comercial en centro de Málaga', title_en: 'Commercial premises in Málaga center', town: 'Málaga', type: 'sale', price: 250000, desc_es: 'Amplio local de 120m² en pleno centro de Málaga. Excelente ubicación, alto tránsito peatonal.', desc_en: 'Spacious 120m² premises in the heart of Málaga. Excellent location, high foot traffic.', images: [], featured: true, status: 'published', createdBy: 'admin', createdAt: '2026-05-15' },
   { id: 2, title_es: 'Restaurante en Marbella', title_en: 'Restaurant in Marbella', town: 'Marbella', type: 'transfer', price: 85000, desc_es: 'Restaurante en funcionamiento con terraza. Capacidad para 60 comensales. Traspaso por jubilación.', desc_en: 'Operating restaurant with terrace. Capacity for 60 diners. Transfer due to retirement.', images: [], featured: true, status: 'published', createdBy: 'agente1', createdAt: '2026-05-10' },
@@ -9,14 +7,6 @@ const DEFAULT_PROPERTIES = [
   { id: 6, title_es: 'Nave industrial en Antequera', title_en: 'Industrial warehouse in Antequera', town: 'Antequera', type: 'sale', price: 380000, desc_es: 'Nave de 500m² en polígono industrial. Muelles de carga, oficinas y patio.', desc_en: '500m² warehouse in industrial estate. Loading docks, offices and yard.', images: [], featured: false, status: 'published', createdBy: 'admin', createdAt: '2026-04-10' },
   { id: 7, title_es: 'Obrador con Take Away en Avda. Europa', title_en: 'Bakery Workshop with Take Away on Av. Europa', town: 'Málaga', type: 'transfer', price: 20000, desc_es: 'Oportunidad excepcional para emprendedores del sector alimentación. Obrador de 230m² totalmente equipado en tres plantas con zona de venta, producción y almacenamiento. Alta densidad residencial y comercial. Alquiler 1.500€.', desc_en: 'Exceptional opportunity for food sector entrepreneurs. 230m² fully equipped workshop on three floors with sales area, production and storage. High residential and commercial density. Rent €1,500.', images: [], featured: true, status: 'published', createdBy: 'admin', createdAt: '2026-06-08' }
 ];
-
-async function initStoreData(store) {
-  const raw = await store.get('data', { type: 'text' });
-  if (raw) return JSON.parse(raw);
-  const data = { properties: JSON.parse(JSON.stringify(DEFAULT_PROPERTIES)), users: [], leads: [], siteContent: {} };
-  await store.setJSON('data', data);
-  return data;
-}
 
 function slugify(text) {
   return text.toLowerCase()
@@ -76,23 +66,27 @@ function getSimilarHtml(props, currentId, town, type) {
   }).join('');
 }
 
-export default async (req) => {
-  const url = new URL(req.url);
-  const pathParts = url.pathname.split('/').filter(Boolean);
+exports.handler = async (event) => {
+  const pathParts = event.path.split('/').filter(Boolean);
   const slugWithId = pathParts[pathParts.length - 1];
   const id = parseInt(slugWithId.split('-').pop());
 
   if (!id) {
-    return new Response('Propiedad no encontrada', { status: 404, headers: { 'Content-Type': 'text/html' } });
+    return { statusCode: 404, body: 'Propiedad no encontrada', headers: { 'Content-Type': 'text/html' } };
   }
 
+  const { getStore } = await import('@netlify/blobs');
   const store = getStore('crm');
-  const data = await initStoreData(store);
-  const props = (data && data.properties) || [];
+  const raw = await store.get('data', { type: 'text' });
+  let props = raw ? (JSON.parse(raw).properties || []) : [];
+  if (!props.length) {
+    props = JSON.parse(JSON.stringify(DEFAULT_PROPERTIES));
+    await store.setJSON('data', { properties: props, users: [], leads: [], siteContent: {} });
+  }
 
   const p = props.find(x => x.id === id);
   if (!p || p.status !== 'published') {
-    return new Response('Propiedad no encontrada', { status: 404, headers: { 'Content-Type': 'text/html' } });
+    return { statusCode: 404, body: 'Propiedad no encontrada', headers: { 'Content-Type': 'text/html' } };
   }
 
   const title = p.title_es || p.title_en;
@@ -353,8 +347,5 @@ document.addEventListener('DOMContentLoaded', function() {
 </body>
 </html>`;
 
-  return new Response(html, {
-    status: 200,
-    headers: { 'Content-Type': 'text/html; charset=utf-8' }
-  });
+  return { statusCode: 200, body: html, headers: { 'Content-Type': 'text/html; charset=utf-8' } };
 };
