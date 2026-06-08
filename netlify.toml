@@ -66,3 +66,18 @@
   to = "/locales-antequera.html"
   status = 200
 
+[[redirects]]
+  from = "/locales-velez-malaga"
+  to = "/locales-velez-malaga.html"
+  status = 200
+
+[[redirects]]
+  from = "/locales-nerja"
+  to = "/locales-nerja.html"
+  status = 200
+
+[[redirects]]
+  from = "/locales-rincon-de-la-victoria"
+  to = "/locales-rincon-de-la-victoria.html"
+  status = 200
+

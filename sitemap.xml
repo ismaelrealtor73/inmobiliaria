@@ -138,6 +138,21 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://centraldetraspasos.com/locales-velez-malaga</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/locales-nerja</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/locales-rincon-de-la-victoria</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://centraldetraspasos.com/aviso-legal</loc>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
