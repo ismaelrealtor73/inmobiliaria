@@ -1,5 +1,23 @@
 import { getStore } from '@netlify/blobs';
 
+const DEFAULT_PROPERTIES = [
+  { id: 1, title_es: 'Local comercial en centro de Málaga', title_en: 'Commercial premises in Málaga center', town: 'Málaga', type: 'sale', price: 250000, desc_es: 'Amplio local de 120m² en pleno centro de Málaga. Excelente ubicación, alto tránsito peatonal.', desc_en: 'Spacious 120m² premises in the heart of Málaga. Excellent location, high foot traffic.', images: [], featured: true, status: 'published', createdBy: 'admin', createdAt: '2026-05-15' },
+  { id: 2, title_es: 'Restaurante en Marbella', title_en: 'Restaurant in Marbella', town: 'Marbella', type: 'transfer', price: 85000, desc_es: 'Restaurante en funcionamiento con terraza. Capacidad para 60 comensales. Traspaso por jubilación.', desc_en: 'Operating restaurant with terrace. Capacity for 60 diners. Transfer due to retirement.', images: [], featured: true, status: 'published', createdBy: 'agente1', createdAt: '2026-05-10' },
+  { id: 3, title_es: 'Oficina en Fuengirola', title_en: 'Office in Fuengirola', town: 'Fuengirola', type: 'rent', price: 1200, desc_es: 'Oficina de 80m² totalmente amueblada. Ideal para start-ups y profesionales. 3 despachos.', desc_en: 'Fully furnished 80m² office. Ideal for start-ups and professionals. 3 offices.', images: [], featured: false, status: 'published', createdBy: 'admin', createdAt: '2026-05-05' },
+  { id: 4, title_es: 'Local en Torremolinos', title_en: 'Premises in Torremolinos', town: 'Torremolinos', type: 'rent', price: 950, desc_es: 'Local de 60m² en zona turística. Perfecto para tienda de souvenirs o restauración.', desc_en: '60m² premises in tourist area. Perfect for souvenir shop or restaurant.', images: [], featured: true, status: 'published', createdBy: 'agente2', createdAt: '2026-04-20' },
+  { id: 5, title_es: 'Pub en Benalmádena Costa', title_en: 'Pub in Benalmádena Costa', town: 'Benalmádena', type: 'transfer', price: 45000, desc_es: 'Pub con licencia y clientela fija. Terreno de 100m². Oportunidad única.', desc_en: 'Pub with license and regular clientele. 100m² venue. Unique opportunity.', images: [], featured: false, status: 'draft', createdBy: 'agente1', createdAt: '2026-04-15' },
+  { id: 6, title_es: 'Nave industrial en Antequera', title_en: 'Industrial warehouse in Antequera', town: 'Antequera', type: 'sale', price: 380000, desc_es: 'Nave de 500m² en polígono industrial. Muelles de carga, oficinas y patio.', desc_en: '500m² warehouse in industrial estate. Loading docks, offices and yard.', images: [], featured: false, status: 'published', createdBy: 'admin', createdAt: '2026-04-10' },
+  { id: 7, title_es: 'Obrador con Take Away en Avda. Europa', title_en: 'Bakery Workshop with Take Away on Av. Europa', town: 'Málaga', type: 'transfer', price: 20000, desc_es: 'Oportunidad excepcional para emprendedores del sector alimentación. Obrador de 230m² totalmente equipado en tres plantas con zona de venta, producción y almacenamiento. Alta densidad residencial y comercial. Alquiler 1.500€.', desc_en: 'Exceptional opportunity for food sector entrepreneurs. 230m² fully equipped workshop on three floors with sales area, production and storage. High residential and commercial density. Rent €1,500.', images: [], featured: true, status: 'published', createdBy: 'admin', createdAt: '2026-06-08' }
+];
+
+async function initStoreData(store) {
+  const raw = await store.get('data', { type: 'text' });
+  if (raw) return JSON.parse(raw);
+  const data = { properties: JSON.parse(JSON.stringify(DEFAULT_PROPERTIES)), users: [], leads: [], siteContent: {} };
+  await store.setJSON('data', data);
+  return data;
+}
+
 function slugify(text) {
   return text.toLowerCase()
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
@@ -69,8 +87,7 @@ export default async (req) => {
   }
 
   const store = getStore('crm');
-  const raw = await store.get('data', { type: 'text' });
-  const data = raw ? JSON.parse(raw) : null;
+  const data = await initStoreData(store);
   const props = (data && data.properties) || [];
 
   const p = props.find(x => x.id === id);
