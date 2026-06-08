@@ -14,9 +14,9 @@ function getTransporter() {
 }
 
 const USERS = [
-  { username: 'admin', password: 'admin123', role: 'admin', name: 'Admin' },
-  { username: 'agente1', password: 'agente123', role: 'agent', name: 'María García' },
-  { username: 'agente2', password: 'agente123', role: 'agent', name: 'Carlos López' }
+  { username: 'admin', password: 'admin123', role: 'admin', name: 'Admin', status: 'active' },
+  { username: 'agente1', password: 'agente123', role: 'agent', name: 'María García', status: 'active' },
+  { username: 'agente2', password: 'agente123', role: 'agent', name: 'Carlos López', status: 'active' }
 ];
 
 const DEFAULT_PROPERTIES = [
@@ -80,10 +80,10 @@ export default async (req, context) => {
       const { username, password } = await req.json();
       const data = await getStoreData(store);
       const users = (data && data.users) || [];
-      const allUsers = [...users, ...USERS];
-      const user = allUsers.find(u => u.username === username && u.password === password);
+      const user = users.find(u => u.username === username && u.password === password);
       if (!user) return error(401, 'Credenciales inválidas');
-      return json({ username: user.username, role: user.role, name: user.name });
+      if (user.status === 'pending') return error(403, 'Usuario pendiente de aprobación por el administrador');
+      return json({ username: user.username, role: user.role, name: user.name, status: user.status });
     }
 
     if (path === 'users' && method === 'GET') {
@@ -98,6 +98,7 @@ export default async (req, context) => {
       if (data.users.find(u => u.username === newUser.username)) return error(409, 'El usuario ya existe');
       newUser.role = newUser.role || 'agent';
       newUser.name = newUser.name || newUser.username;
+      newUser.status = 'pending';
       data.users.push(newUser);
       await store.setJSON('data', data);
       return json(newUser);
@@ -115,6 +116,24 @@ export default async (req, context) => {
     }
 
     if (path.startsWith('users/') && method === 'DELETE') {
+      const username = path.split('/')[1];
+      const data = await initStore(store, 'users', USERS);
+      data.users = data.users.filter(u => u.username !== username);
+      await store.setJSON('data', data);
+      return json({ success: true });
+    }
+
+    if (path.startsWith('users/') && path.endsWith('/approve') && method === 'PUT') {
+      const username = path.split('/')[1];
+      const data = await initStore(store, 'users', USERS);
+      const idx = data.users.findIndex(u => u.username === username);
+      if (idx === -1) return error(404, 'Usuario no encontrado');
+      data.users[idx].status = 'active';
+      await store.setJSON('data', data);
+      return json(data.users[idx]);
+    }
+
+    if (path.startsWith('users/') && path.endsWith('/reject') && method === 'PUT') {
       const username = path.split('/')[1];
       const data = await initStore(store, 'users', USERS);
       data.users = data.users.filter(u => u.username !== username);

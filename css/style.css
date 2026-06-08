@@ -617,6 +617,13 @@ ul { list-style: none; }
 .role-badge.admin { background: var(--primary); color: white; }
 .role-badge.agent { background: var(--gold); color: var(--primary); }
 
+/* USER STATUS */
+.status-active { font-size: 0.72rem; padding: 2px 10px; border-radius: 20px; background: #e8f5e9; color: #2e7d32; font-weight: 600; }
+.status-pending { font-size: 0.72rem; padding: 2px 10px; border-radius: 20px; background: #fff3e0; color: #e65100; font-weight: 600; }
+.row-pending { background: #fffbf0; }
+.btn-success { background: #2e7d32; color: white; border: none; padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; }
+.btn-success:hover { background: #1b5e20; }
+
 /* LEAD DETAIL */
 .lead-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
 .lead-detail-field label { font-weight: 600; font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 4px; }

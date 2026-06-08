@@ -21,9 +21,9 @@
 ].sort();
 
 const USERS = [
-  { username: 'admin', password: 'admin123', role: 'admin', name: 'Admin' },
-  { username: 'agente1', password: 'agente123', role: 'agent', name: 'María García' },
-  { username: 'agente2', password: 'agente123', role: 'agent', name: 'Carlos López' }
+  { username: 'admin', password: 'admin123', role: 'admin', name: 'Admin', status: 'active' },
+  { username: 'agente1', password: 'agente123', role: 'agent', name: 'María García', status: 'active' },
+  { username: 'agente2', password: 'agente123', role: 'agent', name: 'Carlos López', status: 'active' }
 ];
 
 const PROPERTY_TYPES = ['sale', 'rent', 'transfer'];
@@ -102,14 +102,13 @@ function getCurrentUser() {
 
 async function login(username, password) {
   if (useApi()) {
-    try {
-      const user = await apiFetch('login', { method: 'POST', body: JSON.stringify({ username, password }) });
-      localStorage.setItem('crm_user', JSON.stringify(user));
-      return true;
-    } catch { return false; }
+    const user = await apiFetch('login', { method: 'POST', body: JSON.stringify({ username, password }) });
+    localStorage.setItem('crm_user', JSON.stringify(user));
+    return true;
   }
   const user = USERS.find(u => u.username === username && u.password === password);
   if (user) {
+    if (user.status === 'pending') { throw new Error('Usuario pendiente de aprobación'); }
     localStorage.setItem('crm_user', JSON.stringify({ username: user.username, role: user.role, name: user.name }));
     return true;
   }
@@ -145,6 +144,7 @@ async function addUser(user) {
     const created = await apiFetch('users', { method: 'POST', body: JSON.stringify(user) });
     return created;
   }
+  if (!user.status) user.status = 'pending';
   USERS.push(user);
   return user;
 }
@@ -162,6 +162,24 @@ async function updateUser(username, updates) {
 async function deleteUser(username) {
   if (useApi()) {
     return await apiFetch('users/' + encodeURIComponent(username), { method: 'DELETE' });
+  }
+  const idx = USERS.findIndex(u => u.username === username);
+  if (idx !== -1) USERS.splice(idx, 1);
+  return { success: true };
+}
+
+async function approveUser(username) {
+  if (useApi()) {
+    return await apiFetch('users/' + encodeURIComponent(username) + '/approve', { method: 'PUT' });
+  }
+  const u = USERS.find(x => x.username === username);
+  if (u) u.status = 'active';
+  return u;
+}
+
+async function rejectUser(username) {
+  if (useApi()) {
+    return await apiFetch('users/' + encodeURIComponent(username) + '/reject', { method: 'PUT' });
   }
   const idx = USERS.findIndex(u => u.username === username);
   if (idx !== -1) USERS.splice(idx, 1);

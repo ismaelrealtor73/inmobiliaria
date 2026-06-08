@@ -51,6 +51,7 @@
           <th data-i18n="crm_form_username">Usuario</th>
           <th data-i18n="crm_form_name">Nombre</th>
           <th data-i18n="crm_form_role">Rol</th>
+          <th data-i18n="crm_users_status">Estado</th>
           <th data-i18n="crm_table_actions">Acciones</th>
         </tr></thead>
         <tbody id="usersTableBody"></tbody>
@@ -106,14 +107,25 @@ async function renderUsers() {
   const tbody = document.getElementById('usersTableBody');
   tbody.innerHTML = users.map(u => {
     const isSelf = u.username === user.username;
-    return '<tr>' +
+    const isPending = u.status === 'pending';
+    const statusLabel = isPending ? t('crm_users_pending') : t('crm_users_active');
+    const statusClass = isPending ? 'status-pending' : 'status-active';
+    let actions = '';
+    if (isPending && user.role === 'admin') {
+      actions += '<button class="btn btn-sm btn-success" onclick="approveUserAction(\'' + u.username + '\')" title="' + t('crm_users_approve') + '">✓</button> ';
+      actions += '<button class="btn btn-sm btn-danger" onclick="rejectUserAction(\'' + u.username + '\')" title="' + t('crm_users_reject') + '">✗</button> ';
+    } else {
+      actions += '<button class="btn btn-sm" onclick="editUser(\'' + u.username + '\')">' + t('crm_users_edit') + '</button> ';
+      if (!isSelf) {
+        actions += '<button class="btn btn-sm btn-danger" onclick="confirmDelete(\'' + u.username + '\')">' + t('crm_users_delete') + '</button>';
+      }
+    }
+    return '<tr class="' + (isPending ? 'row-pending' : '') + '">' +
       '<td><strong>' + u.username + '</strong></td>' +
       '<td>' + (u.name || u.username) + '</td>' +
       '<td><span class="role-badge ' + u.role + '">' + (u.role === 'admin' ? t('crm_role_admin') : t('crm_role_agent')) + '</span></td>' +
-      '<td>' +
-        '<button class="btn btn-sm" onclick="editUser(\'' + u.username + '\')" ' + (isSelf ? '' : '') + '>' + t('crm_users_edit') + '</button> ' +
-        '<button class="btn btn-sm btn-danger" onclick="confirmDelete(\'' + u.username + '\')" ' + (isSelf ? 'disabled style="opacity:0.5"' : '') + '>' + t('crm_users_delete') + '</button>' +
-      '</td></tr>';
+      '<td><span class="' + statusClass + '">' + statusLabel + '</span></td>' +
+      '<td>' + actions + '</td></tr>';
   }).join('');
   applyTranslation();
 }
@@ -164,6 +176,27 @@ async function confirmDelete(username) {
   if (!confirm(t('crm_users_confirm_delete'))) return;
   try {
     await deleteUser(username);
+    showToast(t('crm_users_deleted'));
+    await renderUsers();
+  } catch(e) {
+    showToast('Error: ' + e.message);
+  }
+}
+
+async function approveUserAction(username) {
+  try {
+    await approveUser(username);
+    showToast(t('crm_users_saved'));
+    await renderUsers();
+  } catch(e) {
+    showToast('Error: ' + e.message);
+  }
+}
+
+async function rejectUserAction(username) {
+  if (!confirm(t('crm_users_confirm_delete'))) return;
+  try {
+    await rejectUser(username);
     showToast(t('crm_users_deleted'));
     await renderUsers();
   } catch(e) {
