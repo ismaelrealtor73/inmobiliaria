@@ -66,6 +66,21 @@ function getSimilarHtml(props, currentId, town, type) {
   }).join('');
 }
 
+async function getProperties() {
+  try {
+    const { getStore } = await import('@netlify/blobs');
+    const store = getStore('crm');
+    const raw = await store.get('data', { type: 'text' });
+    if (raw) {
+      const data = JSON.parse(raw);
+      if (data.properties && data.properties.length) return data.properties;
+    }
+  } catch (e) {
+    console.error('Blobs error, using defaults:', e.message);
+  }
+  return JSON.parse(JSON.stringify(DEFAULT_PROPERTIES));
+}
+
 exports.handler = async (event) => {
   const pathParts = event.path.split('/').filter(Boolean);
   const slugWithId = pathParts[pathParts.length - 1];
@@ -75,16 +90,9 @@ exports.handler = async (event) => {
     return { statusCode: 404, body: 'Propiedad no encontrada', headers: { 'Content-Type': 'text/html' } };
   }
 
-  const { getStore } = await import('@netlify/blobs');
-  const store = getStore('crm');
-  const raw = await store.get('data', { type: 'text' });
-  let props = raw ? (JSON.parse(raw).properties || []) : [];
-  if (!props.length) {
-    props = JSON.parse(JSON.stringify(DEFAULT_PROPERTIES));
-    await store.setJSON('data', { properties: props, users: [], leads: [], siteContent: {} });
-  }
-
+  const props = await getProperties();
   const p = props.find(x => x.id === id);
+
   if (!p || p.status !== 'published') {
     return { statusCode: 404, body: 'Propiedad no encontrada', headers: { 'Content-Type': 'text/html' } };
   }

@@ -29,6 +29,22 @@ const DEFAULT_SITE_CONTENT = {
   site_images: {}
 };
 
+let blobsStore = null;
+let blobsAvailable = true;
+
+async function initBlobs() {
+  if (blobsStore) return blobsStore;
+  try {
+    const { getStore } = await import('@netlify/blobs');
+    blobsStore = getStore('crm');
+    return blobsStore;
+  } catch (e) {
+    console.error('Blobs not available:', e.message);
+    blobsAvailable = false;
+    return null;
+  }
+}
+
 function error(status, message) {
   return { statusCode: status, body: JSON.stringify({ error: message }), headers: { 'Content-Type': 'application/json' } };
 }
@@ -37,46 +53,68 @@ function json(data) {
   return { statusCode: 200, body: JSON.stringify(data), headers: { 'Content-Type': 'application/json' } };
 }
 
-async function getStoreData(store) {
-  const raw = await store.get('data', { type: 'text' });
-  return raw ? JSON.parse(raw) : null;
-}
-
-async function initStore(store, key, defaults) {
-  let data = await getStoreData(store);
-  if (!data) data = {};
-  if (!data[key] || (Array.isArray(data[key]) && data[key].length === 0)) {
-    data[key] = JSON.parse(JSON.stringify(defaults));
-    await store.setJSON('data', data);
+async function getBlobsData() {
+  const store = await initBlobs();
+  if (!store) return null;
+  try {
+    const raw = await store.get('data', { type: 'text' });
+    return raw ? JSON.parse(raw) : {};
+  } catch (e) {
+    console.error('Blobs read error:', e.message);
+    return null;
   }
-  return data;
 }
 
-exports.handler = async (event, context) => {
+async function saveBlobsData(data) {
+  const store = await initBlobs();
+  if (!store) return false;
+  try {
+    await store.setJSON('data', data);
+    return true;
+  } catch (e) {
+    console.error('Blobs write error:', e.message);
+    return false;
+  }
+}
+
+let inMemoryData = { users: JSON.parse(JSON.stringify(USERS)), properties: JSON.parse(JSON.stringify(DEFAULT_PROPERTIES)), leads: [], siteContent: JSON.parse(JSON.stringify(DEFAULT_SITE_CONTENT)) };
+
+async function getData() {
+  const blobData = await getBlobsData();
+  if (blobData) {
+    inMemoryData = { users: blobData.users || USERS, properties: blobData.properties || DEFAULT_PROPERTIES, leads: blobData.leads || [], siteContent: blobData.siteContent || DEFAULT_SITE_CONTENT };
+  }
+  return inMemoryData;
+}
+
+async function saveData(data) {
+  const saved = await saveBlobsData(data);
+  inMemoryData = data;
+  return saved;
+}
+
+exports.handler = async (event) => {
   const path = event.path.replace(/^\/api\//, '');
   const method = event.httpMethod;
-
-  const { getStore } = await import('@netlify/blobs');
-  const store = getStore('crm');
 
   try {
     if (path === 'login' && method === 'POST') {
       const { username, password } = JSON.parse(event.body);
-      const data = await getStoreData(store);
-      const users = (data && data.users) || [];
-      const user = users.find(u => u.username === username && u.password === password);
+      const data = await getData();
+      const user = (data.users || []).find(u => u.username === username && u.password === password);
       if (!user) return error(401, 'Credenciales inválidas');
       if (user.status === 'pending') return error(403, 'Usuario pendiente de aprobación por el administrador');
       return json({ username: user.username, role: user.role, name: user.name, status: user.status });
     }
 
     if (path === 'users' && method === 'GET') {
-      const data = await initStore(store, 'users', USERS);
-      return json(data.users);
+      const data = await getData();
+      return json(data.users || []);
     }
 
     if (path === 'users' && method === 'POST') {
-      const data = await initStore(store, 'users', USERS);
+      const data = await getData();
+      if (!data.users) data.users = JSON.parse(JSON.stringify(USERS));
       const newUser = JSON.parse(event.body);
       if (!newUser.username || !newUser.password) return error(400, 'Usuario y contraseña requeridos');
       if (data.users.find(u => u.username === newUser.username)) return error(409, 'El usuario ya existe');
@@ -84,135 +122,138 @@ exports.handler = async (event, context) => {
       newUser.name = newUser.name || newUser.username;
       newUser.status = 'pending';
       data.users.push(newUser);
-      await store.setJSON('data', data);
+      await saveData(data);
       return json(newUser);
     }
 
     if (path.startsWith('users/') && method === 'PUT') {
       const username = path.split('/')[1];
-      const data = await initStore(store, 'users', USERS);
-      const idx = data.users.findIndex(u => u.username === username);
+      const data = await getData();
+      const idx = (data.users || []).findIndex(u => u.username === username);
       if (idx === -1) return error(404, 'Usuario no encontrado');
       const updates = JSON.parse(event.body);
       data.users[idx] = { ...data.users[idx], ...updates };
-      await store.setJSON('data', data);
+      await saveData(data);
       return json(data.users[idx]);
     }
 
     if (path.startsWith('users/') && method === 'DELETE') {
       const username = path.split('/')[1];
-      const data = await initStore(store, 'users', USERS);
-      data.users = data.users.filter(u => u.username !== username);
-      await store.setJSON('data', data);
+      const data = await getData();
+      data.users = (data.users || []).filter(u => u.username !== username);
+      await saveData(data);
       return json({ success: true });
     }
 
     if (path.startsWith('users/') && path.endsWith('/approve') && method === 'PUT') {
       const username = path.split('/')[1];
-      const data = await initStore(store, 'users', USERS);
-      const idx = data.users.findIndex(u => u.username === username);
+      const data = await getData();
+      const idx = (data.users || []).findIndex(u => u.username === username);
       if (idx === -1) return error(404, 'Usuario no encontrado');
       data.users[idx].status = 'active';
-      await store.setJSON('data', data);
+      await saveData(data);
       return json(data.users[idx]);
     }
 
     if (path.startsWith('users/') && path.endsWith('/reject') && method === 'PUT') {
       const username = path.split('/')[1];
-      const data = await initStore(store, 'users', USERS);
-      data.users = data.users.filter(u => u.username !== username);
-      await store.setJSON('data', data);
+      const data = await getData();
+      data.users = (data.users || []).filter(u => u.username !== username);
+      await saveData(data);
       return json({ success: true });
     }
 
     if (path === 'properties' && method === 'GET') {
-      const data = await initStore(store, 'properties', DEFAULT_PROPERTIES);
-      return json(data.properties);
+      const data = await getData();
+      return json(data.properties || []);
     }
 
     if (path === 'properties' && method === 'POST') {
-      const data = await initStore(store, 'properties', DEFAULT_PROPERTIES);
+      const data = await getData();
+      if (!data.properties) data.properties = JSON.parse(JSON.stringify(DEFAULT_PROPERTIES));
       const prop = JSON.parse(event.body);
       prop.id = Date.now();
       prop.createdAt = new Date().toISOString().split('T')[0];
       data.properties.push(prop);
-      await store.setJSON('data', data);
+      await saveData(data);
       return json(prop);
     }
 
     if (path.startsWith('properties/') && method === 'PUT') {
       const id = parseInt(path.split('/')[1]);
-      const data = await initStore(store, 'properties', DEFAULT_PROPERTIES);
-      const idx = data.properties.findIndex(p => p.id === id);
+      const data = await getData();
+      const idx = (data.properties || []).findIndex(p => p.id === id);
       if (idx === -1) return error(404, 'Propiedad no encontrada');
       const updates = JSON.parse(event.body);
       data.properties[idx] = { ...data.properties[idx], ...updates };
-      await store.setJSON('data', data);
+      await saveData(data);
       return json(data.properties[idx]);
     }
 
     if (path.startsWith('properties/') && method === 'DELETE') {
       const id = parseInt(path.split('/')[1]);
-      const data = await initStore(store, 'properties', DEFAULT_PROPERTIES);
-      data.properties = data.properties.filter(p => p.id !== id);
-      await store.setJSON('data', data);
+      const data = await getData();
+      data.properties = (data.properties || []).filter(p => p.id !== id);
+      await saveData(data);
       return json({ success: true });
     }
 
     if (path === 'leads' && method === 'GET') {
-      const data = await initStore(store, 'leads', []);
-      return json(data.leads);
+      const data = await getData();
+      return json(data.leads || []);
     }
 
     if (path === 'leads' && method === 'POST') {
-      const data = await initStore(store, 'leads', []);
+      const data = await getData();
+      if (!data.leads) data.leads = [];
       const lead = JSON.parse(event.body);
       lead.id = Date.now();
       lead.status = 'new';
       lead.createdAt = new Date().toISOString().split('T')[0];
       lead.notes = '';
       data.leads.unshift(lead);
-      await store.setJSON('data', data);
+      await saveData(data);
       return json(lead);
     }
 
     if (path.startsWith('leads/') && method === 'DELETE') {
       const id = parseInt(path.split('/')[1]);
-      const data = await initStore(store, 'leads', []);
-      data.leads = data.leads.filter(l => l.id !== id);
-      await store.setJSON('data', data);
+      const data = await getData();
+      data.leads = (data.leads || []).filter(l => l.id !== id);
+      await saveData(data);
       return json({ success: true });
     }
 
     if (path.startsWith('leads/') && method === 'PUT') {
       const id = parseInt(path.split('/')[1]);
-      const data = await initStore(store, 'leads', []);
-      const idx = data.leads.findIndex(l => l.id === id);
+      const data = await getData();
+      const idx = (data.leads || []).findIndex(l => l.id === id);
       if (idx === -1) return error(404, 'Lead no encontrado');
       const updates = JSON.parse(event.body);
       data.leads[idx] = { ...data.leads[idx], ...updates };
-      await store.setJSON('data', data);
+      await saveData(data);
       return json(data.leads[idx]);
     }
 
     if (path === 'site-content' && method === 'GET') {
-      const data = await initStore(store, 'siteContent', DEFAULT_SITE_CONTENT);
-      const res = { ...data.siteContent };
+      const data = await getData();
+      const res = { ...(data.siteContent || DEFAULT_SITE_CONTENT) };
       res.site_images = {};
       return json(res);
     }
 
     if (path === 'site-content' && method === 'PUT') {
-      const data = await initStore(store, 'siteContent', DEFAULT_SITE_CONTENT);
+      const data = await getData();
+      if (!data.siteContent) data.siteContent = JSON.parse(JSON.stringify(DEFAULT_SITE_CONTENT));
       const updates = JSON.parse(event.body);
       data.siteContent = { ...data.siteContent, ...updates };
-      await store.setJSON('data', data);
+      await saveData(data);
       return json(data.siteContent);
     }
 
     if (path.startsWith('images/') && method === 'GET') {
       const key = path.split('/')[1];
-      const data = await initStore(store, 'siteContent', DEFAULT_SITE_CONTENT);
+      const data = await getData();
       const img = data.siteContent && data.siteContent.site_images && data.siteContent.site_images[key];
       if (!img) return error(404, 'Imagen no encontrada');
       return json({ imageData: img });
@@ -220,20 +261,21 @@ exports.handler = async (event, context) => {
 
     if (path.startsWith('images/') && method === 'POST') {
       const key = path.split('/')[1];
-      const data = await initStore(store, 'siteContent', DEFAULT_SITE_CONTENT);
+      const data = await getData();
+      if (!data.siteContent) data.siteContent = JSON.parse(JSON.stringify(DEFAULT_SITE_CONTENT));
       if (!data.siteContent.site_images) data.siteContent.site_images = {};
       const { imageData } = JSON.parse(event.body);
       data.siteContent.site_images[key] = imageData;
-      await store.setJSON('data', data);
+      await saveData(data);
       return json({ success: true });
     }
 
     if (path.startsWith('images/') && method === 'DELETE') {
       const key = path.split('/')[1];
-      const data = await initStore(store, 'siteContent', DEFAULT_SITE_CONTENT);
+      const data = await getData();
       if (data.siteContent && data.siteContent.site_images) {
         delete data.siteContent.site_images[key];
-        await store.setJSON('data', data);
+        await saveData(data);
       }
       return json({ success: true });
     }
