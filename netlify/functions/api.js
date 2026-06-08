@@ -94,7 +94,7 @@ async function saveData(data) {
 }
 
 exports.handler = async (event) => {
-  const path = event.path.replace(/^\/api\//, '');
+  const path = event.path.replace(/^\/\.netlify\/functions\/api\//, '').replace(/^\/api\//, '');
   const method = event.httpMethod;
 
   try {
