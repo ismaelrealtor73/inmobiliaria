@@ -37,6 +37,11 @@
   status = 200
 
 [[redirects]]
+  from = "/locales-marbella"
+  to = "/traspasos-marbella.html"
+  status = 200
+
+[[redirects]]
   from = "/locales-fuengirola"
   to = "/locales-fuengirola.html"
   status = 200
