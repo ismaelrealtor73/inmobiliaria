@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f2b3d"/>
+      <stop offset="100%" style="stop-color:#1a4a6a"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.10"/>
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.04"/>
+    </linearGradient>
+    <linearGradient id="goldCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8a838;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#e8a838;stop-opacity:0.05"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1080" height="8" fill="#e8a838"/>
+
+  <text x="540" y="80" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="bold" fill="#e8a838" letter-spacing="3">CENTRAL DE TRASPASOS</text>
+  <text x="540" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#8ab4c8" letter-spacing="2">INMOBILIARIA · COSTA DEL SOL</text>
+
+  <rect x="200" y="145" width="680" height="42" rx="21" fill="#ff5722"/>
+  <text x="540" y="173" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff">🔥 OPORTUNIDAD · TRASPASO</text>
+
+  <text x="540" y="260" text-anchor="middle" font-family="Georgia, serif" font-size="48" font-weight="bold" fill="#ffffff">RESTAURANTE EN</text>
+  <text x="540" y="320" text-anchor="middle" font-family="Georgia, serif" font-size="48" font-weight="bold" fill="#ffffff">POLÍGONO ALAMEDA</text>
+
+  <text x="540" y="370" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#e8a838">Málaga · Zona Empresarial</text>
+
+  <line x1="290" y1="395" x2="790" y2="395" stroke="#e8a838" stroke-width="2" opacity="0.5"/>
+
+  <!-- Price card -->
+  <rect x="240" y="430" width="600" height="90" rx="16" fill="url(#goldCard)" stroke="#e8a838" stroke-width="2"/>
+  <text x="540" y="465" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#8ab4c8">TRASPASO</text>
+  <text x="540" y="505" text-anchor="middle" font-family="Georgia, serif" font-size="42" font-weight="bold" fill="#e8a838">25.000 €</text>
+
+  <!-- Monthly rent -->
+  <rect x="240" y="540" width="600" height="55" rx="12" fill="url(#card)"/>
+  <text x="540" y="570" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#ffffff">Alquiler: <tspan fill="#e8a838" font-weight="bold">2.000 €/mes</tspan> · Depósito retornable: <tspan fill="#e8a838" font-weight="bold">20.000 €</tspan></text>
+
+  <!-- Features -->
+  <rect x="80" y="630" width="920" height="220" rx="16" fill="url(#card)"/>
+  
+  <circle cx="120" cy="680" r="12" fill="#4caf50"/>
+  <text x="145" y="685" font-family="Arial, sans-serif" font-size="18" fill="#ffffff">Negocio en funcionamiento</text>
+
+  <circle cx="120" cy="725" r="12" fill="#4caf50"/>
+  <text x="145" y="730" font-family="Arial, sans-serif" font-size="18" fill="#ffffff">Clientela habitual consolidada</text>
+
+  <circle cx="120" cy="770" r="12" fill="#4caf50"/>
+  <text x="145" y="775" font-family="Arial, sans-serif" font-size="18" fill="#ffffff">Especializado en desayunos y menús del día</text>
+
+  <circle cx="120" cy="815" r="12" fill="#4caf50"/>
+  <text x="145" y="820" font-family="Arial, sans-serif" font-size="18" fill="#ffffff">Zona de alto tránsito de oficinas y empresas</text>
+
+  <!-- Info card -->
+  <rect x="80" y="880" width="920" height="140" rx="16" fill="url(#goldCard)" stroke="#e8a838" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="540" y="925" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#e8a838" font-weight="bold">💡 Ideal para emprendedores</text>
+  <text x="540" y="960" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">Negocio que ya funciona desde el día uno</text>
+  <text x="540" y="995" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">Solo traer tus ganas de trabajar</text>
+
+  <!-- CTA -->
+  <rect x="190" y="1070" width="700" height="65" rx="32" fill="#e8a838"/>
+  <text x="540" y="1110" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#0f2b3d">¿TE INTERESA? → DM O LLÁMANOS</text>
+
+  <!-- Contact -->
+  <rect x="80" y="1170" width="920" height="100" rx="12" fill="url(#card)"/>
+  <text x="540" y="1210" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#ffffff">📞 <tspan font-weight="bold">+34 645 412 519</tspan></text>
+  <text x="540" y="1245" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#8ab4c8">📧 info@centraldetraspasos.com · 🌐 centraldetraspasos.com</text>
+
+  <rect x="0" y="1342" width="1080" height="8" fill="#e8a838"/>
+</svg>

@@ -55,6 +55,14 @@ function getTownInfo(town) {
   return TOWN_INFO[town] || town + ' es un municipio de la provincia de Málaga con excelentes oportunidades comerciales. Invertir aquí es una decisión inteligente para tu negocio.';
 }
 
+function getCityPageUrl(town) {
+  if (town === 'Marbella') return '/traspasos-marbella';
+  const slug = town.toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[\s]+/g, '-');
+  return '/locales-' + slug;
+}
+
 function getSimilarHtml(props, currentId, town, type) {
   const similar = props.filter(p => p.id !== currentId && (p.town === town || p.type === type)).slice(0, 3);
   if (!similar.length) return '';
@@ -101,6 +109,7 @@ export default async (req) => {
   const canonicalUrl = 'https://centraldetraspasos.com' + getPropertyUrl(p);
   const imgUrl = p.images && p.images.length ? p.images[0].data : 'https://centraldetraspasos.com/img/og-image.jpg';
 
+  const cityPageUrl = getCityPageUrl(p.town);
   const ldJson = JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'RealEstateListing',
@@ -111,6 +120,15 @@ export default async (req) => {
     datePosted: p.createdAt,
     seller: { '@type': 'RealEstateAgent', name: 'CENTRAL DE TRASPASOS', url: 'https://centraldetraspasos.com' },
     offers: { '@type': 'Offer', price: p.price, priceCurrency: 'EUR', availability: 'https://schema.org/InStock' }
+  });
+  const breadcrumbJson = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://centraldetraspasos.com/' },
+      { '@type': 'ListItem', position: 2, name: p.town === 'Málaga' ? 'Traspasos en Málaga' : 'Locales y traspasos en ' + p.town, item: 'https://centraldetraspasos.com' + cityPageUrl },
+      { '@type': 'ListItem', position: 3, name: title }
+    ]
   });
 
   const imagesHtml = p.images && p.images.length
@@ -156,6 +174,7 @@ export default async (req) => {
 <link rel="stylesheet" href="/css/style.css">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <script type="application/ld+json">${ldJson}</script>
+<script type="application/ld+json">${breadcrumbJson}</script>
 </head>
 <body>
 
@@ -209,6 +228,7 @@ export default async (req) => {
         <div class="detail-location-box" style="margin-top:32px">
           <h3 data-i18n="detail_location">Ubicación</h3>
           <p>${townInfo}</p>
+          <p style="margin-top:8px"><a href="${cityPageUrl}" style="color:var(--primary);text-decoration:underline;font-size:0.9rem">Ver todos los ${p.type === 'transfer' ? 'traspasos' : p.type === 'sale' ? 'locales en venta' : 'alquileres'} en ${p.town} →</a></p>
         </div>
       </div>
       <div class="detail-sidebar">

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plantillas de Respuesta - CENTRAL DE TRASPASOS</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a1a2a;font-family:Arial,sans-serif;color:#fff;padding:30px}
+h1{color:#e8a838;margin-bottom:8px;font-size:22px}
+h2{color:#8ab4c8;font-size:14px;margin-bottom:30px;font-weight:normal}
+.card{background:#0f2b3d;border:1px solid #1a4a6a;border-radius:12px;padding:20px;margin-bottom:20px}
+h3{color:#e8a838;font-size:14px;margin-bottom:10px}
+textarea{width:100%;height:120px;background:#0a1a2a;color:#fff;border:1px solid #1a4a6a;border-radius:8px;padding:12px;font-size:14px;line-height:1.6;resize:vertical;font-family:Arial,sans-serif}
+.btn{padding:10px 20px;background:#e8a838;color:#0f2b3d;border:none;border-radius:6px;font-size:14px;font-weight:bold;cursor:pointer}
+.btn:hover{background:#d49a30}
+.copied{background:#1a4a6a;color:#8ab4c8;padding:8px 16px;border-radius:6px;font-size:13px;display:none;margin-left:10px}
+</style>
+</head>
+<body>
+<h1>📋 PLANTILLAS DE RESPUESTA</h1>
+<h2>Copia y pega en Facebook / Instagram / WhatsApp</h2>
+
+<div class="card">
+  <h3>1. Consulta general / "Quiero información"</h3>
+  <textarea id="t1">¡Hola! Claro, con mucho gusto. Somos CENTRAL DE TRASPASOS, especialistas en traspaso, venta y alquiler de locales comerciales en Málaga y toda la Costa del Sol. Llevamos más de 15 años en el sector.
+
+¿Buscas algún tipo de negocio en concreto? ¿Traspaso, alquiler o compra? Dime qué zona te interesa y te envío las opciones disponibles sin compromiso 😊</textarea>
+  <button class="btn" onclick="copiar('t1')">Copiar plantilla</button><span class="copied" id="c1">✓ Copiado</span>
+</div>
+
+<div class="card">
+  <h3>2. Quiere ver una propiedad específica</h3>
+  <textarea id="t2">¡Perfecto! Esa propiedad está disponible. Podemos concertar una visita sin compromiso para que la veas en persona. ¿Qué día y hora te viene bien?
+
+Si quieres, antes te puedo enviar más fotos y detalles por aquí. 😊</textarea>
+  <button class="btn" onclick="copiar('t2')">Copiar plantilla</button><span class="copied" id="c2">✓ Copiado</span>
+</div>
+
+<div class="card">
+  <h3>3. Quiere vender/traspasar su negocio</h3>
+  <textarea id="t3">¡Hola! Te entendemos perfectamente. En CENTRAL DE TRASPASOS te ayudamos a vender o traspasar tu negocio rápido y al mejor precio.
+
+Te ofrecemos:
+✅ Tasación gratuita en 24h
+✅ Publicación en web + redes sociales
+✅ Red de inversores y emprendedores
+✅ Asesoramiento en todo el proceso
+
+Cuéntanos un poco más: ¿qué tipo de negocio es y en qué zona está? Te damos un precio orientativo sin compromiso.</textarea>
+  <button class="btn" onclick="copiar('t3')">Copiar plantilla</button><span class="copied" id="c3">✓ Copiado</span>
+</div>
+
+<div class="card">
+  <h3>4. Pregunta por precios generales</h3>
+  <textarea id="t4">¡Hola! Los precios varían según la zona, el tipo de negocio y si es traspaso, alquiler o venta.
+
+Tenemos opciones desde 10.000€ en traspaso hasta locales de alta rentabilidad. ¿Qué zona y tipo de negocio te interesa? Te envío las que mejor se ajusten a tu presupuesto 😊</textarea>
+  <button class="btn" onclick="copiar('t4')">Copiar plantilla</button><span class="copied" id="c4">✓ Copiado</span>
+</div>
+
+<div class="card">
+  <h3>5. Despedida / seguimiento</h3>
+  <textarea id="t5">Genial, cuando quieras más info o concertar una visita, solo dímelo. Estamos a tu disposición.
+
+📞 +34 645 412 519
+📧 info@centraldetraspasos.com
+🌐 centraldetraspasos.com
+
+¡Un saludo y buen día! 😊</textarea>
+  <button class="btn" onclick="copiar('t5')">Copiar plantilla</button><span class="copied" id="c5">✓ Copiado</span>
+</div>
+
+<script>
+function copiar(id) {
+  var textarea = document.getElementById(id);
+  textarea.select();
+  navigator.clipboard.writeText(textarea.value).then(function() {
+    var span = document.getElementById('c' + id.slice(1));
+    span.style.display = 'inline';
+    setTimeout(function(){ span.style.display = 'none'; }, 2000);
+  });
+}
+</script>
+</body>
+</html>
