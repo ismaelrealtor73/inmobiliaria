@@ -57,6 +57,7 @@
           <tr>
             <th data-i18n="crm_table_images">Img</th>
             <th data-i18n="crm_table_title">TÃ­tulo</th>
+            <th data-i18n="crm_table_ref">Ref</th>
             <th data-i18n="crm_table_town">Municipio</th>
             <th data-i18n="crm_table_type">Tipo</th>
             <th data-i18n="crm_table_price">Precio</th>
@@ -109,6 +110,10 @@
         <div class="form-group">
           <label data-i18n="crm_form_meters">Metros (mÂ²)</label>
           <input type="number" id="propMeters" min="0" placeholder="0">
+        </div>
+        <div class="form-group">
+          <label data-i18n="crm_form_reference">Referencia</label>
+          <input type="text" id="propRef" placeholder="Ej: CDT-001">
         </div>
       </div>
       <div class="form-row">
@@ -189,8 +194,8 @@ async function renderTable() {
   const tbody = document.getElementById('propsBody');
   document.getElementById('userInfo').innerHTML = `<strong>${user.name}</strong><br><span class="role-badge ${user.role}">${user.role}</span>`;
 
-  if (!props.length) {
-    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;color:var(--text-light);padding:32px" data-i18n="crm_no_props">No hay propiedades aÃºn</td></tr>';
+    if (!props.length) {
+    tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;color:var(--text-light);padding:32px" data-i18n="crm_no_props">No hay propiedades aÃºn</td></tr>';
     applyTranslation(); return;
   }
 
@@ -207,6 +212,7 @@ async function renderTable() {
     return '<tr>' +
       '<td>' + thumb + '</td>' +
       '<td>' + title + '</td>' +
+      '<td>' + (p.ref || '—') + '</td>' +
       '<td>' + p.town + '</td>' +
       '<td>' + typeLabel + '</td>' +
       '<td>' + formatPrice(p.price) + '</td>' +
@@ -300,6 +306,7 @@ function openModal(prop) {
     document.getElementById('propType').value = prop.type;
     document.getElementById('propPrice').value = prop.price;
     document.getElementById('propMeters').value = prop.meters || '';
+    document.getElementById('propRef').value = prop.ref || '';
     document.getElementById('propStatus').value = prop.status;
     document.getElementById('propDescEs').value = prop.desc_es;
     document.getElementById('propDescEn').value = prop.desc_en || '';
@@ -325,6 +332,7 @@ async function saveProp(e) {
     type: document.getElementById('propType').value,
     price: parseFloat(document.getElementById('propPrice').value),
     meters: parseInt(document.getElementById('propMeters').value) || undefined,
+    ref: document.getElementById('propRef').value.trim() || undefined,
     status: document.getElementById('propStatus').value,
     desc_es: document.getElementById('propDescEs').value,
     desc_en: document.getElementById('propDescEn').value,
