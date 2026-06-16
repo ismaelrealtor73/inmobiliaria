@@ -32,6 +32,11 @@
   status = 200
 
 [[redirects]]
+  from = "/locales-malaga"
+  to = "/locales-malaga.html"
+  status = 200
+
+[[redirects]]
   from = "/traspasos-marbella"
   to = "/traspasos-marbella.html"
   status = 200
