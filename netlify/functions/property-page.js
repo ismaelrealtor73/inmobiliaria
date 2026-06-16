@@ -1,13 +1,13 @@
 import { getStore } from '@netlify/blobs';
 
 const DEFAULT_PROPERTIES = [
-  { id: 1, title_es: 'Local comercial en centro de Málaga', title_en: 'Commercial premises in Málaga center', town: 'Málaga', type: 'sale', price: 250000, desc_es: 'Amplio local de 120m² en pleno centro de Málaga. Excelente ubicación, alto tránsito peatonal.', desc_en: 'Spacious 120m² premises in the heart of Málaga. Excellent location, high foot traffic.', images: [], featured: true, status: 'published', createdBy: 'admin', createdAt: '2026-05-15' },
-  { id: 2, title_es: 'Restaurante en Marbella', title_en: 'Restaurant in Marbella', town: 'Marbella', type: 'transfer', price: 85000, desc_es: 'Restaurante en funcionamiento con terraza. Capacidad para 60 comensales. Traspaso por jubilación.', desc_en: 'Operating restaurant with terrace. Capacity for 60 diners. Transfer due to retirement.', images: [], featured: true, status: 'published', createdBy: 'agente1', createdAt: '2026-05-10' },
-  { id: 3, title_es: 'Oficina en Fuengirola', title_en: 'Office in Fuengirola', town: 'Fuengirola', type: 'rent', price: 1200, desc_es: 'Oficina de 80m² totalmente amueblada. Ideal para start-ups y profesionales. 3 despachos.', desc_en: 'Fully furnished 80m² office. Ideal for start-ups and professionals. 3 offices.', images: [], featured: false, status: 'published', createdBy: 'admin', createdAt: '2026-05-05' },
-  { id: 4, title_es: 'Local en Torremolinos', title_en: 'Premises in Torremolinos', town: 'Torremolinos', type: 'rent', price: 950, desc_es: 'Local de 60m² en zona turística. Perfecto para tienda de souvenirs o restauración.', desc_en: '60m² premises in tourist area. Perfect for souvenir shop or restaurant.', images: [], featured: true, status: 'published', createdBy: 'agente2', createdAt: '2026-04-20' },
-  { id: 5, title_es: 'Pub en Benalmádena Costa', title_en: 'Pub in Benalmádena Costa', town: 'Benalmádena', type: 'transfer', price: 45000, desc_es: 'Pub con licencia y clientela fija. Terreno de 100m². Oportunidad única.', desc_en: 'Pub with license and regular clientele. 100m² venue. Unique opportunity.', images: [], featured: false, status: 'draft', createdBy: 'agente1', createdAt: '2026-04-15' },
-  { id: 6, title_es: 'Nave industrial en Antequera', title_en: 'Industrial warehouse in Antequera', town: 'Antequera', type: 'sale', price: 380000, desc_es: 'Nave de 500m² en polígono industrial. Muelles de carga, oficinas y patio.', desc_en: '500m² warehouse in industrial estate. Loading docks, offices and yard.', images: [], featured: false, status: 'published', createdBy: 'admin', createdAt: '2026-04-10' },
-  { id: 7, title_es: 'Obrador con Take Away en Avda. Europa', title_en: 'Bakery Workshop with Take Away on Av. Europa', town: 'Málaga', type: 'transfer', price: 20000, desc_es: 'Oportunidad excepcional para emprendedores del sector alimentación. Obrador de 230m² totalmente equipado en tres plantas con zona de venta, producción y almacenamiento. Alta densidad residencial y comercial. Alquiler 1.500€.', desc_en: 'Exceptional opportunity for food sector entrepreneurs. 230m² fully equipped workshop on three floors with sales area, production and storage. High residential and commercial density. Rent €1,500.', images: [], featured: true, status: 'published', createdBy: 'admin', createdAt: '2026-06-08' }
+  { id: 1, title_es: 'Local comercial en centro de Málaga', title_en: 'Commercial premises in Málaga center', town: 'Málaga', type: 'sale', price: 250000, sqm: 120, bathrooms: 1, smoke_exhaust: false, terrace: false, license: 'Activa', desc_es: 'Amplio local de 120m² en pleno centro de Málaga. Excelente ubicación, alto tránsito peatonal.', desc_en: 'Spacious 120m² premises in the heart of Málaga. Excellent location, high foot traffic.', images: [], featured: true, status: 'published', createdBy: 'admin', createdAt: '2026-05-15' },
+  { id: 2, title_es: 'Restaurante en Marbella', title_en: 'Restaurant in Marbella', town: 'Marbella', type: 'transfer', price: 85000, sqm: 150, bathrooms: 2, smoke_exhaust: true, terrace: true, license: 'Activa', desc_es: 'Restaurante en funcionamiento con terraza. Capacidad para 60 comensales. Traspaso por jubilación.', desc_en: 'Operating restaurant with terrace. Capacity for 60 diners. Transfer due to retirement.', images: [], featured: true, status: 'published', createdBy: 'agente1', createdAt: '2026-05-10' },
+  { id: 3, title_es: 'Oficina en Fuengirola', title_en: 'Office in Fuengirola', town: 'Fuengirola', type: 'rent', price: 1200, sqm: 80, bathrooms: 1, smoke_exhaust: false, terrace: false, license: null, desc_es: 'Oficina de 80m² totalmente amueblada. Ideal para start-ups y profesionales. 3 despachos.', desc_en: 'Fully furnished 80m² office. Ideal for start-ups and professionals. 3 offices.', images: [], featured: false, status: 'published', createdBy: 'admin', createdAt: '2026-05-05' },
+  { id: 4, title_es: 'Local en Torremolinos', title_en: 'Premises in Torremolinos', town: 'Torremolinos', type: 'rent', price: 950, sqm: 60, bathrooms: 1, smoke_exhaust: false, terrace: false, license: null, desc_es: 'Local de 60m² en zona turística. Perfecto para tienda de souvenirs o restauración.', desc_en: '60m² premises in tourist area. Perfect for souvenir shop or restaurant.', images: [], featured: true, status: 'published', createdBy: 'agente2', createdAt: '2026-04-20' },
+  { id: 5, title_es: 'Pub en Benalmádena Costa', title_en: 'Pub in Benalmádena Costa', town: 'Benalmádena', type: 'transfer', price: 45000, sqm: 100, bathrooms: 2, smoke_exhaust: false, terrace: false, license: 'Activa', desc_es: 'Pub con licencia y clientela fija. Terreno de 100m². Oportunidad única.', desc_en: 'Pub with license and regular clientele. 100m² venue. Unique opportunity.', images: [], featured: false, status: 'draft', createdBy: 'agente1', createdAt: '2026-04-15' },
+  { id: 6, title_es: 'Nave industrial en Antequera', title_en: 'Industrial warehouse in Antequera', town: 'Antequera', type: 'sale', price: 380000, sqm: 500, bathrooms: 2, smoke_exhaust: false, terrace: false, license: null, desc_es: 'Nave de 500m² en polígono industrial. Muelles de carga, oficinas y patio.', desc_en: '500m² warehouse in industrial estate. Loading docks, offices and yard.', images: [], featured: false, status: 'published', createdBy: 'admin', createdAt: '2026-04-10' },
+  { id: 7, title_es: 'Obrador con Take Away en Avda. Europa', title_en: 'Bakery Workshop with Take Away on Av. Europa', town: 'Málaga', type: 'transfer', price: 20000, sqm: 230, bathrooms: 2, smoke_exhaust: true, terrace: false, license: 'Activa', desc_es: 'Oportunidad excepcional para emprendedores del sector alimentación. Obrador de 230m² totalmente equipado en tres plantas con zona de venta, producción y almacenamiento. Alta densidad residencial y comercial. Alquiler 1.500€.', desc_en: 'Exceptional opportunity for food sector entrepreneurs. 230m² fully equipped workshop on three floors with sales area, production and storage. High residential and commercial density. Rent €1,500.', images: [], featured: true, status: 'published', createdBy: 'admin', createdAt: '2026-06-08' }
 ];
 
 async function initStoreData(store) {
@@ -84,6 +84,25 @@ function getSimilarHtml(props, currentId, town, type) {
   }).join('');
 }
 
+const SPEC_CONFIG = [
+  { key: 'sqm', icon: '📐', labelKey: 'spec_sqm', format: (v) => v + ' m²' },
+  { key: 'bathrooms', icon: '🚿', labelKey: 'spec_bathrooms', format: (v) => v },
+  { key: 'smoke_exhaust', icon: '💨', labelKey: 'spec_smoke_exhaust', format: () => '✓' },
+  { key: 'terrace', icon: '🌿', labelKey: 'spec_terrace', format: () => '✓' },
+  { key: 'license', icon: '📋', labelKey: 'spec_license', format: (v) => v }
+];
+
+function getSpecsHtml(p) {
+  const chips = SPEC_CONFIG.filter(s => p[s.key] != null && p[s.key] !== false)
+    .map(s => '<div class="spec-chip">' +
+      '<span class="spec-chip-icon">' + s.icon + '</span>' +
+      '<span class="spec-chip-value">' + s.format(p[s.key]) + '</span>' +
+      '<span class="spec-chip-label" data-i18n="' + s.labelKey + '">' + s.labelKey + '</span>' +
+    '</div>');
+  if (!chips.length) return '';
+  return '<div class="specs-row">' + chips.join('') + '</div>';
+}
+
 export default async (req) => {
   const url = new URL(req.url);
   const pathParts = url.pathname.split('/').filter(Boolean);
@@ -110,6 +129,9 @@ export default async (req) => {
   const imgUrl = p.images && p.images.length ? p.images[0].data : 'https://centraldetraspasos.com/img/og-image.jpg';
 
   const cityPageUrl = getCityPageUrl(p.town);
+  const ldExtra = {};
+  if (p.sqm) ldExtra.floorSize = { '@type': 'QuantitativeValue', value: p.sqm, unitCode: 'MTK' };
+  if (p.bathrooms) ldExtra.numberOfBathroomsTotalAndPartial = p.bathrooms;
   const ldJson = JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'RealEstateListing',
@@ -118,6 +140,7 @@ export default async (req) => {
     url: canonicalUrl,
     image: imgUrl,
     datePosted: p.createdAt,
+    ...ldExtra,
     seller: { '@type': 'RealEstateAgent', name: 'CENTRAL DE TRASPASOS', url: 'https://centraldetraspasos.com' },
     offers: { '@type': 'Offer', price: p.price, priceCurrency: 'EUR', availability: 'https://schema.org/InStock' }
   });
@@ -225,6 +248,7 @@ export default async (req) => {
       <div class="detail-description">
         <h2 data-i18n="detail_description">Descripción</h2>
         <p>${desc}</p>
+        ${getSpecsHtml(p)}
         <div class="detail-location-box" style="margin-top:32px">
           <h3 data-i18n="detail_location">Ubicación</h3>
           <p>${townInfo}</p>

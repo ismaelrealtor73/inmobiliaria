@@ -106,12 +106,32 @@
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label data-i18n="crm_form_price">Precio (â‚¬)</label>
+          <label data-i18n="crm_form_price">Precio (€)</label>
           <input type="number" id="propPrice" min="0" required>
         </div>
         <div class="form-group">
-          <label data-i18n="crm_form_meters">Metros (mÂ²)</label>
-          <input type="number" id="propMeters" min="0" placeholder="0">
+          <label data-i18n="spec_sqm">Superficie (m²)</label>
+          <input type="number" id="propSqm" min="0" placeholder="0">
+        </div>
+        <div class="form-group">
+          <label data-i18n="spec_bathrooms">Baños</label>
+          <input type="number" id="propBathrooms" min="0" placeholder="0">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group" style="display:flex;gap:24px;align-items:center;padding-top:8px">
+          <label style="display:flex;align-items:center;gap:6px;font-weight:400">
+            <input type="checkbox" id="propSmokeExhaust">
+            <span data-i18n="spec_smoke_exhaust">Salida humos</span>
+          </label>
+          <label style="display:flex;align-items:center;gap:6px;font-weight:400">
+            <input type="checkbox" id="propTerrace">
+            <span data-i18n="spec_terrace">Terraza</span>
+          </label>
+        </div>
+        <div class="form-group">
+          <label data-i18n="spec_license">Licencia</label>
+          <input type="text" id="propLicense" placeholder="Ej: Activa / En trámite">
         </div>
         <div class="form-group">
           <label data-i18n="crm_form_reference">Referencia</label>
@@ -307,7 +327,11 @@ function openModal(prop) {
     document.getElementById('propTown').value = prop.town;
     document.getElementById('propType').value = prop.type;
     document.getElementById('propPrice').value = prop.price;
-    document.getElementById('propMeters').value = prop.meters || '';
+    document.getElementById('propSqm').value = prop.sqm || prop.meters || '';
+    document.getElementById('propBathrooms').value = prop.bathrooms || '';
+    document.getElementById('propSmokeExhaust').checked = prop.smoke_exhaust || false;
+    document.getElementById('propTerrace').checked = prop.terrace || false;
+    document.getElementById('propLicense').value = prop.license || '';
     document.getElementById('propRef').value = prop.ref || '';
     document.getElementById('propStatus').value = prop.status;
     document.getElementById('propDescEs').value = prop.desc_es;
@@ -333,7 +357,11 @@ async function saveProp(e) {
     town: document.getElementById('propTown').value,
     type: document.getElementById('propType').value,
     price: parseFloat(document.getElementById('propPrice').value),
-    meters: parseInt(document.getElementById('propMeters').value) || undefined,
+    sqm: parseInt(document.getElementById('propSqm').value) || undefined,
+    bathrooms: parseInt(document.getElementById('propBathrooms').value) || undefined,
+    smoke_exhaust: document.getElementById('propSmokeExhaust').checked,
+    terrace: document.getElementById('propTerrace').checked,
+    license: document.getElementById('propLicense').value.trim() || undefined,
     ref: document.getElementById('propRef').value.trim() || undefined,
     status: document.getElementById('propStatus').value,
     desc_es: document.getElementById('propDescEs').value,
