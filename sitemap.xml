@@ -5,7 +5,7 @@
     <loc>https://centraldetraspasos.com/</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/"/>
-    <lastmod>2026-06-15</lastmod>
+    <lastmod>2026-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -13,7 +13,7 @@
     <loc>https://centraldetraspasos.com/propiedades</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/propiedades"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/propiedades"/>
-    <lastmod>2026-06-15</lastmod>
+    <lastmod>2026-06-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
@@ -21,200 +21,284 @@
     <loc>https://centraldetraspasos.com/captacion</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/captacion"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/captacion"/>
-    <lastmod>2026-06-15</lastmod>
+    <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://centraldetraspasos.com/blog</loc>
-    <lastmod>2026-06-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://centraldetraspasos.com/blog/mejores-zonas-abrir-negocio-malaga.html</loc>
-    <lastmod>2026-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://centraldetraspasos.com/blog/guia-traspaso-local-malaga.html</loc>
-    <lastmod>2026-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://centraldetraspasos.com/blog/locales-restaurante-costa-del-sol.html</loc>
-    <lastmod>2026-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://centraldetraspasos.com/blog/alquiler-local-comercial-malaga.html</loc>
-    <lastmod>2026-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://centraldetraspasos.com/propiedad/restaurante-en-el-centro-de-malaga-1</loc>
-    <lastmod>2026-06-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://centraldetraspasos.com/propiedad/se-vende-discoteca-en-benalmadena-costa-1780414099828</loc>
-    <lastmod>2026-06-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://centraldetraspasos.com/propiedad/traspaso-de-pasteleria-y-obrador-en-fuengirola-1780415360899</loc>
-    <lastmod>2026-06-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://centraldetraspasos.com/propiedad/traspaso-de-restaurante-pizzeria-en-fuengirola-1780588608281</loc>
-    <lastmod>2026-06-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://centraldetraspasos.com/propiedad/traspaso-de-clinica-estetica-en-el-centro-de-malaga-1780589126330</loc>
-    <lastmod>2026-06-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://centraldetraspasos.com/propiedad/traspaso-de-peluqueria-en-el-centro-de-malaga-1780589558353</loc>
-    <lastmod>2026-06-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://centraldetraspasos.com/propiedad/traspaso-obrador-con-take-away-totalmente-equipado-en-avenida-europa-malaga-1780916954830</loc>
-    <lastmod>2026-06-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://centraldetraspasos.com/propiedad/traspaso-de-supermercado-en-fuengirola-negocio-listo-para-continuar-facturando-1780918822314</loc>
-    <lastmod>2026-06-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://centraldetraspasos.com/propiedad/alquiler-de-local-comercial-en-arroyo-de-la-miel-benalmadena-1781025794409</loc>
-    <lastmod>2026-06-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://centraldetraspasos.com/propiedad/traspaso-de-restaurante-en-poligono-alameda-malaga-1781029483668</loc>
-    <lastmod>2026-06-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://centraldetraspasos.com/propiedad/traspaso-de-cafeteria-teteria-en-teatinos-malaga-1781105014315</loc>
-    <lastmod>2026-06-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://centraldetraspasos.com/locales-malaga</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/blog"/>
     <lastmod>2026-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://centraldetraspasos.com/traspasos-marbella</loc>
-    <lastmod>2026-06-15</lastmod>
+    <loc>https://centraldetraspasos.com/aviso-legal</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/aviso-legal"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/aviso-legal"/>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/teatinos</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/teatinos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/teatinos"/>
+    <lastmod>2026-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://centraldetraspasos.com/traspasos-marbella</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/traspasos-marbella"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/traspasos-marbella"/>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/locales-malaga</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/locales-malaga"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/locales-malaga"/>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://centraldetraspasos.com/locales-fuengirola</loc>
-    <lastmod>2026-06-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/locales-fuengirola"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/locales-fuengirola"/>
+    <lastmod>2026-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://centraldetraspasos.com/locales-torremolinos</loc>
-    <lastmod>2026-06-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/locales-torremolinos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/locales-torremolinos"/>
+    <lastmod>2026-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://centraldetraspasos.com/locales-benalmadena</loc>
-    <lastmod>2026-06-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/locales-benalmadena"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/locales-benalmadena"/>
+    <lastmod>2026-06-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://centraldetraspasos.com/locales-estepona</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/locales-estepona"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/locales-estepona"/>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/locales-mijas</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/locales-mijas"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/locales-mijas"/>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/locales-antequera</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/locales-antequera"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/locales-antequera"/>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/locales-velez-malaga</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/locales-velez-malaga"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/locales-velez-malaga"/>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/locales-nerja</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/locales-nerja"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/locales-nerja"/>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/locales-rincon-de-la-victoria</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/locales-rincon-de-la-victoria"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/locales-rincon-de-la-victoria"/>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/blog/traspaso-pizzeria-malaga.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/blog/traspaso-pizzeria-malaga.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/blog/traspaso-pizzeria-malaga.html"/>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/blog/traspaso-kebab-malaga.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/blog/traspaso-kebab-malaga.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/blog/traspaso-kebab-malaga.html"/>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://centraldetraspasos.com/blog/traspaso-restaurante-teatinos-malaga.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/blog/traspaso-restaurante-teatinos-malaga.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/blog/traspaso-restaurante-teatinos-malaga.html"/>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/blog/mejores-zonas-abrir-negocio-malaga.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/blog/mejores-zonas-abrir-negocio-malaga.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/blog/mejores-zonas-abrir-negocio-malaga.html"/>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/blog/guia-traspaso-local-malaga.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/blog/guia-traspaso-local-malaga.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/blog/guia-traspaso-local-malaga.html"/>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/blog/locales-restaurante-costa-del-sol.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/blog/locales-restaurante-costa-del-sol.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/blog/locales-restaurante-costa-del-sol.html"/>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/blog/alquiler-local-comercial-malaga.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/blog/alquiler-local-comercial-malaga.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/blog/alquiler-local-comercial-malaga.html"/>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/blog/invertir-locales-costa-del-sol.html</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/blog/invertir-locales-costa-del-sol.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/blog/invertir-locales-costa-del-sol.html"/>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://centraldetraspasos.com/blog/tasacion-negocio-malaga.html</loc>
-    <lastmod>2026-06-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/blog/tasacion-negocio-malaga.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/blog/tasacion-negocio-malaga.html"/>
+    <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://centraldetraspasos.com/blog/licencia-actividad-malaga.html</loc>
-    <lastmod>2026-06-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/blog/licencia-actividad-malaga.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/blog/licencia-actividad-malaga.html"/>
+    <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://centraldetraspasos.com/blog/invertir-locales-costa-del-sol.html</loc>
-    <lastmod>2026-06-15</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://centraldetraspasos.com/propiedad/restaurante-en-el-centro-de-malaga-1</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://centraldetraspasos.com/locales-estepona</loc>
-    <lastmod>2026-06-15</lastmod>
+    <loc>https://centraldetraspasos.com/propiedad/se-vende-discoteca-en-benalmadena-costa-1780414099828</loc>
+    <lastmod>2026-06-16</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://centraldetraspasos.com/locales-mijas</loc>
-    <lastmod>2026-06-15</lastmod>
+    <loc>https://centraldetraspasos.com/propiedad/traspaso-de-pasteleria-y-obrador-en-fuengirola-1780415360899</loc>
+    <lastmod>2026-06-16</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://centraldetraspasos.com/locales-antequera</loc>
-    <lastmod>2026-06-15</lastmod>
+    <loc>https://centraldetraspasos.com/propiedad/traspaso-de-restaurante-pizzeria-en-fuengirola-1780588608281</loc>
+    <lastmod>2026-06-16</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://centraldetraspasos.com/locales-velez-malaga</loc>
-    <lastmod>2026-06-15</lastmod>
+    <loc>https://centraldetraspasos.com/propiedad/traspaso-de-clinica-estetica-en-el-centro-de-malaga-1780589126330</loc>
+    <lastmod>2026-06-16</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://centraldetraspasos.com/locales-nerja</loc>
-    <lastmod>2026-06-15</lastmod>
+    <loc>https://centraldetraspasos.com/propiedad/traspaso-de-peluqueria-en-el-centro-de-malaga-1780589558353</loc>
+    <lastmod>2026-06-16</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://centraldetraspasos.com/locales-rincon-de-la-victoria</loc>
-    <lastmod>2026-06-15</lastmod>
+    <loc>https://centraldetraspasos.com/propiedad/traspaso-obrador-con-take-away-totalmente-equipado-en-avenida-europa-malaga-1780916954830</loc>
+    <lastmod>2026-06-16</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://centraldetraspasos.com/aviso-legal</loc>
-    <lastmod>2026-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://centraldetraspasos.com/propiedad/traspaso-de-supermercado-en-fuengirola-negocio-listo-para-continuar-facturando-1780918822314</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/propiedad/alquiler-de-local-comercial-en-arroyo-de-la-miel-benalmadena-1781025794409</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/propiedad/traspaso-de-restaurante-en-poligono-alameda-malaga-1781029483668</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/propiedad/traspaso-de-cafeteria-teteria-en-teatinos-malaga-1781105014315</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/propiedad/traspaso-de-pizzeria-en-benalmadena-costa-1781516982489</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/propiedad/traspaso-de-restaurante-pizzeria-en-una-de-las-mejores-zonas-de-teatinos-1781609660100</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/propiedad/traspaso-de-shawarma-kebab-en-malaga-capital-1781708609337</loc>
+    <lastmod>2026-06-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>

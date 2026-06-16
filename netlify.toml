@@ -91,3 +91,8 @@
   to = "/locales-rincon-de-la-victoria.html"
   status = 200
 
+[[redirects]]
+  from = "/teatinos"
+  to = "/teatinos.html"
+  status = 200
+
