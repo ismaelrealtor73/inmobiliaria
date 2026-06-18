@@ -29,8 +29,10 @@ function getPropertyUrl(p) {
   return '/propiedad/' + slugify(p.title_es || p.title_en) + '-' + p.id;
 }
 
-function getTypeLabel(type) {
-  const map = { sale: 'Compra', rent: 'Alquiler', transfer: 'Traspaso' };
+function getTypeLabel(type, lang) {
+  const map = lang === 'en'
+    ? { sale: 'Sale', rent: 'Rent', transfer: 'Transfer' }
+    : { sale: 'Compra', rent: 'Alquiler', transfer: 'Traspaso' };
   return map[type] || type;
 }
 
@@ -39,20 +41,25 @@ function formatPrice(price) {
 }
 
 const TOWN_INFO = {
-  'Málaga': 'Capital de la Costa del Sol, Málaga ofrece una vibrante vida comercial con alto tránsito peatonal en su centro histórico. Zonas como La Malagueta, El Palo y Teatinos concentran gran actividad de locales y negocios.',
-  'Marbella': 'Marbella es un referente del lujo en la Costa del Sol, con una intensa actividad comercial durante todo el año. La Milla de Oro y Puerto Banús son las zonas más cotizadas.',
-  'Fuengirola': 'Fuengirola combina turismo y vida local, con gran demanda de locales comerciales en zonas playeras y en el centro. Perfecto para hostelería y comercio minorista.',
-  'Torremolinos': 'Torremolinos es un destino turístico consolidado con alta rotación de locales comerciales durante todo el año. Especialmente atractivo para restauración y ocio nocturno.',
-  'Benalmádena': 'Benalmádena ofrece un mercado diverso con locales en zona costera y pueblo. Ideal para hostelería, servicios y comercio, con gran afluencia turística.',
-  'Antequera': 'Antequera es el centro logístico de la provincia de Málaga, perfecto para naves industriales y locales comerciales. Cuenta con importantes polígonos industriales.',
-  'Nerja': 'Nerja atrae turismo durante todo el año, con oportunidades en hostelería y comercio local. Su casco histórico y playas son los focos principales.',
-  'Estepona': 'Estepona ha experimentado un gran crecimiento, con su casco antiguo peatonal como foco comercial. Muy demandada para restauración y comercio.',
-  'Mijas': 'Mijas ofrece locales tanto en costa como en pueblo, con atractivo turístico durante todo el año. Ideal para hostelería y servicios turísticos.',
-  'Rincón de la Victoria': 'Rincón de la Victoria es una zona residencial en crecimiento con alta demanda de servicios locales y comercio de proximidad.'
+  'Málaga': { es: 'Capital de la Costa del Sol, Málaga ofrece una vibrante vida comercial con alto tránsito peatonal en su centro histórico. Zonas como La Malagueta, El Palo y Teatinos concentran gran actividad de locales y negocios.', en: 'Capital of the Costa del Sol, Málaga offers a vibrant commercial life with high foot traffic in its historic center. Areas like La Malagueta, El Palo and Teatinos concentrate great business activity.' },
+  'Marbella': { es: 'Marbella es un referente del lujo en la Costa del Sol, con una intensa actividad comercial durante todo el año. La Milla de Oro y Puerto Banús son las zonas más cotizadas.', en: 'Marbella is a luxury benchmark on the Costa del Sol, with intense commercial activity throughout the year. The Golden Mile and Puerto Banús are the most sought-after areas.' },
+  'Fuengirola': { es: 'Fuengirola combina turismo y vida local, con gran demanda de locales comerciales en zonas playeras y en el centro. Perfecto para hostelería y comercio minorista.', en: 'Fuengirola combines tourism and local life, with high demand for commercial premises in beach areas and the center. Perfect for hospitality and retail.' },
+  'Torremolinos': { es: 'Torremolinos es un destino turístico consolidado con alta rotación de locales comerciales durante todo el año. Especialmente atractivo para restauración y ocio nocturno.', en: 'Torremolinos is a consolidated tourist destination with high turnover of commercial premises throughout the year. Especially attractive for restaurants and nightlife.' },
+  'Benalmádena': { es: 'Benalmádena ofrece un mercado diverso con locales en zona costera y pueblo. Ideal para hostelería, servicios y comercio, con gran afluencia turística.', en: 'Benalmádena offers a diverse market with premises in coastal areas and the village. Ideal for hospitality, services and commerce, with high tourist influx.' },
+  'Antequera': { es: 'Antequera es el centro logístico de la provincia de Málaga, perfecto para naves industriales y locales comerciales. Cuenta con importantes polígonos industriales.', en: 'Antequera is the logistics center of the province of Málaga, perfect for industrial warehouses and commercial premises. It has major industrial estates.' },
+  'Nerja': { es: 'Nerja atrae turismo durante todo el año, con oportunidades en hostelería y comercio local. Su casco histórico y playas son los focos principales.', en: 'Nerja attracts tourism throughout the year, with opportunities in hospitality and local commerce. Its historic center and beaches are the main focuses.' },
+  'Estepona': { es: 'Estepona ha experimentado un gran crecimiento, con su casco antiguo peatonal como foco comercial. Muy demandada para restauración y comercio.', en: 'Estepona has experienced great growth, with its pedestrian old town as a commercial hub. Highly demanded for restaurants and commerce.' },
+  'Mijas': { es: 'Mijas ofrece locales tanto en costa como en pueblo, con atractivo turístico durante todo el año. Ideal para hostelería y servicios turísticos.', en: 'Mijas offers premises both on the coast and in the village, with tourist appeal throughout the year. Ideal for hospitality and tourist services.' },
+  'Rincón de la Victoria': { es: 'Rincón de la Victoria es una zona residencial en crecimiento con alta demanda de servicios locales y comercio de proximidad.', en: 'Rincón de la Victoria is a growing residential area with high demand for local services and neighborhood commerce.' }
 };
 
-function getTownInfo(town) {
-  return TOWN_INFO[town] || town + ' es un municipio de la provincia de Málaga con excelentes oportunidades comerciales. Invertir aquí es una decisión inteligente para tu negocio.';
+function getTownInfo(town, lang) {
+  const info = TOWN_INFO[town];
+  if (lang === 'en' && info) return info.en || info.es;
+  if (info) return info.es;
+  return lang === 'en'
+    ? town + ' is a municipality in the province of Málaga with excellent business opportunities. Investing here is a smart decision for your business.'
+    : town + ' es un municipio de la provincia de Málaga con excelentes oportunidades comerciales. Invertir aquí es una decisión inteligente para tu negocio.';
 }
 
 function getCityPageUrl(town) {
@@ -63,11 +70,11 @@ function getCityPageUrl(town) {
   return '/locales-' + slug;
 }
 
-function getSimilarHtml(props, currentId, town, type) {
+function getSimilarHtml(props, currentId, town, type, lang) {
   const similar = props.filter(p => p.id !== currentId && (p.town === town || p.type === type)).slice(0, 3);
   if (!similar.length) return '';
   return similar.map(p => {
-    const title = p.title_es || p.title_en;
+    const title = lang === 'en' ? (p.title_en || p.title_es) : (p.title_es || p.title_en);
     const cover = p.images && p.images.length ? p.images[0].data : null;
     const imgStyle = cover ? '' : ' style="background:linear-gradient(135deg,' + (p.type === 'sale' ? '#2E86AB' : p.type === 'rent' ? '#36B37E' : '#e67e22') + ',#1a2a3a)"';
     const imgContent = cover ? '<img src="' + cover + '" style="width:100%;height:100%;object-fit:cover" alt="' + title + '" onerror="this.style.display=\'none\';this.parentNode.style.background=\'linear-gradient(135deg,' + (p.type === 'sale' ? '#2E86AB' : p.type === 'rent' ? '#36B37E' : '#e67e22') + ',#1a2a3a)\';this.parentNode.innerHTML=\'\x3cspan style=\'font-size:2rem\'\x3e🏪\x3c/span\x3e\'">' : '<span style="font-size:2rem">🏪</span>';
@@ -106,11 +113,13 @@ function getSpecsHtml(p) {
 export default async (req) => {
   const url = new URL(req.url);
   const pathParts = url.pathname.split('/').filter(Boolean);
+  const lang = pathParts[0] === 'en' ? 'en' : 'es';
   const slugWithId = pathParts[pathParts.length - 1];
   const id = parseInt(slugWithId.split('-').pop());
+  const notFoundMsg = lang === 'en' ? 'Property not found' : 'Propiedad no encontrada';
 
   if (!id) {
-    return new Response('Propiedad no encontrada', { status: 404, headers: { 'Content-Type': 'text/html' } });
+    return new Response(notFoundMsg, { status: 404, headers: { 'Content-Type': 'text/html' } });
   }
 
   const store = getStore('crm');
@@ -119,16 +128,24 @@ export default async (req) => {
 
   const p = props.find(x => x.id === id);
   if (!p || p.status !== 'published') {
-    return new Response('Propiedad no encontrada', { status: 404, headers: { 'Content-Type': 'text/html' } });
+    return new Response(notFoundMsg, { status: 404, headers: { 'Content-Type': 'text/html' } });
   }
 
-  const title = p.title_es || p.title_en;
-  const desc = p.desc_es || p.desc_en || '';
-  const typeLabel = getTypeLabel(p.type);
-  const canonicalUrl = 'https://centraldetraspasos.com' + getPropertyUrl(p);
+  const title = lang === 'en' ? (p.title_en || p.title_es) : (p.title_es || p.title_en);
+  const desc = lang === 'en' ? (p.desc_en || p.desc_es || '') : (p.desc_es || p.desc_en || '');
+  const typeLabel = getTypeLabel(p.type, lang);
+  const propUrl = getPropertyUrl(p);
+  const urlPrefix = lang === 'en' ? '/en' : '';
+  const canonicalUrl = 'https://centraldetraspasos.com' + urlPrefix + propUrl;
   const imgUrl = p.images && p.images.length ? p.images[0].data : 'https://centraldetraspasos.com/img/og-image.jpg';
+  const noImagesMsg = lang === 'en' ? 'No images available' : 'No hay imágenes disponibles';
+  const ogLocale = lang === 'en' ? 'en_GB' : 'es_ES';
 
   const cityPageUrl = getCityPageUrl(p.town);
+  const breadcrumbLabel2 = lang === 'en'
+    ? (p.town === 'Málaga' ? 'Transfers in Málaga' : 'Premises and transfers in ' + p.town)
+    : (p.town === 'Málaga' ? 'Traspasos en Málaga' : 'Locales y traspasos en ' + p.town);
+  const breadcrumbLabel1 = lang === 'en' ? 'Home' : 'Inicio';
   const ldExtra = {};
   if (p.sqm) ldExtra.floorSize = { '@type': 'QuantitativeValue', value: p.sqm, unitCode: 'MTK' };
   if (p.bathrooms) ldExtra.numberOfBathroomsTotalAndPartial = p.bathrooms;
@@ -148,8 +165,8 @@ export default async (req) => {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Inicio', item: 'https://centraldetraspasos.com/' },
-      { '@type': 'ListItem', position: 2, name: p.town === 'Málaga' ? 'Traspasos en Málaga' : 'Locales y traspasos en ' + p.town, item: 'https://centraldetraspasos.com' + cityPageUrl },
+      { '@type': 'ListItem', position: 1, name: breadcrumbLabel1, item: 'https://centraldetraspasos.com/' + (lang === 'en' ? 'en' : '') },
+      { '@type': 'ListItem', position: 2, name: breadcrumbLabel2, item: 'https://centraldetraspasos.com' + cityPageUrl },
       { '@type': 'ListItem', position: 3, name: title }
     ]
   });
@@ -157,20 +174,29 @@ export default async (req) => {
   const imagesHtml = p.images && p.images.length
     ? p.images.map((img, i) =>
       '<div class="carousel-slide' + (i === 0 ? ' active' : '') + '">' +
-        '<img src="' + img.data + '" alt="' + title + ' - Imagen ' + (i + 1) + '">' +
+        '<img src="' + img.data + '" alt="' + title + ' - ' + (lang === 'en' ? 'Image' : 'Imagen') + ' ' + (i + 1) + '">' +
       '</div>'
     ).join('')
-    : '<p style="color:var(--text-light);text-align:center;padding:40px">No hay imágenes disponibles</p>';
+    : '<p style="color:var(--text-light);text-align:center;padding:40px">' + noImagesMsg + '</p>';
 
   const dotsHtml = p.images && p.images.length > 1
     ? p.images.map((_, i) => '<span class="carousel-dot' + (i === 0 ? ' active' : '') + '" data-index="' + i + '"></span>').join('')
     : '';
 
-  const townInfo = getTownInfo(p.town);
-  const similarHtml = getSimilarHtml(props, p.id, p.town, p.type);
+  const townInfo = getTownInfo(p.town, lang);
+  const similarHtml = getSimilarHtml(props, p.id, p.town, p.type, lang);
+  const rentLabel = lang === 'en' ? '/month' : '/mes';
+  const prevLabel = lang === 'en' ? 'Previous' : 'Anterior';
+  const nextLabel = lang === 'en' ? 'Next' : 'Siguiente';
+  const typeLinkLabel = lang === 'en'
+    ? 'View all ' + (p.type === 'transfer' ? 'transfers' : p.type === 'sale' ? 'premises for sale' : 'rentals') + ' in '
+    : 'Ver todos los ' + (p.type === 'transfer' ? 'traspasos' : p.type === 'sale' ? 'locales en venta' : 'alquileres') + ' en ';
+
+  const esUrl = 'https://centraldetraspasos.com' + propUrl;
+  const enUrl = 'https://centraldetraspasos.com/en' + propUrl;
 
   const html = `<!DOCTYPE html>
-<html lang="es">
+<html lang="${lang}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -179,7 +205,7 @@ export default async (req) => {
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="CENTRAL DE TRASPASOS">
-<meta property="og:locale" content="es_ES">
+<meta property="og:locale" content="${ogLocale}">
 <meta property="og:url" content="${canonicalUrl}">
 <meta property="og:title" content="${title} - CENTRAL DE TRASPASOS">
 <meta property="og:description" content="${desc.replace(/"/g, '&quot;')}">
@@ -190,8 +216,9 @@ export default async (req) => {
 <meta name="twitter:description" content="${desc.replace(/"/g, '&quot;')}">
 <meta name="twitter:image" content="${imgUrl}">
 <link rel="canonical" href="${canonicalUrl}">
-<link rel="alternate" href="${canonicalUrl}" hreflang="es">
-<link rel="alternate" href="https://centraldetraspasos.com/en${getPropertyUrl(p)}" hreflang="en">
+<link rel="alternate" href="${esUrl}" hreflang="es">
+<link rel="alternate" href="${enUrl}" hreflang="en">
+<link rel="alternate" href="${lang === 'en' ? enUrl : esUrl}" hreflang="x-default">
 <link rel="icon" type="image/svg+xml" href="/img/favicon.svg">
 <link rel="apple-touch-icon" href="/img/favicon.svg">
 <link rel="stylesheet" href="/css/style.css">
@@ -224,7 +251,7 @@ export default async (req) => {
 <section class="detail-hero" id="detailHero">
   <span class="detail-type-badge">${typeLabel}</span>
   <h1>${title}</h1>
-  <div class="detail-price">${formatPrice(p.price)}${p.type === 'rent' ? '<span style="font-size:0.9rem;font-weight:400;color:var(--text-light)">/mes</span>' : ''}</div>
+  <div class="detail-price">${formatPrice(p.price)}${p.type === 'rent' ? '<span style="font-size:0.9rem;font-weight:400;color:var(--text-light)">' + rentLabel + '</span>' : ''}</div>
   <div class="detail-location">📍 <span>${p.town}</span></div>
 </section>
 
@@ -239,7 +266,7 @@ export default async (req) => {
         <div class="carousel-slides" id="carouselSlides">
           ${imagesHtml}
         </div>
-        ${p.images && p.images.length > 1 ? '<button class="carousel-btn carousel-prev" id="carouselPrev" aria-label="Anterior">❮</button><button class="carousel-btn carousel-next" id="carouselNext" aria-label="Siguiente">❯</button>' : ''}
+        ${p.images && p.images.length > 1 ? '<button class="carousel-btn carousel-prev" id="carouselPrev" aria-label="' + prevLabel + '">❮</button><button class="carousel-btn carousel-next" id="carouselNext" aria-label="' + nextLabel + '">❯</button>' : ''}
       </div>
       <div class="carousel-dots" id="carouselDots">${dotsHtml}</div>
     </div>
@@ -252,7 +279,7 @@ export default async (req) => {
         <div class="detail-location-box" style="margin-top:32px">
           <h3 data-i18n="detail_location">Ubicación</h3>
           <p>${townInfo}</p>
-          <p style="margin-top:8px"><a href="${cityPageUrl}" style="color:var(--primary);text-decoration:underline;font-size:0.9rem">Ver todos los ${p.type === 'transfer' ? 'traspasos' : p.type === 'sale' ? 'locales en venta' : 'alquileres'} en ${p.town} →</a></p>
+          <p style="margin-top:8px"><a href="${cityPageUrl}" style="color:var(--primary);text-decoration:underline;font-size:0.9rem">${typeLinkLabel}${p.town} →</a></p>
         </div>
       </div>
       <div class="detail-sidebar">

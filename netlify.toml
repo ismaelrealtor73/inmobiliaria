@@ -2,6 +2,11 @@
   functions = "netlify/functions"
 
 [[redirects]]
+  from = "/en/propiedad/*"
+  to = "/.netlify/functions/property-page/:splat"
+  status = 200
+
+[[redirects]]
   from = "/en/*"
   to = "/:splat"
   status = 200
