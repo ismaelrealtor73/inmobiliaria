@@ -97,6 +97,26 @@
   status = 200
 
 [[redirects]]
+  from = "/restaurantes"
+  to = "/restaurantes.html"
+  status = 200
+
+[[redirects]]
+  from = "/bares"
+  to = "/bares.html"
+  status = 200
+
+[[redirects]]
+  from = "/locales-comerciales"
+  to = "/locales-comerciales.html"
+  status = 200
+
+[[redirects]]
+  from = "/hosteleria"
+  to = "/hosteleria.html"
+  status = 200
+
+[[redirects]]
   from = "/teatinos"
   to = "/teatinos.html"
   status = 200

@@ -42,6 +42,38 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://centraldetraspasos.com/restaurantes</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/restaurantes"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/restaurantes"/>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/bares</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/bares"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/bares"/>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/locales-comerciales</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/locales-comerciales"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/locales-comerciales"/>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://centraldetraspasos.com/hosteleria</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/hosteleria"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/hosteleria"/>
+    <lastmod>2026-06-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://centraldetraspasos.com/teatinos</loc>
     <xhtml:link rel="alternate" hreflang="es" href="https://centraldetraspasos.com/teatinos"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://centraldetraspasos.com/en/teatinos"/>
