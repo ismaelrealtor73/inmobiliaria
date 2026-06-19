@@ -241,8 +241,8 @@ export default async (req) => {
       <a href="/blog.html" data-i18n="nav_blog">Blog</a>
       <a href="/crm/login.html" data-i18n="nav_crm">CRM</a>
       <div class="lang-switch">
-        <button class="lang-btn" data-lang="es" onclick="setLang('es')"><img src="/img/flag-es.svg" class="flag-icon" alt=""> ES</button>
-        <button class="lang-btn" data-lang="en" onclick="setLang('en')"><img src="/img/flag-gb.svg" class="flag-icon" alt=""> EN</button>
+        <button class="lang-btn" data-lang="es" onclick="window.location.href='${propUrl}'"><img src="/img/flag-es.svg" class="flag-icon" alt=""> ES</button>
+        <button class="lang-btn" data-lang="en" onclick="window.location.href='/en${propUrl}'"><img src="/img/flag-gb.svg" class="flag-icon" alt=""> EN</button>
       </div>
     </nav>
   </div>

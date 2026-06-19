@@ -292,7 +292,7 @@
   }
 };
 
-let currentLang = localStorage.getItem('lang') || 'es';
+let currentLang = (localStorage.getItem('lang') || (window.location.pathname.startsWith('/en/') ? 'en' : 'es'));
 
 function t(key) {
   const lang = TRANSLATIONS[currentLang];
