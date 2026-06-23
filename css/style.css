@@ -759,6 +759,26 @@ ul { list-style: none; }
   .toast { right: 16px; left: 16px; bottom: 16px; text-align: center; }
 }
 
+/* Category pills */
+.category-bar { padding: 32px 20px; text-align: center; border-top: 1px solid #eef1f4; border-bottom: 1px solid #eef1f4; }
+.category-bar .inner { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center; }
+.category-bar .label { font-weight: 600; color: var(--primary); margin-right: 8px; }
+.category-bar a {
+  display: inline-flex; align-items: center; gap: 6px; padding: 10px 24px;
+  background: var(--light); border: 1px solid #e0e8e8; border-radius: 50px;
+  color: var(--text); text-decoration: none; font-weight: 500; font-size: 0.95rem;
+  transition: all 0.2s;
+}
+.category-bar a:hover { border-color: var(--primary); color: var(--primary); }
+
+@media (max-width: 768px) {
+  .category-bar .inner { flex-direction: column; gap: 8px; }
+  .category-bar a { width: 100%; justify-content: center; max-width: 340px; padding: 12px 24px; font-size: 1rem; }
+}
+@media (min-width: 769px) {
+  .category-bar a { display: inline-flex; }
+}
+
 /* Cookie banner */
 #cookieBanner {
   position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
