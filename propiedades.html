@@ -200,11 +200,14 @@ function renderProperties(props) {
     const coverImg = p.images && p.images.length ? p.images.find(i=>i.featured) || p.images[0] : null;
     const imgStyle = coverImg && coverImg.data ? 'background:none' : 'background:linear-gradient(135deg,' + (p.type==='sale'?'#2E86AB':p.type==='rent'?'#36B37E':'#e67e22') + ',#1a2a3a)';
     const imgContent = coverImg && coverImg.data ? '<img src="' + coverImg.data + '" style="width:100%;height:100%;object-fit:cover" alt="' + (p['title_' + lang] || p['title_es']) + ' - ' + p.town + ' - CENTRAL DE TRASPASOS" onerror="this.style.display=\'none\';this.parentNode.style.background=\'linear-gradient(135deg,' + (p.type==='sale'?'#2E86AB':p.type==='rent'?'#36B37E':'#e67e22') + ',#1a2a3a)\';this.parentNode.innerHTML=\'🏪\'">' : '🏪';
+    const soldLabel = p.type==='sale'?'Vendido':p.type==='rent'?'Alquilado':'Traspasado';
     return '<a href="' + getPropertyUrl(p) + '" class="property-card-link">' +
       '<div class="property-card">' +
-      '<div class="property-img" style="' + imgStyle + '">' + imgContent +
+      '<div class="property-img" style="' + imgStyle + '">' +
+      (p.sold ? '<div class="sold-overlay"></div><span class="sold-badge">' + soldLabel + '</span>' : '') +
+      imgContent +
       '<span class="tag ' + tagClass + '">' + typeLabel + '</span>' +
-      (p.featured ? '<span class="featured-badge">⭐ ' + t('crm_form_featured') + '</span>' : '') +
+      (p.featured ? '<span class="featured-badge">🌟 ' + t('crm_form_featured') + '</span>' : '') +
       '</div>' +
       '<div class="property-body">' +
       '<div class="property-town">📍 ' + p.town + '</div>' +
