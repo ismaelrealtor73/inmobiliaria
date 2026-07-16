@@ -57,7 +57,9 @@ var posts = [
   { t: 'Traspaso de peluquer\u00eda en M\u00e1laga 2026', u: 'traspaso-peluqueria-malaga.html' },
   { t: 'Traspaso de cl\u00ednica est\u00e9tica en M\u00e1laga 2026', u: 'traspaso-clinica-estetica-malaga.html' },
   { t: 'Traspaso de discoteca o pub en la Costa del Sol 2026', u: 'traspaso-discoteca-pub-malaga.html' },
-  { t: 'Traspaso de supermercado en Fuengirola 2026', u: 'traspaso-supermercado-fuengirola-malaga.html' }
+  { t: 'Traspaso de supermercado en Fuengirola 2026', u: 'traspaso-supermercado-fuengirola-malaga.html' },
+  { t: 'Traspaso de restaurante en Compás de la Victoria Málaga 2026', u: 'traspaso-restaurante-compas-victoria-malaga.html' },
+  { t: 'Traspaso de asador-restaurante en Fuengirola 2026', u: 'traspaso-asador-restaurante-fuengirola.html' }
 ];
 
 var current = window.location.pathname.split('/').pop();

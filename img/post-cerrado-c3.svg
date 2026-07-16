@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f2b3d"/>
+      <stop offset="100%" style="stop-color:#1a4a6a"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.10"/>
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.04"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1080" height="8" fill="#e8a838"/>
+  <text x="540" y="80" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="bold" fill="#e8a838" letter-spacing="3">CENTRAL DE TRASPASOS</text>
+  <text x="540" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#8ab4c8" letter-spacing="2">INMOBILIARIA · COSTA DEL SOL</text>
+  <text x="540" y="180" text-anchor="middle" font-family="Georgia, serif" font-size="42" font-weight="bold" fill="#ffffff">EL MERCADO ESTÁ LISTO</text>
+  <text x="540" y="230" text-anchor="middle" font-family="Georgia, serif" font-size="42" font-weight="bold" fill="#4caf50">¿Y TÚ?</text>
+  <line x1="420" y1="255" x2="660" y2="255" stroke="#4caf50" stroke-width="2" opacity="0.5"/>
+  <rect x="60" y="290" width="960" height="200" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="540" y="335" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#e8a838">📊 Datos del mercado 2026</text>
+  <text x="100" y="375" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">• Málaga lidera la recuperación del mercado comercial en Andalucía</text>
+  <text x="100" y="405" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">• La demanda de inversores ha crecido un 34% respecto a 2025</text>
+  <text x="100" y="435" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">• Los locales en traspaso se venden un 40% más rápido que en 2024</text>
+  <text x="100" y="465" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">• Inversores nacionales y extranjeros buscan en la Costa del Sol</text>
+  <rect x="60" y="530" width="960" height="200" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="540" y="575" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#e8a838">🏪 ¿Qué tipo de local buscan?</text>
+  <text x="100" y="615" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">• Locales comerciales en Centro y Teatinos (Málaga)</text>
+  <text x="100" y="645" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">• Restaurantes con terraza en toda la Costa del Sol</text>
+  <text x="100" y="675" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">• Naves industriales y locales para inversión</text>
+  <text x="100" y="705" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">• Locales en renta (alquiler) con o sin negocio</text>
+  <rect x="60" y="780" width="960" height="130" rx="12" fill="url(#card)" stroke="#e8a838" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="540" y="825" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#e8a838" font-weight="bold">💡 El mejor momento para vender</text>
+  <text x="540" y="865" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#e8a838" font-weight="bold">era ayer. El segundo mejor es hoy.</text>
+  <rect x="140" y="980" width="800" height="70" rx="35" fill="#e8a838"/>
+  <text x="540" y="1023" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="bold" fill="#0f2b3d">TASACIÓN GRATIS → 645 412 519</text>
+  <circle cx="460" cy="1290" r="6" fill="#ffffff" opacity="0.3"/>
+  <circle cx="500" cy="1290" r="6" fill="#ffffff" opacity="0.3"/>
+  <circle cx="540" cy="1290" r="8" fill="#e8a838"/>
+  <circle cx="580" cy="1290" r="6" fill="#ffffff" opacity="0.3"/>
+</svg>

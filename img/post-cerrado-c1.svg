@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f2b3d"/>
+      <stop offset="100%" style="stop-color:#1a4a6a"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.10"/>
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.04"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1080" height="8" fill="#e8a838"/>
+  <text x="540" y="80" text-anchor="middle" font-family="Georgia, serif" font-size="32" font-weight="bold" fill="#e8a838" letter-spacing="3">CENTRAL DE TRASPASOS</text>
+  <text x="540" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#8ab4c8" letter-spacing="2">INMOBILIARIA · COSTA DEL SOL</text>
+  <text x="540" y="240" text-anchor="middle" font-family="Georgia, serif" font-size="56" font-weight="bold" fill="#ff5722">¿TIENES UN LOCAL</text>
+  <text x="540" y="310" text-anchor="middle" font-family="Georgia, serif" font-size="56" font-weight="bold" fill="#ff5722">CERRADO?</text>
+  <line x1="340" y1="340" x2="740" y2="340" stroke="#ff5722" stroke-width="2" opacity="0.5"/>
+  <text x="540" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#e8a838">Sabemos lo que estás pensando:</text>
+  <rect x="100" y="480" width="880" height="70" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="540" y="515" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#8ab4c8">🤔 "El mercado está parado"</text>
+  <text x="540" y="535" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#8ab4c8">→ Realidad: NUNCA ha habido tanta demanda</text>
+  <rect x="100" y="570" width="880" height="70" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="540" y="605" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#8ab4c8">🤔 "Ya encontraré comprador"</text>
+  <text x="540" y="625" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#8ab4c8">→ Realidad: Cada mes pierdes ~1.250€ de ingresos</text>
+  <rect x="100" y="660" width="880" height="70" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="540" y="695" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#8ab4c8">🤔 "No sé cuánto vale"</text>
+  <text x="540" y="715" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#8ab4c8">→ Realidad: Te ayudamos a tasarlo GRATIS</text>
+  <rect x="80" y="800" width="920" height="200" rx="12" fill="url(#card)" stroke="#e8a838" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="540" y="850" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#e8a838">Hay solución</text>
+  <text x="540" y="890" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#ffffff">Ponemos tu local frente a inversores reales</text>
+  <text x="540" y="925" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#ffffff">que están buscando en la Costa del Sol AHORA</text>
+  <rect x="190" y="1080" width="700" height="70" rx="35" fill="#e8a838"/>
+  <text x="540" y="1123" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="bold" fill="#0f2b3d">TASACIÓN GRATIS → DM</text>
+  <circle cx="460" cy="1290" r="8" fill="#e8a838"/>
+  <circle cx="500" cy="1290" r="6" fill="#ffffff" opacity="0.3"/>
+  <circle cx="540" cy="1290" r="6" fill="#ffffff" opacity="0.3"/>
+  <circle cx="580" cy="1290" r="6" fill="#ffffff" opacity="0.3"/>
+</svg>

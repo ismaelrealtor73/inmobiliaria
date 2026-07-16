@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f2b3d"/>
+      <stop offset="100%" style="stop-color:#1a4a6a"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.10"/>
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.04"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1080" height="8" fill="#e8a838"/>
+  <text x="540" y="80" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="bold" fill="#e8a838" letter-spacing="3">CENTRAL DE TRASPASOS</text>
+  <text x="540" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#8ab4c8" letter-spacing="2">INMOBILIARIA · COSTA DEL SOL</text>
+  <text x="540" y="180" text-anchor="middle" font-family="Georgia, serif" font-size="44" font-weight="bold" fill="#ffffff">¿CÓMO TE AYUDAMOS</text>
+  <text x="540" y="240" text-anchor="middle" font-family="Georgia, serif" font-size="44" font-weight="bold" fill="#e8a838">A VENDERLO?</text>
+  <line x1="320" y1="265" x2="760" y2="265" stroke="#e8a838" stroke-width="2" opacity="0.5"/>
+  <rect x="60" y="300" width="960" height="60" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="540" y="336" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" fill="#ffffff">1. Tasación gratuita en 24h</text>
+  <rect x="60" y="375" width="960" height="60" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="540" y="411" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" fill="#ffffff">2. Fotos profesionales y descripción</text>
+  <rect x="60" y="450" width="960" height="60" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="540" y="486" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" fill="#ffffff">3. Publicación en web + redes sociales</text>
+  <rect x="60" y="525" width="960" height="60" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="540" y="561" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" fill="#ffffff">4. Difusión a +500 inversores activos</text>
+  <rect x="60" y="600" width="960" height="60" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="540" y="636" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" fill="#ffffff">5. Gestión de visitas y negociación</text>
+  <rect x="60" y="675" width="960" height="60" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="540" y="711" text-anchor="middle" font-family="Arial, sans-serif" font-size="19" fill="#ffffff">6. Acompañamiento hasta la firma</text>
+  <rect x="60" y="790" width="960" height="160" rx="12" fill="url(#card)" stroke="#e8a838" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="540" y="840" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#e8a838" font-weight="bold">✅ Sin compromiso</text>
+  <text x="540" y="875" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#ffffff">No cobramos hasta que vendemos</text>
+  <text x="540" y="910" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#ffffff">Tu local solo lo pagamos nosotros</text>
+  <rect x="140" y="1000" width="800" height="70" rx="35" fill="#e8a838"/>
+  <text x="540" y="1043" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="bold" fill="#0f2b3d">QUIERO VENDER YA → DM</text>
+  <text x="540" y="1120" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#8ab4c8">📞 +34 645 412 519 · 📧 info@centraldetraspasos.com</text>
+  <circle cx="460" cy="1290" r="6" fill="#ffffff" opacity="0.3"/>
+  <circle cx="500" cy="1290" r="6" fill="#ffffff" opacity="0.3"/>
+  <circle cx="540" cy="1290" r="6" fill="#ffffff" opacity="0.3"/>
+  <circle cx="580" cy="1290" r="8" fill="#e8a838"/>
+</svg>

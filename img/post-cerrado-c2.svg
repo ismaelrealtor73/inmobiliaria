@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f2b3d"/>
+      <stop offset="100%" style="stop-color:#1a4a6a"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.10"/>
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.04"/>
+    </linearGradient>
+    <linearGradient id="cardRed" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff5722;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#ff5722;stop-opacity:0.04"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1080" height="8" fill="#e8a838"/>
+  <text x="540" y="80" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="bold" fill="#e8a838" letter-spacing="3">CENTRAL DE TRASPASOS</text>
+  <text x="540" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#8ab4c8" letter-spacing="2">INMOBILIARIA · COSTA DEL SOL</text>
+  <text x="540" y="180" text-anchor="middle" font-family="Georgia, serif" font-size="42" font-weight="bold" fill="#ff5722">¿CUÁNTO TE CUESTA</text>
+  <text x="540" y="230" text-anchor="middle" font-family="Georgia, serif" font-size="42" font-weight="bold" fill="#ff5722">TENERLO CERRADO?</text>
+  <line x1="320" y1="255" x2="760" y2="255" stroke="#ff5722" stroke-width="2" opacity="0.5"/>
+  <rect x="60" y="290" width="960" height="250" rx="12" fill="url(#cardRed)" stroke="#ff5722" stroke-opacity="0.4" stroke-width="1.5"/>
+  <text x="540" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#ffffff">Cálculo de pérdidas para un local de 150.000€</text>
+  <text x="100" y="385" font-family="Arial, sans-serif" font-size="18" fill="#8ab4c8">Rentabilidad media en Málaga: 7,2% anual</text>
+  <text x="100" y="415" font-family="Arial, sans-serif" font-size="18" fill="#8ab4c8">150.000€ × 7,2% = 10.800€/año = 900€/mes</text>
+  <text x="100" y="445" font-family="Arial, sans-serif" font-size="18" fill="#8ab4c8">+ IBI, comunidad, seguros: ~350€/mes</text>
+  <text x="100" y="475" font-family="Arial, sans-serif" font-size="18" fill="#8ab4c8">+ Devaluación del local sin actividad</text>
+  <rect x="60" y="580" width="960" height="100" rx="12" fill="url(#card)" stroke="#e8a838" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="540" y="625" text-anchor="middle" font-family="Georgia, serif" font-size="28" font-weight="bold" fill="#e8a838">~1.250€ DE PÉRDIDA CADA MES</text>
+  <text x="540" y="660" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#ffffff">6 meses cerrado = 7.500€ · 12 meses = 15.000€</text>
+  <rect x="60" y="730" width="960" height="180" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+  <text x="540" y="775" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#ffffff">Otros costes ocultos</text>
+  <text x="100" y="815" font-family="Arial, sans-serif" font-size="17" fill="#8ab4c8">• Oportunidad de inversión perdida (no recuperable)</text>
+  <text x="100" y="845" font-family="Arial, sans-serif" font-size="17" fill="#8ab4c8">• Deterioro del local sin uso continuado</text>
+  <text x="100" y="875" font-family="Arial, sans-serif" font-size="17" fill="#8ab4c8">• Posibles multas por locales cerrados en ordenanzas municipales</text>
+  <rect x="140" y="980" width="800" height="70" rx="35" fill="#e8a838"/>
+  <text x="540" y="1023" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#0f2b3d">PONLE PRECIO YA → DM</text>
+  <circle cx="460" cy="1290" r="6" fill="#ffffff" opacity="0.3"/>
+  <circle cx="500" cy="1290" r="8" fill="#e8a838"/>
+  <circle cx="540" cy="1290" r="6" fill="#ffffff" opacity="0.3"/>
+  <circle cx="580" cy="1290" r="6" fill="#ffffff" opacity="0.3"/>
+</svg>

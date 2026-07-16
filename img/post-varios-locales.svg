@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f2b3d"/>
+      <stop offset="100%" style="stop-color:#1a4a6a"/>
+    </linearGradient>
+    <linearGradient id="card1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff5722;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#ff5722;stop-opacity:0.05"/>
+    </linearGradient>
+    <linearGradient id="card2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8a838;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#e8a838;stop-opacity:0.05"/>
+    </linearGradient>
+    <linearGradient id="card3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4caf50;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#4caf50;stop-opacity:0.04"/>
+    </linearGradient>
+    <linearGradient id="card4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2196f3;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#2196f3;stop-opacity:0.04"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1080" height="8" fill="#e8a838"/>
+  <text x="540" y="70" text-anchor="middle" font-family="Georgia, serif" font-size="24" font-weight="bold" fill="#e8a838" letter-spacing="3">CENTRAL DE TRASPASOS</text>
+  <text x="540" y="90" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#8ab4c8" letter-spacing="2">INMOBILIARIA · COSTA DEL SOL</text>
+  <text x="540" y="155" text-anchor="middle" font-family="Georgia, serif" font-size="40" font-weight="bold" fill="#ffffff">¿CUÁL TE INTERESA MÁS?</text>
+  <text x="540" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#8ab4c8">4 negocios disponibles. Dinos el tuyo y te contamos.</text>
+  <line x1="340" y1="215" x2="740" y2="215" stroke="#e8a838" stroke-width="2" opacity="0.4"/>
+  <!-- Property 1 - Kebab Málaga -->
+  <rect x="40" y="250" width="485" height="210" rx="14" fill="url(#card1)" stroke="#ff5722" stroke-opacity="0.3" stroke-width="1.5"/>
+  <rect x="40" y="250" width="485" height="44" rx="14" fill="#ff5722" opacity="0.2"/>
+  <text x="55" y="270" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#ff5722">🔥 KEBAB</text>
+  <text x="55" y="290" font-family="Arial, sans-serif" font-size="13" fill="#8ab4c8">Calle Frigiliana · Málaga capital</text>
+  <text x="55" y="330" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#ffffff">25.000 €</text>
+  <text x="55" y="355" font-family="Arial, sans-serif" font-size="14" fill="#8ab4c8">Alquiler: Consultar</text>
+  <text x="55" y="380" font-family="Arial, sans-serif" font-size="13" fill="#8ab4c8">Local preparado · Licencia activa</text>
+  <text x="55" y="405" font-family="Arial, sans-serif" font-size="13" fill="#8ab4c8">Zona residencial</text>
+  <text x="55" y="435" font-family="Arial, sans-serif" font-size="12" fill="#4caf50">✓ Traspaso económico</text>
+  <rect x="370" y="415" width="140" height="30" rx="15" fill="#ff5722"/>
+  <text x="440" y="435" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff">25K</text>
+  <!-- Property 2 - Cafetería Teatinos -->
+  <rect x="555" y="250" width="485" height="210" rx="14" fill="url(#card2)" stroke="#e8a838" stroke-opacity="0.3" stroke-width="1.5"/>
+  <rect x="555" y="250" width="485" height="44" rx="14" fill="#e8a838" opacity="0.15"/>
+  <text x="570" y="270" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#e8a838">☕ CAFETERÍA</text>
+  <text x="570" y="290" font-family="Arial, sans-serif" font-size="13" fill="#8ab4c8">Teatinos · Málaga</text>
+  <text x="570" y="330" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#ffffff">80.000 €</text>
+  <text x="570" y="355" font-family="Arial, sans-serif" font-size="14" fill="#8ab4c8">Alquiler: 3.000 €/mes</text>
+  <text x="570" y="380" font-family="Arial, sans-serif" font-size="13" fill="#8ab4c8">200 m² · Zona universitaria</text>
+  <text x="570" y="405" font-family="Arial, sans-serif" font-size="13" fill="#8ab4c8">Alto tránsito peatonal</text>
+  <text x="570" y="435" font-family="Arial, sans-serif" font-size="12" fill="#4caf50">✓ Cliente fijo todo el año</text>
+  <rect x="900" y="415" width="125" height="30" rx="15" fill="#e8a838"/>
+  <text x="962" y="435" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0f2b3d">80K</text>
+  <!-- Property 3 - Pizzería Benalmádena -->
+  <rect x="40" y="490" width="485" height="210" rx="14" fill="url(#card3)" stroke="#4caf50" stroke-opacity="0.3" stroke-width="1.5"/>
+  <rect x="40" y="490" width="485" height="44" rx="14" fill="#4caf50" opacity="0.15"/>
+  <text x="55" y="510" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#4caf50">🍕 PIZZERÍA</text>
+  <text x="55" y="530" font-family="Arial, sans-serif" font-size="13" fill="#8ab4c8">Benalmádena Costa</text>
+  <text x="55" y="570" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#ffffff">80.000 €</text>
+  <text x="55" y="595" font-family="Arial, sans-serif" font-size="14" fill="#8ab4c8">100 m² · Cocina equipada</text>
+  <text x="55" y="620" font-family="Arial, sans-serif" font-size="13" fill="#8ab4c8">Terraza · Licencia activa</text>
+  <text x="55" y="645" font-family="Arial, sans-serif" font-size="13" fill="#8ab4c8">Zona turística y residencial</text>
+  <text x="55" y="675" font-family="Arial, sans-serif" font-size="12" fill="#4caf50">✓ Buena rentabilidad potencial</text>
+  <rect x="370" y="655" width="140" height="30" rx="15" fill="#4caf50"/>
+  <text x="440" y="675" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0f2b3d">80K</text>
+  <!-- Property 4 - Restaurante-pizzería Teatinos -->
+  <rect x="555" y="490" width="485" height="210" rx="14" fill="url(#card4)" stroke="#2196f3" stroke-opacity="0.3" stroke-width="1.5"/>
+  <rect x="555" y="490" width="485" height="44" rx="14" fill="#2196f3" opacity="0.12"/>
+  <text x="570" y="510" font-family="Georgia, serif" font-size="14" font-weight="bold" fill="#2196f3">🍕 RESTAURANTE</text>
+  <text x="570" y="530" font-family="Arial, sans-serif" font-size="13" fill="#8ab4c8">Teatinos · Málaga</text>
+  <text x="570" y="570" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#ffffff">120.000 €</text>
+  <text x="570" y="595" font-family="Arial, sans-serif" font-size="14" fill="#8ab4c8">Alquiler: Consultar</text>
+  <text x="570" y="620" font-family="Arial, sans-serif" font-size="13" fill="#8ab4c8">Cocina profesional · Terraza</text>
+  <text x="570" y="645" font-family="Arial, sans-serif" font-size="13" fill="#8ab4c8">Alta visibilidad peatonal</text>
+  <text x="570" y="675" font-family="Arial, sans-serif" font-size="12" fill="#4caf50">✓ Prémium · Oportunidad única</text>
+  <rect x="900" y="655" width="125" height="30" rx="15" fill="#2196f3"/>
+  <text x="962" y="675" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#ffffff">120K</text>
+  <!-- CTA -->
+  <rect x="140" y="760" width="800" height="65" rx="32" fill="#e8a838"/>
+  <text x="540" y="800" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="bold" fill="#0f2b3d">¿CUÁL TE GUSTA MÁS? → DM</text>
+  <text x="540" y="855" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#8ab4c8">Te damos todos los detalles sin compromiso</text>
+  <!-- Contact -->
+  <rect x="40" y="920" width="1000" height="80" rx="14" fill="url(#card1)" stroke="#e8a838" stroke-opacity="0.08" stroke-width="1"/>
+  <text x="540" y="955" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#ffffff">📞 <tspan font-weight="bold">+34 645 412 519</tspan> · 📧 info@centraldetraspasos.com</text>
+  <text x="540" y="985" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#8ab4c8">🌐 centraldetraspasos.com</text>
+  <rect x="0" y="1342" width="1080" height="8" fill="#e8a838"/>
+</svg>

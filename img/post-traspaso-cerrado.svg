@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f2b3d"/>
+      <stop offset="100%" style="stop-color:#1a4a6a"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.10"/>
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.04"/>
+    </linearGradient>
+    <linearGradient id="cardGreen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4caf50;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#4caf50;stop-opacity:0.04"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1080" height="8" fill="#e8a838"/>
+  <text x="540" y="80" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="bold" fill="#e8a838" letter-spacing="3">CENTRAL DE TRASPASOS</text>
+  <text x="540" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#8ab4c8" letter-spacing="2">INMOBILIARIA · COSTA DEL SOL</text>
+  <text x="540" y="190" text-anchor="middle" font-family="Georgia, serif" font-size="52" font-weight="bold" fill="#ffffff">✅ TRASPASO</text>
+  <text x="540" y="250" text-anchor="middle" font-family="Georgia, serif" font-size="52" font-weight="bold" fill="#4caf50">CERRADO CON ÉXITO</text>
+  <line x1="290" y1="275" x2="790" y2="275" stroke="#4caf50" stroke-width="2" opacity="0.5"/>
+  <rect x="60" y="320" width="960" height="200" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.12" stroke-width="1"/>
+  <text x="540" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#e8a838">Restaurante en Málaga Centro</text>
+  <text x="100" y="400" font-family="Arial, sans-serif" font-size="18" fill="#8ab4c8">• Precio de venta: 65.000€</text>
+  <text x="100" y="430" font-family="Arial, sans-serif" font-size="18" fill="#8ab4c8">• Tiempo en mercado: 18 días</text>
+  <text x="100" y="460" font-family="Arial, sans-serif" font-size="18" fill="#8ab4c8">• Comprador: inversor local (primera experiencia)</text>
+  <text x="100" y="490" font-family="Arial, sans-serif" font-size="18" fill="#8ab4c8">• Vendedor: satisfecho, negocio vendido al precio justo</text>
+  <rect x="60" y="560" width="960" height="130" rx="12" fill="url(#cardGreen)" stroke="#4caf50" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="540" y="605" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#4caf50" font-weight="bold">"En una semana teníamos visitas.</text>
+  <text x="540" y="640" text-anchor="middle" font-family="Georgia, serif" font-size="24" fill="#4caf50" font-weight="bold">En 18 días estaba vendido."</text>
+  <text x="540" y="675" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#8ab4c8">— Propietario del restaurante</text>
+  <rect x="60" y="740" width="960" height="180" rx="12" fill="url(#card)" stroke="#e8a838" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="540" y="785" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#e8a838">Así trabajamos</text>
+  <text x="100" y="825" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">1. Tasación gratuita del negocio</text>
+  <text x="100" y="855" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">2. Difusión entre +500 inversores activos</text>
+  <text x="100" y="885" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">3. Acompañamiento hasta la firma</text>
+  <rect x="140" y="980" width="800" height="70" rx="35" fill="#e8a838"/>
+  <text x="540" y="1023" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="bold" fill="#0f2b3d">¿QUIERES SER EL PRÓXIMO?</text>
+  <text x="540" y="1095" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#8ab4c8">📞 +34 645 412 519</text>
+  <text x="540" y="1125" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#8ab4c8">📧 info@centraldetraspasos.com</text>
+  <rect x="0" y="1342" width="1080" height="8" fill="#e8a838"/>
+</svg>

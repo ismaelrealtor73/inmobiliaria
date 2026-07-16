@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f2b3d"/>
+      <stop offset="100%" style="stop-color:#1a4a6a"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.10"/>
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.04"/>
+    </linearGradient>
+    <linearGradient id="cardRed" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff5722;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#ff5722;stop-opacity:0.04"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1080" height="8" fill="#e8a838"/>
+  <text x="540" y="80" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="bold" fill="#e8a838" letter-spacing="3">CENTRAL DE TRASPASOS</text>
+  <text x="540" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#8ab4c8" letter-spacing="2">INMOBILIARIA · COSTA DEL SOL</text>
+  <text x="540" y="220" text-anchor="middle" font-family="Georgia, serif" font-size="52" font-weight="bold" fill="#ff5722">¿TIENES UN LOCAL</text>
+  <text x="540" y="280" text-anchor="middle" font-family="Georgia, serif" font-size="52" font-weight="bold" fill="#ff5722">CERRADO?</text>
+  <line x1="340" y1="305" x2="740" y2="305" stroke="#ff5722" stroke-width="2" opacity="0.5"/>
+  <text x="540" y="370" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#ffffff">Cada mes que sigue cerrado estás perdiendo</text>
+  <text x="540" y="400" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#ffffff">dinero que podrías tener en tu bolsillo.</text>
+  <rect x="120" y="440" width="840" height="80" rx="12" fill="url(#cardRed)" stroke="#ff5722" stroke-opacity="0.4" stroke-width="1.5"/>
+  <text x="540" y="480" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#8ab4c8">Local de 150.000€ cerrado 6 meses:</text>
+  <text x="540" y="510" text-anchor="middle" font-family="Georgia, serif" font-size="28" font-weight="bold" fill="#ff5722">Hasta 7.500€ de ingresos perdidos</text>
+  <rect x="60" y="570" width="960" height="190" rx="12" fill="url(#card)" stroke="#e8a838" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="540" y="620" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#e8a838">La demanda en Málaga está al máximo</text>
+  <text x="540" y="660" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#ffffff">Nunca ha habido tantos inversores buscando</text>
+  <text x="540" y="690" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#ffffff">locales en la Costa del Sol como ahora.</text>
+  <text x="540" y="740" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#e8a838" font-style="italic">"El mejor momento para vender era ayer.<tspan x="540" dy="30" fill="#e8a838">El segundo mejor momento es hoy."</tspan></text>
+  <rect x="140" y="830" width="800" height="70" rx="35" fill="#e8a838"/>
+  <text x="540" y="873" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#0f2b3d">TASACIÓN GRATIS → DM</text>
+  <text x="540" y="945" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#ffffff">¿Cuánto vale tu local hoy?</text>
+  <text x="540" y="980" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#8ab4c8">Te lo decimos en 24h · Sin compromiso</text>
+  <rect x="120" y="1040" width="840" height="100" rx="12" fill="url(#card)" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+  <text x="540" y="1085" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#ffffff">📞 +34 645 412 519</text>
+  <text x="540" y="1115" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#8ab4c8">📧 info@centraldetraspasos.com</text>
+  <rect x="0" y="1342" width="1080" height="8" fill="#e8a838"/>
+</svg>

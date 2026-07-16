@@ -1,0 +1,71 @@
+CAMPAÑA CAPTACIÓN LOCALES CERRADOS - COPY PARA META ADS
+========================================================
+
+== IMÁGENES (carrusel 4 slides o individual) ==
+
+Slide 1: img/post-cerrado-c1.png
+Slide 2: img/post-cerrado-c2.png
+Slide 3: img/post-cerrado-c3.png
+Slide 4: img/post-cerrado-c4.png
+Individual: img/post-local-cerrado-v2.png
+
+== ANUNCIO PRINCIPAL ==
+
+TEXTO PRINCIPAL:
+¿Tienes un local o negocio cerrado en Málaga o la Costa del Sol? Lo vendemos, alquilamos o traspasamos. Tasación gratuita en 24h. Sin comisión hasta cerrar. Más de 15 años de experiencia.
+
+TÍTULO (elegir uno):
+[1] ¿Local cerrado?
+[2] Local cerrado en Málaga
+[3] Vendes tu local?
+[4] Tienes local cerrado?
+[5] Nosotros lo vendemos
+
+DESCRIPCIÓN:
+CENTRAL DE TRASPASOS
+
+BOTÓN:
+Solicitar información
+
+== FORMULARIO INSTANTÁNEO ==
+
+TÍTULO DEL FORMULARIO:
+Solicita tu tasación gratuita
+
+DESCRIPCIÓN:
+Tasamos tu local o negocio gratis en 24h. Sin compromiso. Más de 15 años en Málaga y la Costa del Sol.
+
+BOTÓN DE ENVÍO:
+Enviar solicitud
+
+PREGUNTAS DEL FORMULARIO:
+1. Nombre (campo corto)
+2. Teléfono (campo corto)
+3. Tipo de propiedad (desplegable): Local comercial / Restaurante / Oficina / Nave industrial / Otro
+4. Municipio (desplegable): Málaga / Marbella / Fuengirola / Torremolinos / Benalmádena / Estepona / Mijas / Antequera / Vélez-Málaga / Rincón de la Victoria / Nerja / Otro
+5. ¿Desde cuándo está cerrado? (desplegable): Menos de 6 meses / 6 a 12 meses / Más de 12 meses
+
+== PÁGINA DE AGRADECIMIENTO ==
+
+Gracias por tu solicitud. Te contactaremos en menos de 24h para tasar tu propiedad sin compromiso.
+CENTRAL DE TRASPASOS | info@centraldetraspasos.com | +34 645 412 519
+
+== SEGMENTACIÓN DETALLADA (intereses y comportamientos) ==
+
+Ubicación: Málaga capital + Costa del Sol (radio 50km)
+Edad: 35-65 años
+Idioma: Español
+
+Segmentos detallados a INCLUIR:
+- Pequeña empresa
+- Propietario de un inmueble
+- Dueño de negocio / Business owner
+- Inversión inmobiliaria
+- Alquiler de locales
+- Autónomo / Freelance
+- Emprendedor / Entrepreneurship
+- Empresario / Businessperson
+
+Segmentos a EXCLUIR (para no gastar en turistas):
+- Alquiler vacacional / Vacation rental
+- Viajes / Travel

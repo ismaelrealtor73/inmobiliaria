@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f2b3d"/>
+      <stop offset="100%" style="stop-color:#1a4a6a"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.10"/>
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.04"/>
+    </linearGradient>
+    <linearGradient id="goldCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8a838;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#e8a838;stop-opacity:0.05"/>
+    </linearGradient>
+    <linearGradient id="redCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff5722;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#ff5722;stop-opacity:0.04"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1350" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1080" height="8" fill="#e8a838"/>
+  <text x="540" y="80" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="bold" fill="#e8a838" letter-spacing="3">CENTRAL DE TRASPASOS</text>
+  <text x="540" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#8ab4c8" letter-spacing="2">INMOBILIARIA · COSTA DEL SOL</text>
+  <rect x="200" y="145" width="680" height="42" rx="21" fill="#ff5722"/>
+  <text x="540" y="173" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#ffffff">🍕 TRASPASO · TEATINOS (MÁLAGA)</text>
+  <text x="540" y="260" text-anchor="middle" font-family="Georgia, serif" font-size="46" font-weight="bold" fill="#ffffff">RESTAURANTE</text>
+  <text x="540" y="315" text-anchor="middle" font-family="Georgia, serif" font-size="40" font-weight="bold" fill="#ffffff">PIZZERÍA</text>
+  <text x="540" y="360" text-anchor="middle" font-family="Georgia, serif" font-size="26" fill="#e8a838">Zona universitaria · Alto tránsito peatonal</text>
+  <line x1="290" y1="385" x2="790" y2="385" stroke="#e8a838" stroke-width="2" opacity="0.5"/>
+  <rect x="240" y="420" width="600" height="90" rx="16" fill="url(#goldCard)" stroke="#e8a838" stroke-width="2"/>
+  <text x="540" y="455" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#8ab4c8">TRASPASO</text>
+  <text x="540" y="495" text-anchor="middle" font-family="Georgia, serif" font-size="42" font-weight="bold" fill="#e8a838">120.000 €</text>
+  <rect x="240" y="530" width="600" height="85" rx="12" fill="url(#card)"/>
+  <text x="540" y="560" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#ffffff">Alquiler: <tspan fill="#e8a838" font-weight="bold">Consultar</tspan></text>
+  <text x="540" y="595" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#8ab4c8">Cocina profesional · Mobiliario · Terraza</text>
+  <rect x="80" y="650" width="440" height="100" rx="12" fill="url(#card)"/>
+  <text x="300" y="690" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="bold" fill="#e8a838">Terraza</text>
+  <text x="300" y="725" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#8ab4c8">Para clientes</text>
+  <rect x="560" y="650" width="440" height="100" rx="12" fill="url(#card)"/>
+  <text x="780" y="690" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="bold" fill="#e8a838">Cocina equipada</text>
+  <text x="780" y="725" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#8ab4c8">Maquinaria profesional</text>
+  <rect x="80" y="770" width="440" height="100" rx="12" fill="url(#card)"/>
+  <text x="300" y="810" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="bold" fill="#e8a838">Alta visibilidad</text>
+  <text x="300" y="845" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#8ab4c8">Tránsito constante</text>
+  <rect x="560" y="770" width="440" height="100" rx="12" fill="url(#card)"/>
+  <text x="780" y="810" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="bold" fill="#e8a838">Listo para usar</text>
+  <text x="780" y="845" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#8ab4c8">Sin inversión extra</text>
+  <rect x="80" y="910" width="920" height="130" rx="16" fill="url(#goldCard)" stroke="#e8a838" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="540" y="955" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#e8a838" font-weight="bold">🔥 Zona con demanda constante todo el año</text>
+  <text x="540" y="995" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">50.000+ residentes · 30.000 estudiantes</text>
+  <text x="540" y="1025" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" fill="#ffffff">No depende del turismo · Cliente fijo 365 días</text>
+  <rect x="190" y="1080" width="700" height="65" rx="32" fill="#e8a838"/>
+  <text x="540" y="1120" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#0f2b3d">TE INTERESA? → DM O LLÁMANOS</text>
+  <rect x="80" y="1180" width="920" height="90" rx="12" fill="url(#card)"/>
+  <text x="540" y="1220" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#ffffff">📞 <tspan font-weight="bold">+34 645 412 519</tspan></text>
+  <text x="540" y="1250" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" fill="#8ab4c8">📧 info@centraldetraspasos.com · 🌐 centraldetraspasos.com</text>
+  <rect x="0" y="1342" width="1080" height="8" fill="#e8a838"/>
+</svg>
