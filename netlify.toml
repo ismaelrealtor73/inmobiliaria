@@ -121,3 +121,18 @@
   to = "/teatinos.html"
   status = 200
 
+[[redirects]]
+  from = "/propiedades"
+  to = "/propiedades.html"
+  status = 200
+
+[[redirects]]
+  from = "/captacion"
+  to = "/captacion.html"
+  status = 200
+
+[[redirects]]
+  from = "/crm/login"
+  to = "/crm/login.html"
+  status = 200
+

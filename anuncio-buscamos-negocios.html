@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Anuncio - Buscamos Negocios</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a1a2a; display: flex; justify-content: center; align-items: center; min-height: 100vh; font-family: 'Segoe UI', Arial, sans-serif; }
+.ad-container { width: 1080px; height: 1350px; position: relative; overflow: hidden; background: linear-gradient(160deg, #0a3d2e 0%, #0f4a3a 30%, #0c3547 60%, #0a1a2a 100%); }
+.bg-image { position: absolute; inset: 0; background: url('img/anuncio-buscamos-negocios.png') center/cover; opacity: 0.25; }
+.overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,61,46,0.3) 0%, rgba(10,26,42,0.5) 50%, rgba(10,26,42,0.92) 75%, rgba(10,26,42,1) 100%); }
+.content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 60px; }
+.header { display: flex; justify-content: space-between; align-items: flex-start; }
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo-icon { width: 50px; height: 50px; background: #e8a838; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+.logo-text { color: #fff; font-size: 18px; font-weight: bold; letter-spacing: 1px; }
+.badge { background: rgba(232,168,56,0.15); border: 1px solid #e8a838; color: #e8a838; padding: 8px 20px; border-radius: 30px; font-size: 13px; font-weight: bold; letter-spacing: 1px; }
+.main-content { text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 30px; }
+.title-es { color: #fff; font-size: 48px; font-weight: bold; line-height: 1.2; text-shadow: 0 2px 20px rgba(0,0,0,0.5); }
+.title-es .highlight { color: #e8a838; }
+.title-en { color: rgba(255,255,255,0.6); font-size: 22px; font-weight: 300; letter-spacing: 2px; font-style: italic; }
+.subtitle { color: rgba(255,255,255,0.85); font-size: 20px; line-height: 1.6; max-width: 700px; margin: 0 auto; }
+.tags { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.tag { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 10px 24px; border-radius: 30px; font-size: 15px; backdrop-filter: blur(4px); }
+.footer { display: flex; justify-content: space-between; align-items: flex-end; }
+.contact { display: flex; flex-direction: column; gap: 10px; background: rgba(0,0,0,0.3); padding: 20px 24px; border-radius: 12px; border: 1px solid rgba(232,168,56,0.2); }
+.contact-line { color: #fff; font-size: 17px; font-weight: 500; display: flex; align-items: center; gap: 10px; text-shadow: 0 1px 4px rgba(0,0,0,0.5); }
+.cta-btn { background: linear-gradient(135deg, #e8a838, #d4920e); color: #0a1a2a; padding: 16px 40px; border-radius: 12px; font-size: 18px; font-weight: bold; text-decoration: none; display: inline-block; box-shadow: 0 4px 20px rgba(232,168,56,0.3); }
+.divider-line { width: 80px; height: 3px; background: #e8a838; border-radius: 2px; }
+/* Spanish/English toggle */
+.lang-toggle { position: absolute; top: 60px; right: 60px; display: flex; gap: 8px; z-index: 3; }
+.lang-btn { padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: bold; border: none; cursor: pointer; }
+.lang-es { background: #e8a838; color: #0a1a2a; }
+.lang-en { background: rgba(255,255,255,0.15); color: #fff; }
+</style>
+</head>
+<body>
+<div class="ad-container">
+<div class="bg-image"></div>
+<div class="overlay"></div>
+<div class="content">
+<div class="header">
+<div class="logo">
+<div class="logo-icon">🏢</div>
+<div class="logo-text">CENTRAL DE TRASPASOS</div>
+</div>
+<div class="badge">CENTRAL DE TRASPASOS</div>
+</div>
+
+<div class="main-content">
+<div>
+<div class="divider-line" style="margin: 0 auto 30px"></div>
+<div class="title-es">Buscamos negocios<br>para el sector de<br><span class="highlight">hostelería y comercio</span></div>
+<div class="title-en" style="margin-top: 16px">We are looking for businesses<br>in hospitality and retail</div>
+</div>
+
+<div class="subtitle">
+¿Tienes un local, restaurante, bar o tienda en Málaga o la Costa del Sol?<br>
+Te ayudamos a encontrar el comprador ideal al mejor precio.
+</div>
+
+<div class="subtitle" style="font-size: 16px; color: rgba(255,255,255,0.5); font-style: italic;">
+Do you own a venue, restaurant, bar or shop in Málaga or the Costa del Sol?<br>
+We help you find the right buyer at the best price.
+</div>
+
+<div class="tags">
+<span class="tag">🍽️ Restaurantes</span>
+<span class="tag">☕ Bares</span>
+<span class="tag">🛍️ Comercios</span>
+<span class="tag">🏪 Locales</span>
+</div>
+</div>
+
+<div class="footer">
+<div class="contact">
+<div class="contact-line">📞 +34 645 412 519</div>
+<div class="contact-line">✉️ info@centraldetraspasos.com</div>
+<div class="contact-line">🌐 centraldetraspasos.com</div>
+</div>
+<a class="cta-btn" href="#">CONTACTAR</a>
+</div>
+</div>
+</div>
+</body>
+</html>
