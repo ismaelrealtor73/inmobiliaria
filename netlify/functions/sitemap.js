@@ -1,5 +1,3 @@
-import { getStore } from '@netlify/blobs';
-
 const BASE = 'https://centraldetraspasos.com';
 
 function slugify(text) {
@@ -280,21 +278,19 @@ function propBlock(p) {
 
 export async function handler() {
   let props = [];
-  let dbg = '';
   try {
-    const store = getStore('crm');
-    const raw = await store.get('data', { type: 'text' });
-    dbg = 'raw=' + (raw == null ? 'null' : 'len' + raw.length) + ' head=' + (raw != null ? raw.slice(0, 80) : '');
-    const data = raw ? JSON.parse(raw) : {};
-    props = (data.properties || []).filter(p => p.status === 'published').sort((a, b) => (a.id || 0) - (b.id || 0));
-    dbg += ' | props=' + props.length;
+    const res = await fetch(BASE + '/api/properties');
+    if (res.ok) {
+      const data = await res.json();
+      props = (Array.isArray(data) ? data : (data && data.properties) || [])
+        .filter(p => p.status === 'published')
+        .sort((a, b) => (a.id || 0) - (b.id || 0));
+    }
   } catch (e) {
-    dbg = 'EXC ' + (e && e.message ? e.message : e);
-    console.error('sitemap: no se pudo leer el store', e);
+    console.error('sitemap: no se pudo consultar la API', e);
   }
   const xml = [
     '<?xml version="1.0" encoding="UTF-8"?>',
-    '<!-- ' + dbg + ' -->',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
     '        xmlns:xhtml="http://www.w3.org/1999/xhtml">',
     ...STATIC_PAGES.map(p => '  <url>\n' + staticBlock(p) + '\n  </url>'),
