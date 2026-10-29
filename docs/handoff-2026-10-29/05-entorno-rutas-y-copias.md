@@ -36,8 +36,26 @@ Rama:            main
 Remoto:          origin -> https://github.com/ismaelrealtor73/inmobiliaria.git
 ```
 
-- El repo está **limpio** salvo `cloudflared2.log` (sin seguimiento) y la carpeta
-  `docs/handoff-2026-10-29/` (nueva, sin seguimiento).
+- El repo está **limpio**. Los cambios del 29/10 están en el commit `0adaccc`
+  (arreglo del H1 + este paquete de traspaso), ya subido a `origin/main`.
+  Queda sin seguimiento `cloudflared2.log`.
+
+### Si `git push` falla con "denied to marlyproperties"
+
+GitHub CLI tiene guardada la cuenta `marlyproperties` y su ayudante de credenciales pisa la
+credencial correcta, que sí existe en el Gestor de credenciales de Windows para
+`ismaelrealtor73`. Solución, sin tocar nada permanente:
+
+```powershell
+cd C:\Users\Usuario\Downloads\inmobiliaria
+$env:GIT_TERMINAL_PROMPT="0"
+git -c credential.helper= -c credential.helper=manager push origin main
+Remove-Item Env:\GIT_TERMINAL_PROMPT
+```
+
+Eso usa la credencial de `ismaelrealtor73` y sube correctamente. Si algún día caduca, habrá que
+volver a iniciar sesión con esa cuenta (`gh auth login`) o pegar un token nuevo.
+
 - **`git push` NO publica la web.** Netlify no está enlazado al repositorio. Ver P5 en
   `03-pendientes.md`.
 - Los despliegues se hacían a mano:
