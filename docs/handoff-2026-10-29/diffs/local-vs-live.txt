@@ -1,0 +1,114 @@
+DIFF ENTRE EL REPO LOCAL Y LO QUE SIRVE PRODUCCIÓN
+====================================================
+Fecha de la captura: 29/10/2026
+Producción: https://centraldetraspasos.com
+Repo:      C:\Users\Usuario\Downloads\inmobiliaria  (rama main, commit e9f1380)
+Copia live: docs/handoff-2026-10-29/live-2026-10-29/
+
+Método
+------
+Se descargaron los archivos públicos y se compararon con su equivalente local:
+  1. diff de texto (git diff --no-index)
+  2. comparación de todos los atributos href
+  3. comparación del texto visible (quitando <script>, <style> y etiquetas)
+
+RESUMEN
+-------
+Los archivos son equivalentes. Las únicas diferencias están en cómo se escriben los
+enlaces del menú/pie: producción usa rutas limpias absolutas y comillas simples
+(href='/propiedades'), el repo usa rutas relativas con .html y comillas dobles
+(href="propiedades.html"). No hay cambios de contenido, de lógica ni de SEO.
+
+  Archivo                    Bytes local/live   Texto visible   Veredicto
+  ---------------------------------------------------------------------------
+  index.html                 46602 / 46520      idéntico        equivalente
+  propiedades.html           24039 / 23631      idéntico        equivalente
+  bares.html                 23196 / 23097      idéntico        equivalente
+  hosteleria.html            21195 / 21123      idéntico        equivalente
+  restaurantes.html          22274 / 22199      idéntico        equivalente
+  teatinos.html              22120 / 22049      idéntico        equivalente
+  locales-malaga.html        26019 / 25944      idéntico        equivalente
+  locales-benalmadena.html   20483 / 20412      idéntico        equivalente
+  js/data.js (js_data.js)    18879 / 18879      —               IDÉNTICO byte a byte
+  sitemap.xml                (dinámico)         —               generado por sitemap.js
+  netlify.toml               NO COMPARABLE      —               ver aviso abajo
+
+En las 8 páginas HTML, tras quitar los atributos href, el resto del archivo tiene
+exactamente la misma longitud en local y en live: la diferencia es solo de formato
+(comillas y orden de atributos), no de contenido.
+
+MAPA DE ENLACES (local -> producción)
+-------------------------------------
+  index.html          -> /
+  index.html#contact  -> /#contact
+  index.html#services -> /#services
+  propiedades.html    -> /propiedades
+  captacion.html      -> /captacion
+  blog.html           -> /blog
+  blog/<post>.html    -> /blog/<post>
+  crm/login.html      -> /crm/login
+  aviso-legal.html    -> /aviso-legal
+  locales-*.html      -> /locales-*
+  traspasos-*.html    -> /traspasos-*
+
+Consecuencia: el repo local refleja producción. No hay código "perdido" solo en el
+servidor. Si se despliega el repo tal cual, el resultado es el mismo salvo que los
+enlaces volverían a ser relativos (siguen funcionando por los redirects de netlify.toml).
+
+DIFF COMPLETO DE propiedades.html (el único con diff legible)
+-------------------------------------------------------------
+El resto de páginas están minificadas en una sola línea, por eso un diff de texto no
+aporta nada: se compararon por hrefs y por texto visible (ver arriba).
+
+--- a/propiedades.html
++++ b/docs/handoff-2026-10-29/live-2026-10-29/propiedades.html
+@@ -62,8 +62,8 @@
+     <nav class="nav" id="mainNav">
+-      <a href="index.html" data-i18n="nav_home">Inicio</a>
+-      <a href="propiedades.html" data-i18n="nav_properties">Propiedades</a>
+-      <a href="index.html#services" data-i18n="nav_services">Servicios</a>
+-      <a href="index.html#contact" data-i18n="nav_contact">Contacto</a>
+-      <a href="blog.html" data-i18n="nav_blog">Blog</a>
+-      <a href="crm/login.html" data-i18n="nav_crm">CRM</a>
++      <a data-i18n='nav_home' href='/'>Inicio</a>
++      <a data-i18n='nav_properties' href='/propiedades'>Propiedades</a>
++      <a data-i18n='nav_services' href='/#services'>Servicios</a>
++      <a data-i18n='nav_contact' href='/#contact'>Contacto</a>
++      <a data-i18n='nav_blog' href='/blog'>Blog</a>
++      <a data-i18n='nav_crm' href='/crm/login'>CRM</a>
+       <div class="lang-switch">
+@@ -149,4 +149,4 @@
+         <h4 data-i18n="footer_quick">Enlaces rápidos</h4>
+-        <a href="index.html" data-i18n="nav_home">Inicio</a><br>
+-        <a href="propiedades.html" data-i18n="nav_properties">Propiedades</a><br>
++        <a data-i18n='nav_home' href='/'>Inicio</a><br>
++        <a data-i18n='nav_properties' href='/propiedades'>Propiedades</a><br>
+         <a href="/restaurantes">Restaurantes</a><br>
+@@ -155,6 +155,6 @@
+         <a href="/hosteleria">Hostelería</a><br>
+-        <a href="captacion.html" data-i18n="nav_capture">Vende tu propiedad</a><br>
+-        <a href="index.html#services" data-i18n="nav_services">Servicios</a><br>
+-        <a href="index.html#contact" data-i18n="nav_contact">Contacto</a><br>
+-        <a href="aviso-legal.html">Aviso Legal</a>
++        <a data-i18n='nav_capture' href='/captacion'>Vende tu propiedad</a><br>
++        <a data-i18n='nav_services' href='/#services'>Servicios</a><br>
++        <a data-i18n='nav_contact' href='/#contact'>Contacto</a><br>
++        <a href='/aviso-legal'>Aviso Legal</a>
+       </div>
+
+AVISO IMPORTANTE: live-2026-10-29/netlify.toml NO ES UN netlify.toml
+--------------------------------------------------------------------
+Netlify no publica el archivo netlify.toml. Al pedir https://centraldetraspasos.com/netlify.toml
+devuelve la página 404, y eso es lo que se guardó en la captura.
+
+Comprobado por hash: live-2026-10-29/netlify.toml es byte a byte igual al 404.html del repo
+(SHA-256 empieza por 95E6D6050B4EECB5, 4186 bytes).
+
+El netlify.toml bueno, el que se usa para desplegar, es:
+  C:\Users\Usuario\Downloads\inmobiliaria\netlify.toml   (144 líneas)
+No lo sustituyas por el de la captura.
+
+SITEMAP
+-------
+live-2026-10-29/sitemap.xml tiene 69 URLs, de las cuales 29 son fichas /propiedad/.
+No tiene equivalente local porque lo genera netlify/functions/sitemap.js en cada petición.
