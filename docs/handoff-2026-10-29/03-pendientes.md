@@ -141,6 +141,26 @@ antes de tocar nada.*
 
 ---
 
+## P7 · Fichas de propiedad ligeras — ✅ hecho y desplegado el 16/11/2026
+
+**Qué pasaba:** cada ficha metía en el HTML la foto de la galería y las portadas de las tres
+fichas similares en base64: **1,4 MB** de HTML por visita.
+
+**Solución aplicada:**
+1. Las fotos se sirven por `GET /api/property-image/<id>?i=<n>&v=<hash>` (binario, caché de
+   7 días). `?i=` elige la foto de la galería y se valida (fuera de rango → 404).
+2. La ficha solo carga la primera foto (con `fetchpriority="high"`); las demás llevan `data-src`
+   y se piden al cambiar de diapositiva (también se precargan la anterior y la siguiente).
+3. Las portadas de "fichas similares" usan la misma ruta con `loading="lazy"`.
+4. `og:image`, `twitter:image` y el JSON-LD usan la URL absoluta versionada.
+5. Caché en memoria de 45 s (`PROPS_CACHE_TTL`) para el blob de las fichas.
+
+**Medido en producción (16/11/2026):** HTML de **1,4 MB → ~26 KB**; segunda visita a una ficha
+en ~2 ms de función (antes ~800 ms de lectura del blob). Tests locales en verde: sin `data:image/`
+en el HTML, una sola foto con `src`, resto con `data-src`, índices inválidos → 404, caché activa.
+
+---
+
 ## Descartado / ya resuelto (no repetir)
 
 | Tema | Estado |
@@ -149,6 +169,7 @@ antes de tocar nada.*
 | "El 401 de `/api/images/logo` rompe la carga" | ❌ **Falso.** El error se captura; la página pinta. |
 | "Solo hay 8 propiedades" | ❌ **Falso.** Son 32; los 8 eran el bloque SEO estático. |
 | Listado lento (6,5 MB de fotos base64) | ✅ **Resuelto.** Listado 124 KB + imágenes aparte con caché. |
+| Fichas lentas (1,4 MB de fotos base64) | ✅ **Resuelto.** Ficha ~26 KB + imágenes aparte con caché y carga bajo demanda. |
 | Sitemap incompleto | ✅ 72 URLs con las 32 fichas. |
 | Fichas `/propiedad/*` | ✅ Las 32 devuelven 200. |
 | CRM `/crm/propietarios` | ✅ Datos correctos según el usuario. |
