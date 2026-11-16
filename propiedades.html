@@ -188,9 +188,12 @@ function renderProperties(props) {
     const desc = p['desc_' + lang] || p['desc_es'];
     const typeLabel = getTypeLabel(p.type, lang);
     const tagClass = getTypeTag(p.type);
-    const coverImg = p.images && p.images.length ? p.images.find(i=>i.featured) || p.images[0] : null; const imgSrc = coverImg && coverImg.data ? coverImg.data : (p.hasImage ? '/api/property-image/' + p.id + (p.imageVersion ? '?v=' + p.imageVersion : '') : null);
-    const imgStyle = imgSrc ? 'background:none' : 'background:linear-gradient(135deg,' + (p.type==='sale'?'#2E86AB':p.type==='rent'?'#36B37E':'#e67e22') + ',#1a2a3a)';
-    const imgContent = imgSrc ? '<img src="' + imgSrc + '" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover" alt="' + (p['title_' + lang] || p['title_es']) + ' - ' + p.town + ' - CENTRAL DE TRASPASOS" onerror="this.style.display=\'none\';this.parentNode.style.background=\'linear-gradient(135deg,' + (p.type==='sale'?'#2E86AB':p.type==='rent'?'#36B37E':'#e67e22') + ',#1a2a3a)\';this.parentNode.innerHTML=\'🏪\'">' : '🏪';
+    const coverImg = p.images && p.images.length ? p.images.find(i=>i.featured) || p.images[0] : null; const imgDirect = p.hasImage ? '/api/property-image/' + p.id + (p.imageVersion ? '?v=' + p.imageVersion : '') : null;
+    const imgSrc = coverImg && coverImg.data ? coverImg.data : (imgDirect ? '/.netlify/images?url=' + encodeURIComponent(imgDirect) + '&w=600&fm=webp&q=72' : null);
+    const imgBg = 'linear-gradient(135deg,' + (p.type==='sale'?'#2E86AB':p.type==='rent'?'#36B37E':'#e67e22') + ',#1a2a3a)';
+    const imgErr = "this.style.display='none';this.parentNode.style.background='" + imgBg + "';this.parentNode.innerHTML='🏪'";
+    const imgStyle = imgSrc ? 'background:none' : 'background:' + imgBg;
+    const imgContent = imgSrc ? '<img src="' + imgSrc + '" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover" alt="' + (p['title_' + lang] || p['title_es']) + ' - ' + p.town + ' - CENTRAL DE TRASPASOS" onerror="' + (imgDirect ? "this.onerror=function(){" + imgErr + "};this.src='" + imgDirect + "'" : imgErr) + '">' : '🏪';
     const soldLabel = p.type==='sale'?'Vendido':p.type==='rent'?'Alquilado':'Traspasado';
     return '<a href="' + getPropertyUrl(p) + '" class="property-card-link">' +
       '<div class="property-card">' +
