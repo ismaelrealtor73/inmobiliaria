@@ -33,6 +33,132 @@
   status = 200
 
 [[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/propiedades.html"
+  to = "/propiedades"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/captacion.html"
+  to = "/captacion"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog.html"
+  to = "/blog"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/aviso-legal.html"
+  to = "/aviso-legal"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/bares.html"
+  to = "/bares"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/restaurantes.html"
+  to = "/restaurantes"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/hosteleria.html"
+  to = "/hosteleria"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/teatinos.html"
+  to = "/teatinos"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/locales-comerciales.html"
+  to = "/locales-comerciales"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/locales-malaga.html"
+  to = "/locales-malaga"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/locales-fuengirola.html"
+  to = "/locales-fuengirola"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/locales-torremolinos.html"
+  to = "/locales-torremolinos"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/locales-benalmadena.html"
+  to = "/locales-benalmadena"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/locales-estepona.html"
+  to = "/locales-estepona"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/locales-mijas.html"
+  to = "/locales-mijas"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/locales-antequera.html"
+  to = "/locales-antequera"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/locales-velez-malaga.html"
+  to = "/locales-velez-malaga"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/locales-nerja.html"
+  to = "/locales-nerja"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/locales-rincon-de-la-victoria.html"
+  to = "/locales-rincon-de-la-victoria"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/traspasos-marbella.html"
+  to = "/traspasos-marbella"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/blog"
   to = "/blog.html"
   status = 200
