@@ -7,7 +7,8 @@ Cada uno lleva criterio de aceptación verificable en producción.
 
 ## P1 · Arreglar el `<h1>` vacío de la portada — 15 min, riesgo bajo
 
-**Estado: aplicado en local el 29/10/2026. Pendiente de desplegar.**
+**Estado: ✅ hecho y verificado en producción el 16/11/2026.** El H1 dice
+"Tu negocio, nuestro compromiso" y aguanta el cambio ES→EN→ES.
 
 **Qué:** el título principal de la home desaparece al cargar el JS (ver bug 1 de `02`).
 
@@ -27,6 +28,10 @@ También afecta a `#heroSubtitle` y `#aboutDesc`.
 
 ## P2 · Generar los bloques "Todas nuestras propiedades" desde el API — 1 h, riesgo medio
 
+**Estado: ✅ hecho el 16/11/2026.** Además de generarse al cargar con JS (32 enlaces,
+también al cambiar de idioma), el HTML estático ya trae los 32 enlaces reales, así que
+con JS desactivado el bloque también está completo.
+
 **Qué:** sustituir las listas estáticas de enlaces internos por listas generadas con
 `getPublishedProperties()`.
 
@@ -39,37 +44,40 @@ tras cargar las propiedades, reemplazar el contenido del `<ul>` con las 29 reale
 `title_es` de la propiedad; `href` = `/propiedad/<slug>`.
 
 **Aceptación:**
-- [ ] Tras 10 s, el bloque de `propiedades.html` tiene 29 enlaces.
-- [ ] Los 29 devuelven HTTP 200.
-- [ ] Con JS desactivado, el bloque sigue mostrando enlaces (respaldo intacto).
-- [ ] Ningún enlace apunta a una propiedad en estado distinto de `published`.
+- [x] Tras 10 s, el bloque de `propiedades.html` tiene 32 enlaces.
+- [x] Los 32 devuelven HTTP 200.
+- [x] Con JS desactivado, el bloque sigue mostrando enlaces (32 en el HTML).
+- [x] Ningún enlace apunta a una propiedad en estado distinto de `published`.
 
 ---
 
 ## P3 · Reducir el tiempo de pintado de la portada — 1–2 h, riesgo medio
 
-**Qué:** hoy la home tarda >4 s en mostrar tarjetas porque hace todo en serie.
+**Estado: ✅ hecho el 16/11/2026.**
 
-**Cómo:** en el `DOMContentLoaded` de `index.html`, lanzar en paralelo las llamadas
-independientes y pintar las tarjetas en cuanto lleguen:
+La causa real era otra: `/api/properties` devolvía **6,5 MB** (98 % fotos en base64),
+tardaba ~9 s solo en descargarse y bloqueaba cualquier pintado. Solución aplicada:
 
-```js
-const [props] = await Promise.all([
-  getPublishedProperties(),
-  loadHeaderLogo(),
-  applySiteContent(),
-]);
-renderProperties(props.filter(p => p.featured));
-```
+1. `GET /api/properties?lite=1` → **124 KB** (sin fotos, con `hasImage` y `imageVersion`).
+   Las páginas públicas usan siempre `lite`.
+2. Nueva ruta pública `GET /api/property-image/<id>?v=<hash>` → devuelve la foto en binario
+   con caché de 7 días. El `?v=` cambia al cambiar la foto, así que nunca se queda una
+   imagen vieja en caché.
+3. Tarjetas con `loading="lazy"` y miniatura WebP de 600 px vía Netlify Image CDN
+   (~31 KB transferidos frente a 154 KB de la original). Si el CDN falla, vuelve sola a la
+   imagen original.
+4. Caché en memoria de 45 s en la función (`PROPS_CACHE_TTL`): la respuesta caliente pasa de
+   ~800 ms a ~2 ms de función. El CRM (peticiones con `Authorization`) sigue leyendo siempre
+   datos frescos, y crear/editar/borrar invalida la caché.
+5. Carga inicial en paralelo: logo y textos ya no bloquean el listado.
 
-Cuidado: `applySiteContent()` también toca `#heroTitle`; si se arregla P1 primero, no hay
-conflicto. No partir en dos `await`s que dependan del mismo estado sin comprobar.
+**Medido en producción (16/11/2026):** 32 tarjetas, 32 enlaces, DOM listo en ~0,9 s y
+página cargada en ~1,0 s (antes >9 s). Payload del listado: 124 KB (33 KB comprimido).
 
 **Aceptación:**
-- [ ] En producción, con caché vacía, hay tarjetas visibles antes de 2,5 s
-      (medir con la pestaña Network o `performance.now()` en consola).
-- [ ] Sin errores nuevos en consola.
-- [ ] Las 28 tarjetas destacadas siguen saliendo.
+- [x] En producción, con caché vacía, hay tarjetas visibles antes de 2,5 s.
+- [x] Sin errores nuevos en consola (solo el 401 esperado de `/api/images/logo`).
+- [x] Las 31 tarjetas destacadas salen en la portada.
 
 ---
 
@@ -91,6 +99,9 @@ páginas a la vez, incluyendo nav, footer y bloques internos. Verificar que los 
 
 ## P5 · Enlazar el repo a Netlify para que `git push` despliegue — 10 min, requiere al usuario
 
+**Estado: ✅ resuelto.** Comprobado el 16/11/2026: cada `git push` a `main` se publica solo
+en centraldetraspasos.com en ~1–2 minutos (los tres últimos commits salieron sin usar la CLI).
+
 **Qué:** hoy un `git push` **no publica nada**. Los despliegues se hacían con la CLI y un token
 que ya está revocado.
 
@@ -101,8 +112,8 @@ que ya está revocado.
   solo para el comando de despliegue.
 
 **Aceptación:**
-- [ ] Un commit de prueba en `main` aparece publicado en centraldetraspasos.com sin CLI.
-- [ ] El token (si se usa) no queda escrito en ningún archivo del repo.
+- [x] Un commit de prueba en `main` aparece publicado en centraldetraspasos.com sin CLI.
+- [x] El token (si se usa) no queda escrito en ningún archivo del repo.
 
 ---
 
@@ -134,10 +145,19 @@ antes de tocar nada.*
 
 | Tema | Estado |
 |---|---|
-| "El listado público no se alimenta del API" | ✅ **Resuelto y desplegado.** `/propiedades` muestra 29 desde `/api/properties`. |
+| "El listado público no se alimenta del API" | ✅ **Resuelto y desplegado.** `/propiedades` muestra 32 desde `/api/properties?lite=1`. |
 | "El 401 de `/api/images/logo` rompe la carga" | ❌ **Falso.** El error se captura; la página pinta. |
-| "Solo hay 8 propiedades" | ❌ **Falso.** Son 29; los 8 eran el bloque SEO estático. |
-| Sitemap incompleto | ✅ 69 URLs con las 29 fichas. |
-| Fichas `/propiedad/*` | ✅ Las 29 devuelven 200. |
+| "Solo hay 8 propiedades" | ❌ **Falso.** Son 32; los 8 eran el bloque SEO estático. |
+| Listado lento (6,5 MB de fotos base64) | ✅ **Resuelto.** Listado 124 KB + imágenes aparte con caché. |
+| Sitemap incompleto | ✅ 72 URLs con las 32 fichas. |
+| Fichas `/propiedad/*` | ✅ Las 32 devuelven 200. |
 | CRM `/crm/propietarios` | ✅ Datos correctos según el usuario. |
+| `git push` no desplegaba | ✅ Netlify está enlazado con GitHub: publica solo. |
 | marlyproperties.com | Proyecto aparte, sin pendientes aquí. |
+
+### Pendiente real y conocido
+
+- El **CRM** sigue pidiendo `/api/properties` completo (con fotos base64), así que el panel de
+  administración sigue siendo pesado. No afecta a las páginas públicas.
+- **P4** (unificar URLs con/sin `.html`) y **P6** (mover secretos a variables de entorno)
+  siguen abiertos.
