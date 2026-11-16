@@ -81,19 +81,22 @@ página cargada en ~1,0 s (antes >9 s). Payload del listado: 124 KB (33 KB compr
 
 ---
 
-## P4 · Unificar URLs (limpias vs `.html`) — 2 h, riesgo medio, no urgente
+## P4 · Unificar URLs (limpias vs `.html`) — ✅ hecho y verificado el 16/11/2026
 
-**Qué:** el repo enlaza `propiedades.html`; producción sirve `/propiedades`. El `canonical` ya es
-correcto, así que no hay penalización SEO conocida.
+**Estado: resuelto.** Los enlaces internos de las 21 páginas raíz ya van sin `.html`
+(nav, footer, botones, blog hacia la web y la ficha SSR), y las direcciones viejas
+(`/propiedades.html`, `/index.html`, …) redirigen **301** a la limpia. Los artículos del
+blog mantienen su `.html`, que es su canonical (así están en sitemap y enlaces entre ellos).
 
-**Cómo:** decidir una sola forma (recomendado: limpia, sin `.html`) y cambiarla en **todas** las
-páginas a la vez, incluyendo nav, footer y bloques internos. Verificar que los redirects de
-`netlify.toml` siguen cubriendo lo antiguo.
+**Verificado en producción (16/11/2026):** las 20 URLs limpias + `/` responden 200; las 20
+`.html` redirigen 301 a su limpia; `/index.html` → `/`; las 72 URLs del sitemap responden
+200; la ficha enlaza `/propiedades`; el banner de cookies apunta a `/aviso-legal` absoluto
+(estaba roto en fichas y artículos); CRM e inglés funcionan igual.
 
 **Aceptación:**
-- [ ] `grep` no encuentra `href="*.html"` en páginas públicas (salvo casos justificados).
-- [ ] Los redirects de `netlify.toml` siguen devolviendo 200 en las URLs viejas.
-- [ ] Ningún enlace roto (probar las 69 URLs del sitemap).
+- [x] `grep` no encuentra `href="*.html"` en páginas públicas (salvo CRM y artículos del blog entre sí).
+- [x] Las URLs viejas redirigen 301 (no 404).
+- [x] Ningún enlace roto (probadas las 72 URLs del sitemap).
 
 ---
 
@@ -180,5 +183,4 @@ en el HTML, una sola foto con `src`, resto con `data-src`, índices inválidos �
 
 - El **CRM** sigue pidiendo `/api/properties` completo (con fotos base64), así que el panel de
   administración sigue siendo pesado. No afecta a las páginas públicas.
-- **P4** (unificar URLs con/sin `.html`) y **P6** (mover secretos a variables de entorno)
-  siguen abiertos.
+- **P6** (mover secretos a variables de entorno y rotar credenciales) sigue abierto.
