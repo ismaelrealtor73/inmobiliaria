@@ -181,6 +181,9 @@ en el HTML, una sola foto con `src`, resto con `data-src`, índices inválidos �
 
 ### Pendiente real y conocido
 
-- El **CRM** sigue pidiendo `/api/properties` completo (con fotos base64), así que el panel de
-  administración sigue siendo pesado. No afecta a las páginas públicas.
+- ~~El **CRM** pide `/api/properties` completo~~ ✅ **Resuelto (17/11/2026):** el panel usa la lista
+  ligera (~125 KB) con miniaturas por `/api/property-image`; el editor carga la propiedad completa
+  solo al abrirla. **Bug grave corregido de paso:** editar y guardar una propiedad borraba todas
+  sus fotos menos la destacada (la lista del CRM llegaba recortada a 1 foto y al guardar se
+  machacaban las demás). Las fotos perdidas así no son recuperables: hay que resubirlas.
 - **P6** (mover secretos a variables de entorno y rotar credenciales) sigue abierto.
